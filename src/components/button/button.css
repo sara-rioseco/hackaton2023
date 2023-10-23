@@ -1,0 +1,18 @@
+@import url('https://fonts.cdnfonts.com/css/public-sans');
+
+.buttonDefault {
+    width: 480px;
+    height: 48px;
+    padding: 11px 22px 11px 22px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-family: 'Public Sans', sans-serif;
+    font-weight: 700;
+    font-size: 15px;
+    line-height: 26px;
+}
+/* .buttonDefault:hover {
+    background: linear-gradient(154.71deg, #002855 16.03%, #006298 86.12%);
+
+} */

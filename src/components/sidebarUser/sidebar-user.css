@@ -1,0 +1,14 @@
+div .sidebarUser {
+  width: 240px;
+  height: 76px;
+  top: 96px;
+  left: 20px;
+  background-color: #919EAb14;
+  border-radius: 12px;
+  padding: 16px 20px 16px 20px;
+  gap: 16pc;
+  display:flex;
+  align-items: center;
+  justify-content: left;
+  flex-direction: row;
+}

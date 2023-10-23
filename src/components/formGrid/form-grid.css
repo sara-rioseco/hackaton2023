@@ -1,0 +1,163 @@
+@import url('https://fonts.cdnfonts.com/css/public-sans');
+
+.gridContainer {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: 240px 112px 112px;
+  grid-gap: 16px;
+  grid-auto-flow: row;
+  text-align: center;
+  font-family: 'Public Sans';
+}
+
+.item1 {
+  grid-column-start: 1;
+  grid-column-end: 4;
+  text-align: left;
+}
+
+.item2 {
+  border: 2px solid white;
+}
+
+.item3 {
+  grid-column-start: 2;
+  grid-column-end: 4;
+}
+
+.item4 {
+  border: 2px solid white;
+}
+
+.item5 {
+  grid-column-start: 2;
+  grid-column-end: 4;
+}
+
+.item6 {
+  border: 2px solid white;
+}
+
+.item7 {
+  grid-column-start: 2;
+  grid-column-end: 4;
+}
+
+.item8 {
+  border: 2px solid white;
+}
+
+.item9 {
+  border: 2px solid white;
+}
+
+.item10 {
+  border: 2px solid white;
+}
+
+.item11 {
+  border: 2px solid white;
+}
+
+.item12 {
+  grid-column-start: 2;
+  grid-column-end: 4;
+}
+
+.item13 {
+  border: 2px solid white;
+}
+
+.item14 {
+  border: 2px solid red;
+}
+
+.item15 {
+  border: 2px solid red;
+}
+
+.item16 {
+  border: 2px solid red;
+}
+
+.item17 {
+  border: 2px solid red;
+}
+
+.item18 {
+  border: 2px solid red;
+}
+
+.item19 {
+  border: 2px solid red;
+}
+
+.item20 {
+  border: 2px solid red;
+  grid-column-start: 2;
+  grid-column-end: 4;
+}
+
+.item21 {
+  border: 2px solid red;
+  grid-column-start: 1;
+  grid-column-end: 4;
+  text-align: left;
+}
+
+.item22 {
+  border: 2px solid red;
+}
+
+.item23 {
+  border: 2px solid red;
+  grid-column-start: 2;
+  grid-column-end: 4;
+}
+
+.item24 {
+  border: 2px solid red;
+}
+
+.item25 {
+  border: 2px solid red;
+}
+
+.item26 {
+  border: 2px solid red;
+}
+
+.item27 {
+  border: 2px solid red;
+}
+
+.item28 {
+  border: 2px solid red;
+}
+
+.item29 {
+  border: 2px solid red;
+}
+
+.item30 {
+  border: 2px solid red;
+}
+
+.item31 {
+  border: 2px solid red;
+  grid-column-start: 2;
+  grid-column-end: 4;
+}
+
+.item32 {
+  border: 2px solid red;
+  grid-column-start: 1;
+  grid-column-end: 4;
+}
+
+.item33 {
+  border: 2px solid red;
+  grid-column-start: 1;
+  grid-column-end: 4;
+}
