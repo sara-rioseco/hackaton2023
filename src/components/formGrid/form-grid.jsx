@@ -51,12 +51,12 @@ export default function FormGrid() {
         </div>
         <div className="item6">
           <FormDate 
-            label='Fecha inicio'
+            label='Fecha Inicio'
           />
         </div>
         <div className="item7">
           <FormDate 
-            label='Fecha cierre'
+            label='Fecha Cierre'
           />
         </div>
         <div className="item8">
