@@ -5,6 +5,7 @@
   height: 100%;
   display: grid;
   grid-template-columns: 240px 112px 112px;
+  grid-template-rows: 22px, 80px;
   grid-gap: 16px;
   grid-auto-flow: row;
   text-align: center;
@@ -18,7 +19,7 @@
 }
 
 .item2 {
-  border: 2px solid white;
+  border: 1px solid white;
 }
 
 .item3 {
@@ -27,7 +28,7 @@
 }
 
 .item4 {
-  border: 2px solid white;
+  border: 1px solid white;
 }
 
 .item5 {
@@ -36,7 +37,7 @@
 }
 
 .item6 {
-  border: 2px solid white;
+  border: 1px solid white;
 }
 
 .item7 {
@@ -45,19 +46,19 @@
 }
 
 .item8 {
-  border: 2px solid white;
+  border: 1px solid white;
 }
 
 .item9 {
-  border: 2px solid white;
+  border: 1px solid white;
 }
 
 .item10 {
-  border: 2px solid white;
+  border: 1px solid white;
 }
 
 .item11 {
-  border: 2px solid white;
+  border: 1px solid white;
 }
 
 .item12 {
@@ -66,7 +67,7 @@
 }
 
 .item13 {
-  border: 2px solid white;
+  border: 1px solid white;
 }
 
 .item14 {

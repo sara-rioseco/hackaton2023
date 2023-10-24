@@ -34,11 +34,7 @@ const router = createBrowserRouter([
     element: <Processes />,
     errorElement: <ErrorPage />,
   },
- 
-
- 
- 
-
+  
 ]);
 
 ReactDOM.createRoot(document.getElementById('root')).render(

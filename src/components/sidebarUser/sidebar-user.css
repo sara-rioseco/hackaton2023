@@ -1,14 +1,47 @@
-div .sidebarUser {
+@import url('https://fonts.cdnfonts.com/css/public-sans');
+
+.sidebarUser {
   width: 240px;
   height: 76px;
-  top: 96px;
-  left: 20px;
   background-color: #919EAb14;
   border-radius: 12px;
   padding: 16px 20px 16px 20px;
-  gap: 16pc;
+  box-sizing: border-box;
+  gap: 16px;
   display:flex;
   align-items: center;
-  justify-content: left;
+  justify-content: center;
   flex-direction: row;
+  font-family: 'Public Sans';
+}
+
+.sidebarUserImg {
+  width: 40px;
+  height: 40px;
+  border-radius:20px 20px 20px 20px;
+  background-color: lightgray;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+
+.sideBarUserText {
+  font-family: 'Public Sans' sans-serif;
+}
+
+.sideBarUserFullName {
+  font-family: 'Public Sans' sans-serif;
+  color: #181818;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 22px;
+}
+
+.sideBarUserRole {
+  font-family: 'Public Sans' sans-serif;
+  color: #545454;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 22px;
+
 }

@@ -21,7 +21,6 @@ div .sidebarContent {
   flex-flow: column nowrap;
   gap: 12px;
   box-sizing: border-box;
-  padding: 4px 0;
 }
 
 
