@@ -13,6 +13,8 @@ import Processes from './pages/Processes/processes';
 
 import ListApplicants from './pages/ListApplicants/list-applicants';
 import ProcessList from './pages/ProcessList/process-list';
+
+import Calls from './components/convocatorias/convocatorias';
 import './index.css'
 
 const router = createBrowserRouter([
@@ -39,6 +41,11 @@ const router = createBrowserRouter([
   {
     path: "/listprocesses",
     element: <ProcessList />,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: "/convocatorias",
+    element: <Calls />,
     errorElement: <ErrorPage />,
   },
 
