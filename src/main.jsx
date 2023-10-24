@@ -10,7 +10,9 @@ import Home from './pages/Home/home';
 import Post from './pages/Post/post';
 import Processes from './pages/Processes/processes';
 
+
 import ListApplicants from './pages/ListApplicants/list-applicants';
+import ProcessList from './pages/ProcessList/process-list';
 import './index.css'
 
 const router = createBrowserRouter([
@@ -34,7 +36,11 @@ const router = createBrowserRouter([
     element: <Processes />,
     errorElement: <ErrorPage />,
   },
- 
+  {
+    path: "/listprocesses",
+    element: <ProcessList />,
+    errorElement: <ErrorPage />,
+  },
 
  
  
