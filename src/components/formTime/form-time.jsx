@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable react/display-name */
 // CSS
 import './form-time.css'
@@ -19,12 +20,13 @@ const ClockIcon = () => {
 };
 
 
-export default function FormTime() {
+export default function FormTime({ label, classInputLabel}) {
   const [date, setDate] = useState(null);
 
    return (
     <>
       <div className="time-input-group-prepend">
+      {label && <label className={`formTimeLabel ${classInputLabel}`}>{label}</label>}
         <span className="time-input-group-text">
           <ClockIcon />
         </span>

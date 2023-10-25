@@ -3,7 +3,11 @@
 .toggle-container { 
   text-align: center;
   display: flex;
-  gap:16px;
+  gap:20px;
+  width: 100%;
+  height: 100%;
+  justify-content: left;
+  align-content: last bas;
 } 
 
 .toggle-text { 
@@ -13,7 +17,7 @@
   line-height: 22px;
   font-weight: 400;
   justify-content: center;
-  align-items: last baseline;
+  align-self:center;
 } 
 
 .toggle-switch { 
@@ -22,6 +26,7 @@
   display: inline-block; 
   text-align: left; 
   top: 8px; 
+  align-self: center;
 } 
 .checkbox { 
   display: none; 

@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable react/display-name */
 // CSS
 import './form-date.css'
@@ -18,12 +19,13 @@ const Icon = () => {
 };
 
 
-export default function FormDate() {
+export default function FormDate({label, classInputLabel }) {
   const [date, setDate] = useState(null);
 
    return (
     <>
       <div className="input-group-prepend">
+      {label && <label className={`formDateLabel ${classInputLabel}`}>{label}</label>}
         <span className="input-group-text">
           <Icon />
         </span>

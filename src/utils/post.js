@@ -9,28 +9,98 @@ import axios from 'axios';
 export function usePostLogic() {
   const navigate = useNavigate();
 
-  const [formData, setFormData] = useState({
-    igcName: "",
-    password: "",
-    showPassword: false
-  });
   const [errorLabel, setErrorLabel] = useState('');
+  const [notValidForm, setNotValidForm] = useState(true);
+
+  const [formData, setFormData] = useState({
+    processName: "",
+    startingDate: "",
+    closingDate: "",
+    profileName: "",
+    account: "",
+    status: "",
+    trainer: "",
+    trainingSchedule: {},
+    trainingModality: "",
+    processModality: "",
+    processSchedule: {},
+    workSchedule: "",
+    reason: "",
+    applicantsNumber: 0,
+    reducerNumber: 0,
+    businessName: "",
+    campus: {
+        name: "",
+        address: ""
+    },
+    service: "",
+    turn: ""
+  });
 
   // Input type change to show/hide password
   const handleFieldChange = (field, event) => {
     if (field === 'igc-name') {
-      setFormData({ ...formData, igcName: event.target.value });
-    } else if (field === 'password') {
-      setFormData({ ...formData, password: event.target.value });
+      setFormData({ ...formData, processNameName: event.target.value });
+    } 
+    if (field === 'starting-date') {
+      setFormData({ ...formData, startingDate: event.target.value });
+    }
+    if (field === 'closing-date') {
+      setFormData({ ...formData, closingDate: event.target.value });
+    } 
+    if (field === 'profile-name') {
+      setFormData({ ...formData, profileName: event.target.value });
+    } 
+    if (field === 'account') {
+      setFormData({ ...formData, account: event.target.value });
+    } 
+    if (field === 'status') {
+      setFormData({ ...formData, status: event.target.value });
+    } 
+    if (field === 'trainer') {
+      setFormData({ ...formData, trainer: event.target.value });
+    } 
+    if (field === 'training-schedule') {
+      setFormData({ ...formData, trainingSchedule: event.target.value });
+    } 
+    if (field === 'training-modality') {
+      setFormData({ ...formData, trainingModality: event.target.value });
+    } 
+    if (field === 'process-modality') {
+      setFormData({ ...formData, processModality: event.target.value });
+    } 
+    if (field === 'process-schedule') {
+      setFormData({ ...formData, processSchedule: event.target.value });
+    } 
+    if (field === 'work-schedule') {
+      setFormData({ ...formData, workSchedule: event.target.value });
+    } 
+    if (field === 'reason') {
+      setFormData({ ...formData, reason: event.target.value });
+    } 
+    if (field === 'applicants-number') {
+      setFormData({ ...formData, applicantsNumber: event.target.value });
+    } 
+    if (field === 'reducer-number') {
+      setFormData({ ...formData, reducerNumber: event.target.value });
+    } 
+    if (field === 'business-name') {
+      setFormData({ ...formData, businessName: event.target.value });
+    } 
+    if (field === 'campus-name') {
+      setFormData({ ...formData, campus: { name:event.target.value } });
+    }
+    if (field === 'campus-address') {
+      setFormData({ ...formData, campus: { address:event.target.value } });
+    } 
+    if (field === 'service') {
+      setFormData({ ...formData, service: event.target.value });
+    } 
+    if (field === 'turn') {
+      setFormData({ ...formData, turn: event.target.value });
     } 
   };
 
-  // Show/hide password
-  const togglePasswordVisibility = () => setFormData({ ...formData, showPassword: !formData.showPassword });
-
-  const getPasswordInputType = () => formData.showPassword ? 'text' : 'password';
-
-  // API login
   const handleSideBarButtonClick = async (type) => {
     if (type) {
       if (type === "Convocatorias") {
@@ -47,12 +117,19 @@ export function usePostLogic() {
     }
   };
 
+  const handleCreateProcessButtonClick = async () => {
+
+  }
+
   return {
+    notValidForm, 
+    setNotValidForm,
     formData,
+    setFormData,
     handleFieldChange,
     errorLabel,
-    togglePasswordVisibility,
-    getPasswordInputType,
+    setErrorLabel,
     handleSideBarButtonClick,
+    handleCreateProcessButtonClick,
   }
 }
