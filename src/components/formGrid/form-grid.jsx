@@ -4,11 +4,13 @@ import './form-grid.css'
 // Custom hooks
 import { useLoginLogic } from '../../utils/login';
 // Components
+import Button from '../button/button';
 import FormDate from '../formDate/form-date'
 import FormText from '../formText/form-text'
 import FormDropdown from '../formDropdown/form-dropdown'
 import FormTime from '../formTime/form-time'
-/* import FormToggle from '../formToggle/form-toggle' */
+import FormToggle from '../formToggle/form-toggle'
+
 
 export default function FormGrid() {
 
@@ -62,18 +64,43 @@ export default function FormGrid() {
         <div className="item8">
           <FormDropdown
             placeholder=''
+            label='Tipo de Trabajo'
           />
         </div>
-        <div className="item9">9</div>
-        <div className="item10">10</div>
+        <div className="item9">
+          <FormText
+            type='text'
+            placeholder=''
+            onChange={(e) => {
+              handleFieldChange('applicants', e);
+            }}
+            label='Postulantes'
+            classInputLabel='labels'
+            classInput='inputs'
+          />
+        </div>
+        <div className="item10">
+          <FormText
+            type='text'
+            placeholder=''
+            onChange={(e) => {
+              handleFieldChange('reducer', e);
+            }}
+            label='Reductor'
+            classInputLabel='labels'
+            classInput='inputs'
+          />
+        </div>
         <div className="item11">
           <FormDropdown
             placeholder=''
+            label='Modalidad'
           />
         </div>
         <div className="item12">
           <FormDropdown
             placeholder=''
+            label='Turno'
           />
         </div>
         <div className="item13">Lunes-Viernes</div>
@@ -83,20 +110,40 @@ export default function FormGrid() {
         <div className="item15">
           <FormTime />
         </div>
-        <div className="item16">16</div>
+        <div className="item16">
+        <FormDropdown
+            placeholder=''
+            label='Fin de Semana'
+          />
+        </div>
         <div className="item17">          
           <FormTime />
         </div>
         <div className="item18">
           <FormTime />
         </div>
-        <div className="item19">19</div>
-        <div className="item20">20</div>
+        <div className="item19">
+        <FormDropdown
+            placeholder=''
+            label='Sede'
+          />
+        </div>
+        <div className="item20">
+        <FormDropdown
+            placeholder=''
+            label='Razón Social'
+          />
+        </div>
         <div className="item21">Datos de capacitación</div>
         <div className="item22">
           <FormDate />
         </div>
-        <div className="item23">23</div>
+        <div className="item23">
+          <FormDropdown
+            placeholder=''
+            label='Modalidad'
+          />
+        </div>
         <div className="item24">Lunes-Viernes</div>
         <div className="item25">
           <FormTime />
@@ -104,17 +151,36 @@ export default function FormGrid() {
         <div className="item26">
           <FormTime />
         </div>
-        <div className="item27">27</div>
+        <div className="item27">
+          <FormDropdown
+            placeholder=''
+            label='Fin de Semana'
+          />
+        </div>
         <div className="item28">
           <FormTime />
         </div>
         <div className="item29">
           <FormTime />
         </div>
-        <div className="item30">30</div>
-        <div className="item31">31</div>
-        <div className="item30">32</div>
-        <div className="item30">33</div>
+        <div className="item30">
+        <FormDropdown
+            placeholder=''
+            label='Formador'
+          />
+        </div>
+        <div className="item31">
+          <FormDropdown
+            placeholder=''
+            label='Perfil Evaluaciones'
+          />
+        </div>
+        <div className="item32">
+          <FormToggle label='Personas con discapacidad'/>
+        </div>
+        <div className="item33">
+          <Button label="Crear Oferta" onClick={console.log('hola')} classButton='createOfferButton' disabled={false}/>
+        </div>
       </div>
     </>
   )
