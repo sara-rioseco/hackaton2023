@@ -6,11 +6,7 @@ import {
 } from "react-router-dom";
 import ErrorPage from './error-page';
 import Home from './pages/Home/home';
-
 import Post from './pages/Post/post';
-import Processes from './pages/Processes/processes';
-
-
 import ListApplicants from './pages/ListApplicants/list-applicants';
 import ProcessList from './pages/ProcessList/process-list';
 

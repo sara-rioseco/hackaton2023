@@ -110,7 +110,7 @@ export function usePostLogic() {
         navigate('/applicants');
       }
       if (type === "Procesos") {
-        navigate('/processes');
+        navigate('/listprocesses');
       }
     } else {
       navigate('/error-page');
