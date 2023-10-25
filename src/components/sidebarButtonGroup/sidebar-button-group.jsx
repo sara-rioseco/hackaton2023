@@ -8,6 +8,7 @@ import invoice from "../../assets/icons/dashboard/ic_invoice.png"
 import invoiceUnselected from "../../assets/icons/dashboard/unselected_ic_invoice.png"
 import user from "../../assets/icons/dashboard/ic_user.png"
 import userUnselected from "../../assets/icons/dashboard/unselected_ic_user.png"
+import { usePostLogic } from "../../utils/post";
 
 
 const theme = {
@@ -34,13 +35,6 @@ const sideBarButton = styled.button`
   outline: 0;
   cursor: pointer;
   transition: ease background-color 250ms;
-  &:hover {
-    background-color: ${(props) => theme[props.theme].hover};
-  }
-  &:disabled {
-    cursor: default;
-    opacity: 0.1;
-  }
 `;
 
 sideBarButton.defaultProps = {
@@ -55,7 +49,7 @@ const ButtonToggle = styled(sideBarButton)`
     background-color: #FFFFFF;
   }
   ${({ active }) =>
-    active &&
+    active === "true" &&
     `
     background-color: #CE0F69;
     color: #FFFFFF;
@@ -69,28 +63,40 @@ const ButtonToggle = styled(sideBarButton)`
 const types = ["Convocatorias", "Postulantes", "Procesos"];
 
 function ToggleGroup() {
-  const [active, setActive] = useState(types[0]);
+  const [activeType, setActiveType] = useState(types[0]);
+
+  const {
+/*     formData,
+    handleFieldChange,
+    errorLabel,
+    togglePasswordVisibility,
+    getPasswordInputType, */
+    handleSideBarButtonClick,
+  } = usePostLogic(); 
+
   return (
     <div className='sideBarButtonGroup'>
       {types.map((type) => (
-        <ButtonToggle active={active === type} onClick={() => setActive(type)} key={type}>
+        <ButtonToggle active={activeType === type ? "true" : "false"} onClick={() => {
+        setActiveType(type)
+        handleSideBarButtonClick(type)}} key={type}>
           <div className='sideBarButton'>
-            {(type ==="Convocatorias" && active === type) && (
+            {(type ==="Convocatorias" && activeType === type) && (
               <img src={invoice} alt={invoice} className="sideBarIcon" key={invoice}/>
             )}
-            {(type ==="Convocatorias" && active !== type) && (
+            {(type ==="Convocatorias" && activeType !== type) && (
               <img src={invoiceUnselected} alt={invoiceUnselected} className="sideBarIcon" key={invoiceUnselected}/>
             )}
-            {(type ==="Postulantes" && active === type) && (
+            {(type ==="Postulantes" && activeType === type) && (
               <img src={user} alt={user} className="sideBarIcon" key={user}/>
             )}
-            {(type ==="Postulantes" && active !== type) && (
+            {(type ==="Postulantes" && activeType !== type) && (
               <img src={userUnselected} alt={userUnselected} className="sideBarIcon" key={userUnselected}/>
             )}
-            {(type ==="Procesos" && active === type) && (
+            {(type ==="Procesos" && activeType === type) && (
               <img src={analytics} alt={analytics} className="sideBarIcon" key={analytics}/>
             )}
-            {(type ==="Procesos" && active !== type) && (
+            {(type ==="Procesos" && activeType !== type) && (
               <img src={analyticsUnselected} alt={analyticsUnselected} className="sideBarIcon" key={analyticsUnselected}/>
             )}
             <div className="sideBarOption">{type}</div>

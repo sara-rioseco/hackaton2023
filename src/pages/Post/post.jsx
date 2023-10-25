@@ -16,14 +16,6 @@ import FormGrid from '../../components/formGrid/form-grid'
 
 export default function Post() {
 
-/*   const {
-    formData,
-    handleFieldChange,
-    errorLabel,
-    togglePasswordVisibility,
-    getPasswordInputType,
-    handleLoginClick,
-  } = usePostLogic(); */
   return (
     <>
       <div className='createPost'>
@@ -35,8 +27,8 @@ export default function Post() {
 
           </div>
           <div className='mainContent'>
-            <h2 className='title'>Crear Convocatorias</h2>
-            <h3 className='subtitle'>Convocatorias</h3>
+            <h2 className='titlePost'>Crear Convocatorias</h2>
+            <h3 className='subtitlePost'>Convocatorias</h3>
             <FormGrid />
           </div>
         </div>

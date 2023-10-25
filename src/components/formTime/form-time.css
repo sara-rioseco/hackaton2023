@@ -1,0 +1,25 @@
+.timePicker {
+  width: 100%;
+  height: 56px;
+  padding: 4px;
+  text-align: left;
+  border: 1px solid #919EAB;
+  position: relative;
+  border-radius: 5px; 
+  align-items: center;
+  display:flex;
+  justify-content: space-between;
+  padding-block: 0;
+  padding-inline: 0;
+  box-sizing: border-box;
+}
+
+.time-input-group-prepend {
+  position: relative;
+  top: 52px;
+  right: -66px;
+  z-index: 1;
+  width:fit-content;
+  height:fit-content;
+}
+

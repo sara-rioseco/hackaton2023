@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 // Hooks
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -30,37 +31,19 @@ export function usePostLogic() {
   const getPasswordInputType = () => formData.showPassword ? 'text' : 'password';
 
   // API login
-  const handleLoginClick = async () => {
-    try {
-      const response = await axios.post('https://iezopofihj.execute-api.us-east-1.amazonaws.com/dev/login', {
-        email: formData.name,
-        password: formData.password,
-      });
-
-      // Guardar el accessToken en el localStorage
-      if (response.data) {
-        localStorage.setItem('accessToken', response.data.accessToken);
-        localStorage.setItem('userId', response.data.user.id);
-        localStorage.setItem('role', response.data.user.role);
+  const handleSideBarButtonClick = async (type) => {
+    if (type) {
+      if (type === "Convocatorias") {
+        navigate('/post');
       }
-
-      response.data.user.role === 'admin' && navigate('/users');
-      response.data.user.role === 'waiter' && navigate('/orders');
-      response.data.user.role === 'chef' && navigate('/kitchen');
-    } catch (error) {
-      if (error.response) {
-        if (error.response.data === 'Email and password are required') {
-          setErrorLabel('Completa los campos requeridos');
-        } else if (error.response.data === 'Cannot find user') {
-          setErrorLabel('Usuario no registrado');
-        } else if (error.response.data === 'Incorrect password') {
-          setErrorLabel('Credenciales  incorrectas');
-        } else {
-          navigate('/error-page');
-        }
-      } else {
-        navigate('/error-page');
+      if (type === "Postulantes") {
+        navigate('/applicants');
       }
+      if (type === "Procesos") {
+        navigate('/processes');
+      }
+    } else {
+      navigate('/error-page');
     }
   };
 
@@ -70,6 +53,6 @@ export function usePostLogic() {
     errorLabel,
     togglePasswordVisibility,
     getPasswordInputType,
-    handleLoginClick,
+    handleSideBarButtonClick,
   }
 }

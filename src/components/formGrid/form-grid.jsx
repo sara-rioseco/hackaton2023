@@ -7,8 +7,8 @@ import { useLoginLogic } from '../../utils/login';
 import FormDate from '../formDate/form-date'
 import FormText from '../formText/form-text'
 import FormDropdown from '../formDropdown/form-dropdown'
-/* import FormTime from '../formTime/form-time'
-import FormToggle from '../formToggle/form-toggle' */
+import FormTime from '../formTime/form-time'
+/* import FormToggle from '../formToggle/form-toggle' */
 
 export default function FormGrid() {
 
@@ -77,11 +77,19 @@ export default function FormGrid() {
           />
         </div>
         <div className="item13">Lunes-Viernes</div>
-        <div className="item14">14</div>
-        <div className="item15">15</div>
+        <div className="item14">
+          <FormTime />
+        </div>
+        <div className="item15">
+          <FormTime />
+        </div>
         <div className="item16">16</div>
-        <div className="item17">17</div>
-        <div className="item18">18</div>
+        <div className="item17">          
+          <FormTime />
+        </div>
+        <div className="item18">
+          <FormTime />
+        </div>
         <div className="item19">19</div>
         <div className="item20">20</div>
         <div className="item21">Datos de capacitación</div>
@@ -90,11 +98,19 @@ export default function FormGrid() {
         </div>
         <div className="item23">23</div>
         <div className="item24">Lunes-Viernes</div>
-        <div className="item25">25</div>
-        <div className="item26">26</div>
+        <div className="item25">
+          <FormTime />
+        </div>
+        <div className="item26">
+          <FormTime />
+        </div>
         <div className="item27">27</div>
-        <div className="item28">28</div>
-        <div className="item29">29</div>
+        <div className="item28">
+          <FormTime />
+        </div>
+        <div className="item29">
+          <FormTime />
+        </div>
         <div className="item30">30</div>
         <div className="item31">31</div>
         <div className="item30">32</div>

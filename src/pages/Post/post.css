@@ -23,7 +23,7 @@
 }
 
 .mainContent {
-  width: 90%;
+  width: 100%;
   height: 100%;
   display: flex;
   justify-content: center;
@@ -32,4 +32,13 @@
   padding: 40px 200px 40px 200px;
   box-sizing: border-box;
   gap: 12px;
+}
+
+.subtitlePost {
+  color: #545454;
+  font-family: 'Public Sans' sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 22px;
+  text-align: left;
 }
