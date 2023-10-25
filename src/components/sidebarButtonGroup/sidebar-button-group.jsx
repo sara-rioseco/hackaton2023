@@ -78,7 +78,8 @@ export default function SidebarButtonGroup() {
     <div className='sideBarButtonGroup'>
       {types.map((type) => (
         <ButtonToggle active={activeType === type ? "true" : "false"} onClick={() => {
-          handleSideBarButtonClick(type, setActiveType)}} key={type}>
+          setActiveType(type);
+          handleSideBarButtonClick(type)}} key={type}>
           <div className='sideBarButton'>
             {(type ==="Convocatorias" && activeType === type) && (
               <img src={invoice} alt={invoice} className="sideBarIcon" key={invoice}/>

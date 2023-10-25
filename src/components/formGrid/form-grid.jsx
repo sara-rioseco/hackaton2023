@@ -246,7 +246,7 @@ export default function FormGrid() {
           <FormToggle label='Personas con discapacidad'/>
         </div>
         <div className="item33">
-          <Button label="Crear Oferta" onClick={log} classButton='createOfferButton' disabled={notValidForm}/>
+          <Button label="Crear Oferta" onClick={alert('click en botón Crear Oferta')} classButton='createOfferButton' disabled={notValidForm}/>
         </div>
       </div>
     </>

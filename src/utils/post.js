@@ -6,10 +6,9 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 // Login
+
 export function usePostLogic() {
   const navigate = useNavigate();
-  const types = ["Convocatorias", "Postulantes", "Procesos"];
-  const [ activeType, setActiveType ] = useState(types[0]);
   const [errorLabel, setErrorLabel] = useState('');
   const [notValidForm, setNotValidForm] = useState(true);
 
@@ -41,7 +40,7 @@ export function usePostLogic() {
   // Input type change to show/hide password
   const handleFieldChange = (field, event) => {
     if (field === 'igc-name') {
-      setFormData({ ...formData, processNameName: event.target.value });
+      setFormData({ ...formData, processName: event.target.value });
     } 
     if (field === 'starting-date') {
       setFormData({ ...formData, startingDate: event.target.value });
@@ -102,18 +101,15 @@ export function usePostLogic() {
     } 
   };
 
-  const handleSideBarButtonClick = async (type, setActiveType) => {
+  const handleSideBarButtonClick = async (type) => {
     if (type) {
       if (type === "Convocatorias") {
-        setActiveType("Convocatorias")
         navigate('/post');
       }
       if (type === "Postulantes") {
-        setActiveType("Postulantes")
         navigate('/applicants');
       }
       if (type === "Procesos") {
-        setActiveType("Procesos")
         navigate('/listprocesses');
       }
     } else {
