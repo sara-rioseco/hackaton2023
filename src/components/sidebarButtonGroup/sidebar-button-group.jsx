@@ -62,7 +62,7 @@ const ButtonToggle = styled(sideBarButton)`
 
 const types = ["Convocatorias", "Postulantes", "Procesos"];
 
-function ToggleGroup() {
+export default function SidebarButtonGroup() {
   const [activeType, setActiveType] = useState(types[0]);
 
   const {
@@ -78,8 +78,7 @@ function ToggleGroup() {
     <div className='sideBarButtonGroup'>
       {types.map((type) => (
         <ButtonToggle active={activeType === type ? "true" : "false"} onClick={() => {
-        setActiveType(type)
-        handleSideBarButtonClick(type)}} key={type}>
+          handleSideBarButtonClick(type, setActiveType)}} key={type}>
           <div className='sideBarButton'>
             {(type ==="Convocatorias" && activeType === type) && (
               <img src={invoice} alt={invoice} className="sideBarIcon" key={invoice}/>
@@ -104,15 +103,5 @@ function ToggleGroup() {
         </ButtonToggle>
       ))}
     </div>
-  );
-}
-
-
-export default function SidebarButtonGroup () {
-  // RENDERIZADO
-  return (
-    <>
-      <ToggleGroup />
-    </>
   );
 }

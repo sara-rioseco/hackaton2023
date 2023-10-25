@@ -8,7 +8,8 @@ import axios from 'axios';
 // Login
 export function usePostLogic() {
   const navigate = useNavigate();
-
+  const types = ["Convocatorias", "Postulantes", "Procesos"];
+  const [ activeType, setActiveType ] = useState(types[0]);
   const [errorLabel, setErrorLabel] = useState('');
   const [notValidForm, setNotValidForm] = useState(true);
 
@@ -101,15 +102,18 @@ export function usePostLogic() {
     } 
   };
 
-  const handleSideBarButtonClick = async (type) => {
+  const handleSideBarButtonClick = async (type, setActiveType) => {
     if (type) {
       if (type === "Convocatorias") {
+        setActiveType("Convocatorias")
         navigate('/post');
       }
       if (type === "Postulantes") {
+        setActiveType("Postulantes")
         navigate('/applicants');
       }
       if (type === "Procesos") {
+        setActiveType("Procesos")
         navigate('/listprocesses');
       }
     } else {

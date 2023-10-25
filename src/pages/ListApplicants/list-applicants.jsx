@@ -22,7 +22,7 @@ export default function ListApplicants() {
       </div>
       <div className='mainContent'>
         <h2 className='title'>Lista de Postulantes</h2>
-        <h3 className='subtitle'>Postulantes</h3>
+        <h3 className='subtitle'>Procesos</h3>
         <div>
     <Box sx={{ flexGrow: 1 }}>
       <ListTable />
