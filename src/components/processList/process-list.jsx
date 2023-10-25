@@ -27,7 +27,20 @@ export default function ListTable() {
       .then((response) => response.json())
       .then((result) => {
         console.log("result dat[0]", Object.keys(result.data[0]));
-        setData(result.data);
+        const dataprocess = result.data.map((item) => ({
+          IGC: item.processName,
+          Cuenta: item.account,
+          Servicio: item.service,
+          "Fecha Inicio": item.startingDate,
+          "Feha Fin": item.closingDate,
+          "Nro. Postulante": item.applicantsNumber,
+          "Nro. Reductor": item.reducerNumber,
+          "Avance de Aptos": item.reason,
+          Estado: item.status,
+        }));
+
+        console.log("dataprocess", dataprocess);
+        setData(dataprocess);
       })
       .catch((error) => console.log("error", error));
   }, []);
@@ -40,24 +53,25 @@ export default function ListTable() {
     data.sort((a, b) => a.document?.localeCompare(b.document));
   }
 
-    
-
-
   const columnMapping = {
- 
-    processName:"IGC",
+    processName: "IGC",
     service: "Servicios",
     businessName: "Cuenta",
     startingDate: "fecha de inicio",
     campus: "TRUJILLO",
-    
-    
-   
-
-   
   };
 
-  
+  const columnMaping2 = [
+    "IGC",
+    "Cuenta",
+    "Servicio",
+    "Fecha Inicio",
+    "Feha Fin",
+    "Nro. Postulante",
+    "Nro. Reductor",
+    "Avance de Aptos",
+    "Estado",
+  ];
 
   //  filtrar los datos
   const filteredData = data.filter((item) => {
@@ -103,16 +117,17 @@ export default function ListTable() {
         <Table>
           <TableHead>
             <TableRow>
-              {Object.keys(data[0]).map((key) => {  
-                console.log("columnMapping",columnMapping[key])
-                return(
-                <TableCell
-                  key={key}
-                  style={{ background: "#DFE3E8", fontWeight: "bold" }}
-                >
-                  {columnMapping[key]}
-                </TableCell>
-)})}
+              {columnMaping2.map((key) => {
+                console.log("columnMapping", data);
+                return (
+                  <TableCell
+                    key={key}
+                    style={{ background: "#DFE3E8", fontWeight: "bold" }}
+                  >
+                    {key}
+                  </TableCell>
+                );
+              })}
             </TableRow>
           </TableHead>
           <TableBody>
