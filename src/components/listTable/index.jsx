@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import {
   Table,
   TableBody,
@@ -29,7 +29,7 @@ export default function ListTable() {
       .then((result) => {
         setData(result.data);
       })
-      .catch((error) => console.log("error", error));
+      .catch((error) => console.error("error", error));
   }, []);
 
   if (!data) {

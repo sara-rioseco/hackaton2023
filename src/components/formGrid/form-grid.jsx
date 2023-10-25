@@ -13,7 +13,7 @@ import FormToggle from '../formToggle/form-toggle'
 
 
 export default function FormGrid() {
-
+  const log = console.log('hola')
   const {
     notValidForm, 
     setNotValidForm,
@@ -47,7 +47,8 @@ export default function FormGrid() {
             placeholder=''
             label='Cuenta'
             onChange={(e) => {
-              handleFieldChange('account', e)
+              handleFieldChange('account', e);
+              console.log(`${e.target.value}`)
             }}
           />
         </div>
@@ -56,7 +57,8 @@ export default function FormGrid() {
             placeholder=''
             label='Servicio'
             onChange={(e) => {
-              handleFieldChange('service', e)
+              handleFieldChange('service', e);
+              console.log(`${e.target.value}`)
             }}
           />
         </div>
@@ -65,7 +67,8 @@ export default function FormGrid() {
             placeholder=''
             label='Motivo'
             onChange={(e) => {
-              handleFieldChange('reason', e)
+              handleFieldChange('reason', e);
+              console.log(`${e.target.value}`)
             }}
           />
         </div>
@@ -73,7 +76,8 @@ export default function FormGrid() {
           <FormDate 
             label='Fecha Inicio'
             onChange={(e) => {
-              handleFieldChange('starting-date', e)
+              handleFieldChange('starting-date', e);
+              console.log(`${e.target.value}`)
             }}
           />
         </div>
@@ -242,7 +246,7 @@ export default function FormGrid() {
           <FormToggle label='Personas con discapacidad'/>
         </div>
         <div className="item33">
-          <Button label="Crear Oferta" onClick={console.log('hiciste click')} classButton='createOfferButton' disabled={notValidForm}/>
+          <Button label="Crear Oferta" onClick={log} classButton='createOfferButton' disabled={notValidForm}/>
         </div>
       </div>
     </>

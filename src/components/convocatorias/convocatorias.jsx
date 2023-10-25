@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from "react";
 import Box from "@mui/material/Box";
 import Card from "@mui/material/Card";
@@ -22,14 +23,14 @@ export default function Calls() {
     fetch("https://iezopofihj.execute-api.us-east-1.amazonaws.com/dev/offers")
       .then((response) => response.json())
       .then((result) => {
-        console.log("resultado formato json", result.data[0]);
+/*         console.log("resultado formato json", result.data[0]); */
         
         const dataprocess = result.data[0]
        setData(result.data);
       })
-      .catch((error) => console.log("error", error));
+      .catch((error) => console.error("error", error));
   }, []);
-  console.log("dataprocess", datap);
+/*   console.log("dataprocess", datap); */
 
  const vacancy = {
    "nombre_vacante": "fonted Developer",
@@ -38,8 +39,8 @@ export default function Calls() {
    "modalidad": "Presencial"
  };
  
- const vacancyJSON = JSON.stringify(vacancy);
- console.log(vacancyJSON);
+/*  const vacancyJSON = JSON.stringify(vacancy);
+ console.log(vacancyJSON); */
 
 
 
@@ -57,10 +58,10 @@ export default function Calls() {
       setData(result);
     }
 
-    query({ question: vacantes }).then((response) => {
-      console.log("respuest de flowise",response);
-    });
-  }, []);
+/*     query({ question: vacantes }).then((response) => {
+       console.log("respuest de flowise",response); 
+    }); */
+  }, []); 
 
   return (
     <Card sx={{ minWidth: 275 }}>
