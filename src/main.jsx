@@ -10,7 +10,11 @@ import Home from './pages/Home/home';
 import Post from './pages/Post/post';
 import Processes from './pages/Processes/processes';
 
+
 import ListApplicants from './pages/ListApplicants/list-applicants';
+import ProcessList from './pages/ProcessList/process-list';
+
+import Calls from './components/convocatorias/convocatorias';
 import './index.css'
 
 const router = createBrowserRouter([
@@ -30,11 +34,19 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage />,
   },
   {
-    path: "/processes",
-    element: <Processes />,
+    path: "/listprocesses",
+    element: <ProcessList />,
     errorElement: <ErrorPage />,
   },
-  
+  {
+    path: "/convocatorias",
+    element: <Calls />,
+    errorElement: <ErrorPage />,
+  },
+
+ 
+ 
+
 ]);
 
 ReactDOM.createRoot(document.getElementById('root')).render(
