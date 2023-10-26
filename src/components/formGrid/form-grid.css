@@ -22,9 +22,37 @@
   line-height: 22px;
 }
 
-/* .item2 {
-  border: 1px solid white;
-} */
+ .item2,
+ .item3,
+ .item4,
+ .item5,
+ .item6,
+ .item7,
+ .item8,
+ .item9,
+ .item10,
+ .item11,
+ .item12,
+ .item14,
+ .item15,
+ .item16,
+ .item17,
+ .item18,
+ .item19,
+ .item20,
+ .item21,
+ .item22,
+ .item23,
+ .item24,
+ .item25,
+ .item26,
+ .item27,
+ .item28,
+ .item29,
+ .item30,
+ .item31 {
+  position: relative;
+} 
 
 .item3 {
   grid-column-start: 2;
