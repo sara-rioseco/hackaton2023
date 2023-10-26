@@ -1,3 +1,5 @@
+import {useState, useEffect, useRef} from 'react'
+
 import PropTypes from 'prop-types';
 import './form-dropdown.css'
 
@@ -9,16 +11,74 @@ const Icon = () => {
   );
 };
 
-export default function FormDropdown ({ placeholder, /* value, onChange, */ label, classInputLabel }) {
-  const getDisplay = () => {
-    return placeholder;
+export default function FormDropdown ({ placeholder, options, onChange, label, classInputLabel }) {
+const [showMenu, setShowMenu] = useState(false);
+const [selectedValue, setSelectedValue] = useState(null);
+const inputRef = useRef();
+
+useEffect(() => {
+  const handler = () => setShowMenu(false);
+  window.addEventListener("click", handler);
+  return () => {
+    window.removeEventListener("click", handler)
   };
+});
+
+useEffect(() => {
+  const handler = (e) => {
+    if (inputRef.current && !inputRef.current.contains(e.target)) {
+      setShowMenu(false);
+    }
+  };
+
+  window.addEventListener("click", handler);
+  return () => {
+    window.removeEventListener("click", handler);
+  };
+});
+
+const handleInputClick = () => {
+  setShowMenu(!showMenu)
+}
+
+  const getDisplay = () => {
+    if (selectedValue) {
+      return selectedValue.label;
+    }
+     return placeholder;
+  };
+
+  const onItemClick = (option) => {
+    let newValue = option
+    setSelectedValue(newValue);
+    onChange(newValue)
+  }
+
+  const isSelected = (option) => {
+    if (!selectedValue) {
+      return false
+    }
+    return selectedValue.value === option.value
+  }
 
   return (
     <>
       {label && <label className={`formDropdownLabel ${classInputLabel}`}>{label}</label>}
       <div className="dropdown-container">
-        <div className="formDropdownInput">
+        <div ref={inputRef} onClick={handleInputClick} className="dropdown-input">
+          {showMenu && (
+          <div className="dropdown-menu">
+            {options && options.map(opt => (
+              <div 
+                onClick={() => onItemClick(opt)}
+                key={opt.value} 
+                className={`dropdown-item ${isSelected(opt) && "selected"}`}
+              >
+                {opt.label}
+              </div>
+            ))}
+          </div>
+          )}
           <div className="dropdown-selected-value">{getDisplay()}</div>
           <div className="dropdown-tools">
             <div className="dropdown-tool">
@@ -33,8 +93,8 @@ export default function FormDropdown ({ placeholder, /* value, onChange, */ labe
 
 FormDropdown.propTypes = {
   placeholder: PropTypes.string,
- /*  value: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
-  onChange: PropTypes.func, */
+  options: PropTypes.array,
+  onChange: PropTypes.func,
   label: PropTypes.string,
   classInputLabel: PropTypes.string,
   classInput: PropTypes.string

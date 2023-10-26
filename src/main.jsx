@@ -7,8 +7,8 @@ import {
 import ErrorPage from './error-page';
 import Home from './pages/Home/home';
 import Post from './pages/Post/post';
-import ListApplicants from './pages/ListApplicants/list-applicants';
-import ProcessList from './pages/ProcessList/process-list';
+/* import ListApplicants from './pages/ListApplicants/list-applicants';
+import ProcessList from './pages/ProcessList/process-list'; */
 
 import Calls from './components/convocatorias/convocatorias';
 import './index.css'
@@ -21,7 +21,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/applicants",
-    element: <ListApplicants />,
+    element: <Post />,
     errorElement: <ErrorPage />,
   },
   {
@@ -31,7 +31,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/listprocesses",
-    element: <ProcessList />,
+    element: <Post />,
     errorElement: <ErrorPage />,
   },
   {

@@ -13,7 +13,6 @@ import FormToggle from '../formToggle/form-toggle'
 
 
 export default function FormGrid() {
-  const log = console.log('hola')
   const {
     notValidForm, 
     setNotValidForm,
@@ -93,6 +92,7 @@ export default function FormGrid() {
           <FormDropdown
             placeholder=''
             label='Tipo de Trabajo'
+            options = {[{label: 'Presencial', value: 'presencial'}, {label: 'Remoto', value: 'remoto'},{label: 'Híbrido', value:'hibrido'}]}
             onChange={(e) => {
               handleFieldChange('work-schedule', e)
             }}
@@ -237,8 +237,9 @@ export default function FormGrid() {
           <FormDropdown
             placeholder=''
             label='Perfil Evaluaciones'
+            options = {[{label: 'Ventas', value: 'VENTAS'}, {label: 'Atención al cliente', value: 'ATENCIÓN AL CLIENTE'},{label: 'Croselling', value:'CROSELLING'},{label: 'Social Media', value:'SOCIAL MEDIA'}]}
             onChange={(e) => {
-              handleFieldChange('profile-name', e)
+              handleFieldChange('profile-name', e);
             }}
           />
         </div>
@@ -246,7 +247,7 @@ export default function FormGrid() {
           <FormToggle label='Personas con discapacidad'/>
         </div>
         <div className="item33">
-          <Button label="Crear Oferta" onClick={alert('click en botón Crear Oferta')} classButton='createOfferButton' disabled={notValidForm}/>
+          <Button label="Generar Oferta" classButton='createOfferButton' disabled={notValidForm}/>
         </div>
       </div>
     </>

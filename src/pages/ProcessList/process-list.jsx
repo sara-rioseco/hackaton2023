@@ -7,20 +7,8 @@ import Paper from '@mui/material/Paper';
 import SideBar from '../../components/sidebar/sidebar'
 import ListTable from '../../components/processList/process-list';
 
-//import DateFilter from '../../components/formDate/date-filter';
-//import SearchTable from '../../components/Filter/filter';
-
-
 export default function ProcessList() {
   return (
-    <div className='createPost'>
-    <div className='sideBar'>
-      <SideBar />
-    </div>
-    <div className='mainBody'>
-      <div className='headerBar'>
-
-      </div>
       <div className='mainContent'>
         <h2 className='title'>Lista de Procesos</h2>
         <h3 className='subtitle'>Procesos</h3>
@@ -30,9 +18,7 @@ export default function ProcessList() {
           </Box>
         </div>
       </div>
-    </div>
-  </div>
-  );
+ );
 }
 
 
