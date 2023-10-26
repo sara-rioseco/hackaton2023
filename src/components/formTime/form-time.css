@@ -32,7 +32,6 @@
   display:flex;
   justify-content: center;
   box-sizing: border-box;
-  position: relative;
   z-index: 0;
   top: -42px
 }
