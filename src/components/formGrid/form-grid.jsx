@@ -34,7 +34,6 @@ export default function FormGrid() {
             placeholder=''
             onChange={(e) => {
               handleFieldChange('igc-name', e);
-              console.log(`${e.target.value}`)
             }}
             label='Nombre IGC'
             classInputLabel='labels'
@@ -45,9 +44,9 @@ export default function FormGrid() {
           <FormDropdown
             placeholder=''
             label='Cuenta'
+            options = {[{label: 'Ventas', value: 'VENTAS'}, {label: 'Atención al cliente', value: 'ATENCIÓN AL CLIENTE'},{label: 'Croselling', value:'CROSELLING'},{label: 'Social Media', value:'SOCIAL MEDIA'}]}
             onChange={(e) => {
               handleFieldChange('account', e);
-              console.log(`${e.target.value}`)
             }}
           />
         </div>
@@ -55,9 +54,9 @@ export default function FormGrid() {
           <FormDropdown
             placeholder=''
             label='Servicio'
+            options = {[{label: 'Ventas', value: 'VENTAS'}, {label: 'Atención al cliente', value: 'ATENCIÓN AL CLIENTE'},{label: 'Croselling', value:'CROSELLING'},{label: 'Social Media', value:'SOCIAL MEDIA'}]}
             onChange={(e) => {
               handleFieldChange('service', e);
-              console.log(`${e.target.value}`)
             }}
           />
         </div>
@@ -65,9 +64,9 @@ export default function FormGrid() {
           <FormDropdown
             placeholder=''
             label='Motivo'
+            options = {[{label: 'Ventas', value: 'VENTAS'}, {label: 'Atención al cliente', value: 'ATENCIÓN AL CLIENTE'},{label: 'Croselling', value:'CROSELLING'},{label: 'Social Media', value:'SOCIAL MEDIA'}]}
             onChange={(e) => {
               handleFieldChange('reason', e);
-              console.log(`${e.target.value}`)
             }}
           />
         </div>
@@ -76,7 +75,6 @@ export default function FormGrid() {
             label='Fecha Inicio'
             onChange={(e) => {
               handleFieldChange('starting-date', e);
-              console.log(`${e.target.value}`)
             }}
           />
         </div>
@@ -123,9 +121,10 @@ export default function FormGrid() {
           />
         </div>
         <div className="item11">
-          <FormDropdown
+           <FormDropdown
             placeholder=''
             label='Modalidad'
+            options = {[{label: 'Ventas', value: 'VENTAS'}, {label: 'Atención al cliente', value: 'ATENCIÓN AL CLIENTE'},{label: 'Croselling', value:'CROSELLING'},{label: 'Social Media', value:'SOCIAL MEDIA'}]}
             onChange={(e) => {
               handleFieldChange('process-modality', e);
             }}
@@ -135,6 +134,7 @@ export default function FormGrid() {
           <FormDropdown
             placeholder=''
             label='Turno'
+            options = {[{label: 'Ventas', value: 'VENTAS'}, {label: 'Atención al cliente', value: 'ATENCIÓN AL CLIENTE'},{label: 'Croselling', value:'CROSELLING'},{label: 'Social Media', value:'SOCIAL MEDIA'}]}
             onChange={(e) => {
               handleFieldChange('turn', e)
             }}
@@ -152,9 +152,13 @@ export default function FormGrid() {
           />
         </div>
         <div className="item16">
-        <FormDropdown
+          <FormDropdown
             placeholder=''
             label='Fin de Semana'
+            options = {[{label: 'Ventas', value: 'VENTAS'}, {label: 'Atención al cliente', value: 'ATENCIÓN AL CLIENTE'},{label: 'Croselling', value:'CROSELLING'},{label: 'Social Media', value:'SOCIAL MEDIA'}]}
+            onChange={(e) => {
+              handleFieldChange('turn', e)
+            }}
           />
         </div>
         <div className="item17">          
@@ -168,20 +172,22 @@ export default function FormGrid() {
           />
         </div>
         <div className="item19">
-        <FormDropdown
+          <FormDropdown
             placeholder=''
             label='Sede'
+            options = {[{label: 'Ventas', value: 'VENTAS'}, {label: 'Atención al cliente', value: 'ATENCIÓN AL CLIENTE'},{label: 'Croselling', value:'CROSELLING'},{label: 'Social Media', value:'SOCIAL MEDIA'}]}
             onChange={(e) => {
-              handleFieldChange('campus-name', e)
+              handleFieldChange('turn', e)
             }}
           />
         </div>
         <div className="item20">
-        <FormDropdown
+         <FormDropdown
             placeholder=''
             label='Razón Social'
+            options = {[{label: 'Ventas', value: 'VENTAS'}, {label: 'Atención al cliente', value: 'ATENCIÓN AL CLIENTE'},{label: 'Croselling', value:'CROSELLING'},{label: 'Social Media', value:'SOCIAL MEDIA'}]}
             onChange={(e) => {
-              handleFieldChange('campus-address', e)
+              handleFieldChange('turn', e)
             }}
           />
         </div>
@@ -195,6 +201,10 @@ export default function FormGrid() {
           <FormDropdown
             placeholder=''
             label='Modalidad'
+            options = {[{label: 'Ventas', value: 'VENTAS'}, {label: 'Atención al cliente', value: 'ATENCIÓN AL CLIENTE'},{label: 'Croselling', value:'CROSELLING'},{label: 'Social Media', value:'SOCIAL MEDIA'}]}
+            onChange={(e) => {
+              handleFieldChange('turn', e)
+            }}
           />
         </div>
         <div className="item24">Lunes-Viernes</div>
@@ -212,6 +222,10 @@ export default function FormGrid() {
           <FormDropdown
             placeholder=''
             label='Fin de Semana'
+            options = {[{label: 'Ventas', value: 'VENTAS'}, {label: 'Atención al cliente', value: 'ATENCIÓN AL CLIENTE'},{label: 'Croselling', value:'CROSELLING'},{label: 'Social Media', value:'SOCIAL MEDIA'}]}
+            onChange={(e) => {
+              handleFieldChange('turn', e)
+            }}
           />
         </div>
         <div className="item28">
@@ -225,13 +239,14 @@ export default function FormGrid() {
           />
         </div>
         <div className="item30">
-        <FormDropdown
+         <FormDropdown
             placeholder=''
             label='Formador'
-            onChange={(e) => {
-              handleFieldChange('trainer', e)
+            options = {[{label: 'Ventas', value: 'VENTAS'}, {label: 'Atención al cliente', value: 'ATENCIÓN AL CLIENTE'},{label: 'Croselling', value:'CROSELLING'},{label: 'Social Media', value:'SOCIAL MEDIA'}]}
+            onChange = {(e) => {
+              handleFieldChange('turn', e)
             }}
-          />
+          /> 
         </div>
         <div className="item31">
           <FormDropdown

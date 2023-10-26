@@ -35,7 +35,7 @@ export default function FormTime({ label, classInputLabel}) {
       showTimeSelect
       showTimeSelectOnly
       minDate={new Date()}
-      placeholderText=''
+      placeholderText=' -- : -- '
       selected={date}
       locale= 'es'
       onChange={date => setDate(date)}

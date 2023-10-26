@@ -17,20 +17,12 @@ const [selectedValue, setSelectedValue] = useState(null);
 const inputRef = useRef();
 
 useEffect(() => {
-  const handler = () => setShowMenu(false);
-  window.addEventListener("click", handler);
-  return () => {
-    window.removeEventListener("click", handler)
-  };
-});
-
-useEffect(() => {
   const handler = (e) => {
     if (inputRef.current && !inputRef.current.contains(e.target)) {
       setShowMenu(false);
     }
   };
-
+  
   window.addEventListener("click", handler);
   return () => {
     window.removeEventListener("click", handler);
@@ -41,24 +33,26 @@ const handleInputClick = () => {
   setShowMenu(!showMenu)
 }
 
-  const getDisplay = () => {
-    if (selectedValue) {
-      return selectedValue.label;
-    }
-     return placeholder;
-  };
+const getDisplay = () => {
+  if (!selectedValue || selectedValue.length === 0) {
+    return placeholder;
+  }
+    return selectedValue.label;
+};
 
-  const onItemClick = (option) => {
-    let newValue = option
+  const onItemClick = (opt) => {
+    let newValue;
+    newValue = opt;
+
     setSelectedValue(newValue);
     onChange(newValue)
   }
 
-  const isSelected = (option) => {
+  const isSelected = (opt) => {
     if (!selectedValue) {
       return false
     }
-    return selectedValue.value === option.value
+    return selectedValue.value === opt.value
   }
 
   return (
@@ -66,25 +60,24 @@ const handleInputClick = () => {
       {label && <label className={`formDropdownLabel ${classInputLabel}`}>{label}</label>}
       <div className="dropdown-container">
         <div ref={inputRef} onClick={handleInputClick} className="dropdown-input">
-          {showMenu && (
-          <div className="dropdown-menu">
-            {options && options.map(opt => (
-              <div 
-                onClick={() => onItemClick(opt)}
-                key={opt.value} 
-                className={`dropdown-item ${isSelected(opt) && "selected"}`}
-              >
-                {opt.label}
-              </div>
-            ))}
-          </div>
-          )}
           <div className="dropdown-selected-value">{getDisplay()}</div>
           <div className="dropdown-tools">
             <div className="dropdown-tool">
               <Icon />
             </div>
           </div>
+          { showMenu && (
+            <div className="dropdown-menu">
+              {options.map(opt => (
+                <div 
+                  onClick={() => onItemClick(opt)}
+                  key={opt.value} 
+                  className={`dropdown-item ${isSelected(opt) && "selected"}`}>
+                  {opt.label}
+                </div>
+              ))}
+            </div>
+          )}
         </div>
       </div>
     </>
@@ -99,35 +92,3 @@ FormDropdown.propTypes = {
   classInputLabel: PropTypes.string,
   classInput: PropTypes.string
 } 
-
-
-
-/* FormDropdown({type, placeholder, value, onChange, label, classInputLabel, classInput}) {
-
-
-
-  return (
-    <>
-    <div className='loginInput'>
-      {label && <label className={`labelDefault ${classInputLabel}`}>{label}</label>}
-      <input
-          type={type}
-          className={`inputDefault ${classInput}`}
-          placeholder={placeholder}
-          value={value}
-          onChange={onChange}
-        />
-    </div>
-    </>
-  );
-}
-
-FormDropdown.propTypes = {
-  type: PropTypes.string.isRequired,
-  placeholder: PropTypes.string,
-  value: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
-  onChange: PropTypes.func,
-  label: PropTypes.string,
-  classInputLabel: PropTypes.string,
-  classInput: PropTypes.string
-} */

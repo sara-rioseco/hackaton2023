@@ -23,11 +23,10 @@ export default function SidebarButtonGroup() {
   const { handleSideBarButtonClick } = usePostLogic(); 
 
   const handleColor = (row) => {
-    console.log(row)
     setActiveType(row.title);
+    setSelected(row.id)
     handleSideBarButtonClick(row.title)
   };
-
 
   return (
     <div className="sideBarButtonGroup">

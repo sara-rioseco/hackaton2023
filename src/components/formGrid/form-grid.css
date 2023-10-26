@@ -69,7 +69,7 @@
 }
 
 .item6 {
-  height: 80px;
+  height: 56px;
 }
 
 .item7 {
@@ -107,7 +107,8 @@
   font-size: 14px;
   font-weight: 400;
   line-height: 22px;
-  justify-content: center;
+  padding: 0 0 0 12px;
+  justify-content: left;
 } 
 
 .item14 {
@@ -175,7 +176,8 @@
   font-size: 14px;
   font-weight: 400;
   line-height: 22px;
-  justify-content: center;
+  padding: 0 0 0 12px;
+  justify-content: left;
 }
 
 .item25 {

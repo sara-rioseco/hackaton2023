@@ -44,52 +44,52 @@ export function usePostLogic() {
       console.log(event.target.value)
     } 
     if (field === 'starting-date') {
-      setFormData({ ...formData, startingDate: event.target.value });
-      console.log(event.target.value)
+      setFormData({ ...formData, startingDate: event.value });
+      console.log(event.value)
     }
     if (field === 'closing-date') {
-      setFormData({ ...formData, closingDate: event.target.value });
-      console.log(event.target.value)
+      setFormData({ ...formData, closingDate: event.value });
+      console.log(event.value)
     } 
     if (field === 'profile-name') {
-      setFormData({ ...formData, profileName: event.target.value });
-      console.log(event.target.value)
+      setFormData({ ...formData, profileName: event.value });
+      console.log('Seleccionaste tipo de perfil ', event.value)
     } 
     if (field === 'account') {
-      setFormData({ ...formData, account: event.target.value });
-      console.log(event.target.value)
+      setFormData({ ...formData, account: event.value });
+      console.log(event.value)
     } 
     if (field === 'status') {
-      setFormData({ ...formData, status: event.target.value });
-      console.log(event.target.value)
+      setFormData({ ...formData, status: event.value });
+      console.log(event.value)
     } 
     if (field === 'trainer') {
-      setFormData({ ...formData, trainer: event.target.value });
-      console.log(event.target.value)
+      setFormData({ ...formData, trainer: event.value });
+      console.log(event.value)
     } 
     if (field === 'training-schedule') {
-      setFormData({ ...formData, trainingSchedule: event.target.value });
-      console.log(event.target.value)
+      setFormData({ ...formData, trainingSchedule: event.value });
+      console.log(event.value)
     } 
     if (field === 'training-modality') {
-      setFormData({ ...formData, trainingModality: event.target.value });
-      console.log(event.target.value)
+      setFormData({ ...formData, trainingModality: event.value });
+      console.log(event.value)
     } 
     if (field === 'process-modality') {
-      setFormData({ ...formData, processModality: event.target.value });
-      console.log(event.target.value)
+      setFormData({ ...formData, processModality: event.value });
+      console.log(event.value)
     } 
     if (field === 'process-schedule') {
-      setFormData({ ...formData, processSchedule: event.target.value });
-      console.log(event.target.value)
+      setFormData({ ...formData, processSchedule: event.value });
+      console.log(event.value)
     } 
     if (field === 'work-schedule') {
-      setFormData({ ...formData, workSchedule: event.target.value });
-      console.log(event.target.value)
+      setFormData({ ...formData, workSchedule: event.value });
+      console.log('Seleccionaste tipo de trabajo ', event.value)
     } 
     if (field === 'reason') {
-      setFormData({ ...formData, reason: event.target.value });
-      console.log(event.target.value)
+      setFormData({ ...formData, reason: event.value });
+      console.log(event.value)
     } 
     if (field === 'applicants-number') {
       setFormData({ ...formData, applicantsNumber: event.target.value });
@@ -100,24 +100,24 @@ export function usePostLogic() {
       console.log(event.target.value)
     } 
     if (field === 'business-name') {
-      setFormData({ ...formData, businessName: event.target.value });
-      console.log(event.target.value)
+      setFormData({ ...formData, businessName: event.value });
+      console.log(event.value)
     } 
     if (field === 'campus-name') {
-      setFormData({ ...formData, campus: { name:event.target.value } });
-      console.log(event.target.value)
+      setFormData({ ...formData, campus: { name:event.value } });
+      console.log(event.value)
     }
     if (field === 'campus-address') {
-      setFormData({ ...formData, campus: { address:event.target.value } });
-      console.log(event.target.value)
+      setFormData({ ...formData, campus: { address:event.value } });
+      console.log(event.value)
     } 
     if (field === 'service') {
-      setFormData({ ...formData, service: event.target.value });
-      console.log(event.target.value)
+      setFormData({ ...formData, service: event.value });
+      console.log(event.value)
     } 
     if (field === 'turn') {
-      setFormData({ ...formData, turn: event.target.value });
-      console.log(event.target.value)
+      setFormData({ ...formData, turn: event.value });
+      console.log(event.value)
     } 
   };
 
