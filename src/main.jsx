@@ -14,7 +14,12 @@ import Processes from './pages/Processes/processes';
 import ListApplicants from './pages/ListApplicants/list-applicants';
 import ProcessList from './pages/ProcessList/process-list';
 
-import Calls from './components/convocatorias/convocatorias';
+import OfertaGenerate from './components/convocatorias/oferta'
+import IconBreadcrumbs from  './components/detalleApplicants/breadcrumbs';
+import StepperHorizontal from  './components/detalleApplicants/detalle';
+import Circular from './components/detalleApplicants/circular-progress';
+
+import Dashboarr from './pages/DetalleApplicants/detalle-applicants';
 import './index.css'
 
 const router = createBrowserRouter([
@@ -45,10 +50,29 @@ const router = createBrowserRouter([
   },
   {
     path: "/convocatorias",
-    element: <Calls />,
+    element: <OfertaGenerate/>,
     errorElement: <ErrorPage />,
   },
-
+  {
+    path: "/detalle",
+    element: <IconBreadcrumbs />,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: "/detalles",
+    element: <StepperHorizontal />,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: "/oferta",
+    element: <Dashboarr/>,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: "/circle",
+    element: <Circular />,
+    errorElement: <ErrorPage />,
+  },
  
  
 
