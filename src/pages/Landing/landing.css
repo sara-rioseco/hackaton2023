@@ -1,0 +1,9 @@
+@import url('https://fonts.cdnfonts.com/css/public-sans');
+
+#root {
+    max-width: 1920px;
+    max-height: 1080px;
+    margin: 0;
+    height: 100%;
+    display: flex;
+}
