@@ -24,6 +24,9 @@
   justify-content: space-between;
   user-select: none;
   font-family: 'Public Sans', sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 22px;
 }
 
 .dropdown-menu {
