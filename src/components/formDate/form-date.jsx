@@ -7,8 +7,10 @@ import icon from '../../assets/icons/table/calendar.png'
 
 import { useState } from "react";
 
-import DatePicker, { registerLocale } from "react-datepicker";
-/* import "react-datepicker/dist/react-datepicker.css"; */
+import DatePicker, { registerLocale  } from "react-datepicker";
+
+import { usePostLogic } from '../../utils/post';
+
 import es from 'date-fns/locale/es';
 registerLocale('es', es)
 
@@ -18,9 +20,9 @@ const Icon = () => {
   );
 };
 
-
 export default function FormDate({label, classInputLabel }) {
   const [date, setDate] = useState(null);
+  const { activeDate, setActiveDate, handleFieldChange } = usePostLogic();
 
    return (
     <>
@@ -35,11 +37,17 @@ export default function FormDate({label, classInputLabel }) {
       locale="es"
       placeholderText=''
       selected={date}
-      onChange={date => setDate(date)}
+      onChange={date => {
+        setDate(date)
+        setActiveDate(new Date(date).toLocaleDateString('es-CL'))
+        handleFieldChange({classInputLabel}, date)
+        console.log(new Date(date).toLocaleDateString('es-CL'))
+      }}
+      value={activeDate}
       dateFormat="dd/MM/yyyy"
       className='datePicker'
       icon={Icon}
-      ariaLabelledBy=''
+      id={classInputLabel}
       />
     </>
   )

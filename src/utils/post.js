@@ -11,7 +11,7 @@ export function usePostLogic() {
   const navigate = useNavigate();
   const [errorLabel, setErrorLabel] = useState('');
   const [notValidForm, setNotValidForm] = useState(true);
-
+  const [activeDate, setActiveDate] = useState('')
   const [formData, setFormData] = useState({
     processName: "",
     startingDate: "",
@@ -68,6 +68,10 @@ export function usePostLogic() {
       console.log(event.value)
     } 
     if (field === 'training-schedule') {
+      setFormData({ ...formData, trainingSchedule: event.value });
+      console.log(event.value)
+    } 
+    if (field === 'training-date') {
       setFormData({ ...formData, trainingSchedule: event.value });
       console.log(event.value)
     } 
@@ -144,6 +148,8 @@ export function usePostLogic() {
   return {
     notValidForm, 
     setNotValidForm,
+    activeDate,
+    setActiveDate,
     formData,
     setFormData,
     handleFieldChange,

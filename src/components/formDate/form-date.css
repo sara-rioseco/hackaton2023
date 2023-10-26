@@ -58,6 +58,6 @@
   z-index: 1;
 }
 
-div.react-datepicker {
-  z-index: 2;
+.react-datepicker-popper {
+  z-index: 4;
 }

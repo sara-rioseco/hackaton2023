@@ -19,6 +19,7 @@ export default function FormGrid() {
     formData,
     setFormData,
     handleFieldChange,
+    activeDate,
     errorLabel,
     setErrorLabel,
     handleSideBarButtonClick,
@@ -73,17 +74,13 @@ export default function FormGrid() {
         <div className="item6">
           <FormDate 
             label='Fecha Inicio'
-            onChange={(e) => {
-              handleFieldChange('starting-date', e);
-            }}
+            classInputLabel='starting-date'
           />
         </div>
         <div className="item7">
           <FormDate 
             label='Fecha Cierre'
-            onChange={(e) => {
-              handleFieldChange('closing-date', e)
-            }}
+            classInputLabel='closing-date'
           />
         </div>
         <div className="item8">
@@ -155,7 +152,7 @@ export default function FormGrid() {
           <FormDropdown
             placeholder=''
             label='Fin de Semana'
-            options = {[{label: 'Ventas', value: 'VENTAS'}, {label: 'Atención al cliente', value: 'ATENCIÓN AL CLIENTE'},{label: 'Croselling', value:'CROSELLING'},{label: 'Social Media', value:'SOCIAL MEDIA'}]}
+            options = {[{label: 'No aplica', value: 'no-aplica'},{label: 'Sábado', value: 'sabado'}, {label: 'Domingo', value: 'domingo'},{label: 'Sábado y Domingo', value:'sad-dom'}]}
             onChange={(e) => {
               handleFieldChange('turn', e)
             }}
@@ -195,6 +192,7 @@ export default function FormGrid() {
         <div className="item22">
           <FormDate 
             label='Inicio Capacitación'
+            classInputLabel='training-date'
           />
         </div>
         <div className="item23">
@@ -222,7 +220,7 @@ export default function FormGrid() {
           <FormDropdown
             placeholder=''
             label='Fin de Semana'
-            options = {[{label: 'Ventas', value: 'VENTAS'}, {label: 'Atención al cliente', value: 'ATENCIÓN AL CLIENTE'},{label: 'Croselling', value:'CROSELLING'},{label: 'Social Media', value:'SOCIAL MEDIA'}]}
+            options = {[{label: 'No aplica', value: 'no-aplica'},{label: 'Sábado', value: 'sabado'}, {label: 'Domingo', value: 'domingo'},{label: 'Sábado y Domingo', value:'sad-dom'}]}
             onChange={(e) => {
               handleFieldChange('turn', e)
             }}
