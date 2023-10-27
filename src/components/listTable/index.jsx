@@ -11,12 +11,10 @@ import {
   Grid,
   InputAdornment,
   IconButton,
-  Button,
 } from "@mui/material";
 import { Search } from "@mui/icons-material";
 import { Select, MenuItem } from "@mui/material";
-          
-          
+              
 import DateFilter from "../../components/formDate/date-filter";
 
 export default function ListTable() {
@@ -120,7 +118,7 @@ fetch(`https://iezopofihj.execute-api.us-east-1.amazonaws.com/dev/notifications/
       .then(response => response.text())
       .then(result => console.log("confirmacion capa",result))
       .catch(error => console.log('error', error));
-  	
+  
   }
 
   // Recontacto
@@ -151,7 +149,7 @@ fetch(`https://iezopofihj.execute-api.us-east-1.amazonaws.com/dev/notifications/
       .then(response => response.text())
       .then(result => console.log("REcontacto",result))
       .catch(error => console.log('error', error));
-  	
+
   }
 
   const sendNotificationNoApto = (applicant) => {
@@ -179,7 +177,7 @@ fetch(`https://iezopofihj.execute-api.us-east-1.amazonaws.com/dev/notifications/
       .then(response => response.text())
       .then(result => console.log("rechazoo",result))
       .catch(error => console.log('error', error));
-  	
+
   }
 
   //post estado
