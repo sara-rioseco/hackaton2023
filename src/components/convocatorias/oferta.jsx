@@ -3,6 +3,26 @@ import Box from "@mui/material/Box";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
+import CustomCard from "./card-oferta";
+import { styled } from "@mui/system";
+import { RowingOutlined } from "@mui/icons-material";
+import Drawer from "@mui/material/Drawer";
+import List from "@mui/material/List";
+import ListItem from "@mui/material/ListItem";
+import ListItemText from "@mui/material/ListItemText";
+import Button from "@mui/material/Button";
+import './oferta.css'
+
+
+const OfferSection = styled("div")({
+  display: "flex",
+  flexDirection: "row",
+  width: "720px",
+  borderRadius: "20px",
+  borderColor: "background: #919EAB52",
+  border: "5px",
+
+});
 
 export default function OfertaGenerate() {
   const [data, setData] = useState(null);
@@ -17,12 +37,7 @@ export default function OfertaGenerate() {
         const result = await response.json();
         const data = result.data[0];
 
-        // Enviar los datos obtenidos
-        console.log("data", data);
-
-        const responseia = await query({ question: `Este es el json de la oferta ${data}` })
-        console.log("resposeia", responseia);
-
+        const responseia = await query({ question: `Este es el json de la oferta ${data}` });
       } catch (error) {
         console.log("error", error);
       }
@@ -44,61 +59,23 @@ export default function OfertaGenerate() {
         }
       );
       const result = await response.json();
-      console.log("resultado que espero", JSON.parse(result));
-      setResponse(JSON.parse(result)); // Actualiza el estado con la respuesta
-
+      setResponse(JSON.parse(result));
     } catch (error) {
       console.log("error", error);
     }
-
   }
 
-
   return (
-    <Box
-      sx={{
-        display: "flex",
-        flexWrap: "wrap",
-        "& > :not(style)": {
-          m: 1,
-        },
-      }}
-    >
-      <Card sx={{ maxWidth: "100%" }}>
-        <CardContent>
-          <Typography gutterBottom variant="h5" component="div">
-            Generando oferta
-          </Typography>
-          {responses ? (
+      
+        <OfferSection >
 
-            <div>
-              <Typography variant="h6" gutterBottom>
-                TÍTULO: {responses.title}
-              </Typography>
-              <Typography variant="body1">
-                DESCRIPCIÓN: {responses.description}
-              </Typography>
-              <Typography variant="body1">
-                CURSOS:
-                {Array.isArray(responses.courses) && responses.courses.length > 0 ? (
-                  <ul>
-                    {responses.courses.map((course, index) => (
-                      <li key={index}>{course}</li>
-                    ))}
-                  </ul>
-                ) : (
-                  <p>No hay cursos disponibles.</p>
-                )}
-              </Typography>
-              {/* ... other code ... */}
-            </div>
+          {responses ? (
+            <CustomCard data={responses}></CustomCard>
           ) : (
             <Typography variant="body2" color="textSecondary">
-              No hay respuesta bb.
+              Loading...
             </Typography>
           )}
-        </CardContent>
-      </Card>
-    </Box>
+        </OfferSection>
   );
 }
