@@ -15,7 +15,9 @@ import { useLocation } from 'react-router-dom'
 import SideBar from '../../components/sidebar/sidebar'
 import FormGrid from '../../components/formGrid/form-grid'
 import ListApplicants from '../ListApplicants/list-applicants'
+import OfertaGenerate from '/src/components/convocatorias/oferta'
 import ProcessList from '../ProcessList/process-list'
+import { Box } from '@mui/system'
 
 export default function Post() {
 const location = useLocation();
@@ -31,7 +33,10 @@ const location = useLocation();
             <div className='mainContent'>
             <h2 className='title'>Crear Convocatorias</h2>
             <h3 className='subtitle'>Convocatorias</h3>
+            <Box display='flex'>
             <FormGrid />
+            <OfertaGenerate />
+            </Box>
           </div>) }
           {location.pathname === "/applicants" && (
             <ListApplicants />

@@ -5,8 +5,17 @@ import LocationOnIcon from '@mui/icons-material/LocationOn';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import AccessibleIcon from '@mui/icons-material/Accessible';
 import { Box } from '@mui/system';
+//import { useHistory } from 'react-router-dom';
 
 function OfferCard({data}) {
+//    const history = useHistory();
+
+const handleButtonClick = () => {
+    const offerId = '2bfc052a-0094-41c1-a7b5-10f9f01dc8bc';
+    // Redirige a la página de oferta de empleo usando el ID en la URL
+    history.push(`/ofertas/${offerId}`);
+};
+
     return (
         
         <Card sx={{

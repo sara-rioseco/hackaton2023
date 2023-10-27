@@ -6,12 +6,7 @@ import Typography from "@mui/material/Typography";
 import CustomCard from "./card-oferta";
 import { styled } from "@mui/system";
 import { RowingOutlined } from "@mui/icons-material";
-import Drawer from "@mui/material/Drawer";
-import List from "@mui/material/List";
-import ListItem from "@mui/material/ListItem";
-import ListItemText from "@mui/material/ListItemText";
-import Button from "@mui/material/Button";
-import './oferta.css'
+import './oferta.css' 
 
 
 const OfferSection = styled("div")({

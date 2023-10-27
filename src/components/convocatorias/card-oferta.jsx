@@ -13,7 +13,6 @@ import { styled } from "@mui/system";
 import { RowingOutlined } from "@mui/icons-material";
 import './oferta.css'
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
-import AppRegistrationOutlinedIcon from '@mui/icons-material/AppRegistrationOutlined';
 
 const TopSection = styled(Typography)(({ theme }) => ({
     display: "flex",
@@ -189,10 +188,10 @@ function CustomCardComponent({ data }) {
                         <AccessTimeIcon sx={{ marginLeft: "7px" }}></AccessTimeIcon>
                         <StyledChip label="Full Time" color="primary" sx={{ padding: "0 7px 0 0" }} />
                     </TimerAndChip>
-                    <ModalityAndChip>
+                    {/* <ModalityAndChip>
                         <AppRegistrationOutlinedIcon sx={{ marginLeft: "7px" }}></AppRegistrationOutlinedIcon>
                         <StyledChip label="Presencial" color="primary" sx={{ padding: "0 7px 0 0" }} />
-                    </ModalityAndChip>
+                    </ModalityAndChip> */}
                 </Modality>
                 <DescriptionDiv>
                     <Description variant="body1">{data.description}</Description>
