@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import './form-text.css'
 
-export default function FormText({type, placeholder, value, onChange, label, classInputLabel, classInput}) {
+export default function FormText({type, placeholder, value, min, onChange, label, classInputLabel, classInput}) {
   return (
     <>
       {label && <label className={`formTextLabel ${classInputLabel}`}>{label}</label>}
@@ -11,6 +11,7 @@ export default function FormText({type, placeholder, value, onChange, label, cla
           placeholder={placeholder}
           value={value}
           onChange={onChange}
+          min={min}
         />
     </>
   );
@@ -23,5 +24,6 @@ FormText.propTypes = {
   onChange: PropTypes.func,
   label: PropTypes.string,
   classInputLabel: PropTypes.string,
-  classInput: PropTypes.string
+  classInput: PropTypes.string,
+  min: PropTypes.string,
 }

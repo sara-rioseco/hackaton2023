@@ -1,4 +1,5 @@
-import { useState, useEffect } from "react";
+/* eslint-disable no-unused-vars */
+import React, { useState, useEffect } from "react";
 import {
   Table,
   TableBody,
@@ -26,7 +27,7 @@ export default function ListTable() {
     )
       .then((response) => response.json())
       .then((result) => {
-        console.log("result dat[0]", Object.keys(result.data[0]));
+/*         console.log("result dat[0]", Object.keys(result.data[0])); */
         const dataprocess = result.data.map((item) => ({
           IGC: item.processName,
           Cuenta: item.account,
@@ -39,10 +40,10 @@ export default function ListTable() {
           Estado: item.status,
         }));
 
-        console.log("dataprocess", dataprocess);
+  /*       console.log("dataprocess", dataprocess); */
         setData(dataprocess);
       })
-      .catch((error) => console.log("error", error));
+      .catch((error) => console.error("error", error));
   }, []);
 
   if (!data) {
@@ -112,7 +113,7 @@ export default function ListTable() {
           <TableHead>
             <TableRow>
               {columnMaping2.map((key) => {
-                console.log("columnMapping", data);
+/*                 console.log("columnMapping", data); */
                 return (
                   <TableCell
                     key={key}

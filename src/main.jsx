@@ -7,9 +7,15 @@ import {
 import ErrorPage from './error-page';
 import Home from './pages/Home/home';
 import Post from './pages/Post/post';
+<<<<<<< HEAD
 import Processes from './pages/Processes/processes';
 import ListApplicants from './pages/ListApplicants/list-applicants';
 import ProcessList from './pages/ProcessList/process-list';
+=======
+/* import ListApplicants from './pages/ListApplicants/list-applicants';
+import ProcessList from './pages/ProcessList/process-list'; */
+
+>>>>>>> 54a8f5fbd51447dc0e4d3219ad9dd28f00beedb4
 import OfertaGenerate from './components/convocatorias/oferta'
 import IconBreadcrumbs from  './components/detalleApplicants/breadcrumbs';
 import StepperHorizontal from  './components/detalleApplicants/detalle';
@@ -26,7 +32,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/applicants",
-    element: <ListApplicants />,
+    element: <Post />,
     errorElement: <ErrorPage />,
   },
   {
@@ -35,13 +41,8 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage />,
   },
   {
-    path: "/processes",
-    element: <Processes />,
-    errorElement: <ErrorPage />,
-  },
-  {
     path: "/listprocesses",
-    element: <ProcessList />,
+    element: <Post />,
     errorElement: <ErrorPage />,
   },
   {

@@ -27,11 +27,16 @@
     "react-dom": "^18.2.0",
     "react-material-ui-carousel": "^3.4.2",
     "react-router-dom": "^6.17.0",
+<<<<<<< HEAD
     "react-slick": "^0.29.0",
     "react-swipeable-views": "^0.14.0",
     "react-swipeable-views-utils": "^0.14.0",
     "slick-carousel": "^1.8.1",
     "sort-by": "^0.0.2"
+=======
+    "sort-by": "^0.0.2",
+    "styled-components": "^6.1.0"
+>>>>>>> 54a8f5fbd51447dc0e4d3219ad9dd28f00beedb4
   },
   "devDependencies": {
     "@types/react": "^18.2.15",
