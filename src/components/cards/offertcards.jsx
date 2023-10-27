@@ -1,29 +1,61 @@
-import { Card, CardActions, CardContent, CardMedia, Typography } from '@mui/material'
+import { Button, Card, CardActions, CardContent, CardMedia, Typography } from '@mui/material'
+import { pink, blue } from '@mui/material/colors'
 import React from 'react'
-import Button from '../button/button'
+import LocationOnIcon from '@mui/icons-material/LocationOn';
+import AccessTimeIcon from '@mui/icons-material/AccessTime';
+import AccessibleIcon from '@mui/icons-material/Accessible';
+import { Box } from '@mui/system';
 
-function OfferCard() {
+function OfferCard({data}) {
     return (
-        <Card sx={{ maxWidth: 345 }}>
-            <CardMedia
-                sx={{ height: 140 }}
-                image="/static/images/cards/contemplative-reptile.jpg"
-                title="green iguana"
-            />
+        
+        <Card sx={{
+            margin: '35px',
+            maxWidth: 345,
+            borderRadius: '10px',
+            boxShadow: '0px 4px 8px rgba(0, 0, 0, 0.8)',
+            border: '2px solid #999090',
+            fontWeight: 700,
+            color: blue[900]
+        }}>
+        
             <CardContent>
-                <Typography gutterBottom variant="h5" component="div">
-                    Lizard
+                <Typography gutterBottom variant="h7" component="div">
+                    {data.title}
                 </Typography>
                 <Typography variant="body2" color="text.secondary">
-                    Lizards are a widespread group of squamate reptiles, with over 6,000
-                    species, ranging across all continents except Antarctica
+                    {data.content},
                 </Typography>
-            </CardContent>
-            <CardActions>
-                <Button size="small">Share</Button>
-                <Button size="small">Learn More</Button>
-            </CardActions>
-        </Card>
+                <Typography variant="body2" color="text.secondary">
+                    {data.modality},
+                </Typography>
+                <Typography variant="body2" color="text.secondary">
+                    {data.turn}
+                </Typography>
+
+                <Box display='flex'>
+                    <LocationOnIcon
+                        sx={{ color: pink[500] }} data-testid="LocationOnIcon">
+                    </LocationOnIcon>
+                    <Typography variant="body2" color="text.secondary">
+                        {data.campus}
+                    </Typography>
+
+                    <AccessTimeIcon
+                        sx={{ color: pink[500] }} data-testid="AccessTimeIcon">
+                    </AccessTimeIcon>
+                    <Typography variant="body2" color="text.secondary">
+                        Full time
+                    </Typography>
+
+                    <AccessibleIcon
+                        sx={{ color: pink[500] }} data-testid="AccessibleIcon">
+                    </AccessibleIcon>
+                </Box>
+
+            </CardContent><CardActions sx={{ display: 'flex', justifyContent: 'center' }}>
+                <Button size="small" sx={{ bgcolor: '#191970', color: 'white' }}>Conoce más</Button>
+            </CardActions></Card>
     )
 }
 
