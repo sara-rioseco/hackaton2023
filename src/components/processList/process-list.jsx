@@ -54,13 +54,7 @@ export default function ListTable() {
     data.sort((a, b) => a.document?.localeCompare(b.document));
   }
 
-  const columnMapping = {
-    processName: "IGC",
-    service: "Servicios",
-    businessName: "Cuenta",
-    startingDate: "fecha de inicio",
-    campus: "TRUJILLO",
-  };
+  
 
   const columnMaping2 = [
     "IGC",
