@@ -1,0 +1,30 @@
+@import url('https://fonts.cdnfonts.com/css/public-sans');
+
+.sideBarButtonGroup {
+  display:flex;
+  flex-flow: column nowrap;
+  gap: 16px;
+  width:100%;
+}
+
+.sideBarButton {
+  background-color: #ffffff;
+  color: #6f7271;
+  font-family: "Public Sans";
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 22px;
+  align-items: center;
+  height: 48px;
+  width: 100%;
+  padding: 0px 12px 0px 16px;
+  border: none;
+  border-radius: 8px;
+  box-sizing: border-box;
+  outline: 0;
+  cursor: pointer;
+  transition: ease background-color 250ms;
+  display: flex;
+  flex-flow: row nowrap;
+  gap: 16px;
+}

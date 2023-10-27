@@ -5,30 +5,63 @@
   height: 100%;
   display: grid;
   grid-template-columns: 240px 112px 112px;
+  grid-template-rows: 22px 56px 56px 56px 56px 56px 56px 56px 56px 22px 56px 56px 56px 56px 40px 56px;
   grid-gap: 16px;
-  grid-auto-flow: row;
-  text-align: center;
-  font-family: 'Public Sans';
+  text-align: left;
+  font-family: 'Public Sans' sans-serif;
+  box-sizing: border-box;
+  overflow: auto;
 }
 
 .item1 {
   grid-column-start: 1;
   grid-column-end: 4;
-  text-align: left;
+  font-family: 'Public Sans';
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 22px;
 }
 
-.item2 {
-  border: 2px solid white;
-}
+ .item2,
+ .item3,
+ .item4,
+ .item5,
+ .item6,
+ .item7,
+ .item8,
+ .item9,
+ .item10,
+ .item11,
+ .item12,
+ .item14,
+ .item15,
+ .item16,
+ .item17,
+ .item18,
+ .item19,
+ .item20,
+ .item21,
+ .item22,
+ .item23,
+ .item24,
+ .item25,
+ .item26,
+ .item27,
+ .item28,
+ .item29,
+ .item30,
+ .item31 {
+  position: relative;
+} 
 
 .item3 {
   grid-column-start: 2;
   grid-column-end: 4;
 }
 
-.item4 {
-  border: 2px solid white;
-}
+/* .item4 {
+  border: 1px solid white;
+} */
 
 .item5 {
   grid-column-start: 2;
@@ -36,7 +69,7 @@
 }
 
 .item6 {
-  border: 2px solid white;
+  height: 56px;
 }
 
 .item7 {
@@ -44,21 +77,21 @@
   grid-column-end: 4;
 }
 
-.item8 {
-  border: 2px solid white;
+/* .item8 {
+  border: 1px solid white;
 }
 
 .item9 {
-  border: 2px solid white;
+  border: 1px solid white;
 }
 
 .item10 {
-  border: 2px solid white;
+  border: 1px solid white;
 }
 
 .item11 {
-  border: 2px solid white;
-}
+  border: 1px solid white;
+} */
 
 .item12 {
   grid-column-start: 2;
@@ -66,98 +99,142 @@
 }
 
 .item13 {
-  border: 2px solid white;
-}
+  height: fit-content;
+  display: flex;
+  align-items: center;
+  align-self: center;
+  font-family: 'Public Sans';
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 22px;
+  padding: 0 0 0 12px;
+  justify-content: left;
+} 
 
 .item14 {
-  border: 2px solid red;
+  height: 56px;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .item15 {
-  border: 2px solid red;
+  height: 56px;;
+  width: 100%;
+  box-sizing: border-box;
 }
 
-.item16 {
+/* .item16 {
   border: 2px solid red;
-}
+} */
 
 .item17 {
-  border: 2px solid red;
+  height: 56px;;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .item18 {
-  border: 2px solid red;
+  height: 56px;;
+  width: 100%;
+  box-sizing: border-box;
 }
 
-.item19 {
+/* .item19 {
   border: 2px solid red;
-}
+} */
 
 .item20 {
-  border: 2px solid red;
   grid-column-start: 2;
   grid-column-end: 4;
 }
 
 .item21 {
-  border: 2px solid red;
   grid-column-start: 1;
   grid-column-end: 4;
   text-align: left;
+  font-family: 'Public Sans';
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 22px;
 }
 
-.item22 {
+/* .item22 {
   border: 2px solid red;
-}
+} */
 
 .item23 {
-  border: 2px solid red;
   grid-column-start: 2;
   grid-column-end: 4;
 }
 
 .item24 {
-  border: 2px solid red;
+  height: fit-content;
+  display: flex;
+  align-items: center;
+  align-self: center;
+  font-family: 'Public Sans';
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 22px;
+  padding: 0 0 0 12px;
+  justify-content: left;
 }
 
 .item25 {
-  border: 2px solid red;
+  height: 56px;;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .item26 {
-  border: 2px solid red;
+  height: 56px;;
+  width: 100%;
+  box-sizing: border-box;
 }
 
-.item27 {
+/* .item27 {
   border: 2px solid red;
-}
+} */
 
 .item28 {
-  border: 2px solid red;
+  height: 56px;;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .item29 {
-  border: 2px solid red;
+  height: 56px;;
+  width: 100%;
+  box-sizing: border-box;
 }
 
-.item30 {
+/* .item30 {
   border: 2px solid red;
-}
+} */
 
 .item31 {
-  border: 2px solid red;
   grid-column-start: 2;
   grid-column-end: 4;
 }
 
 .item32 {
-  border: 2px solid red;
   grid-column-start: 1;
   grid-column-end: 4;
 }
 
 .item33 {
-  border: 2px solid red;
   grid-column-start: 1;
   grid-column-end: 4;
+  display:flex;
+  justify-content: right;
+}
+
+.createOfferButton {
+  width: 146px;
+  height: 36px;
+  text-align: center;
+  padding: 6px 16px 6px 16px;
+  font-size: 14px;
+  line-height: 24px;
+  font-weight: 700;
 }

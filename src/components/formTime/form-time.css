@@ -1,0 +1,80 @@
+.react-datepicker-wrapper {
+  width: 100%;
+  height: 100%;
+  display:flex;
+}
+
+.react-datepicker__input-container {
+  width: 100%;
+  height: 56px;
+  display:flex;
+}
+
+.react-datepicker-ignore-onclickoutside {
+  width: 100%;
+  height: 100%;
+  display:flex;
+}
+.timePicker {
+  width: 100%;
+  height: 56px;
+  text-align: left;
+  padding:10px;
+  border: 1px solid #919EAB;
+  position: relative;
+  border-radius: 5px; 
+  align-items: center;
+  display:flex;
+  justify-content: space-between;
+  box-sizing: border-box;
+}
+
+.timePicker:focus {
+  outline: none !important;
+  border: 2px solid #00968F;
+  box-shadow: 0 0 10px #719ECE;
+}
+
+.time-input-group-prepend {
+  position: absolute;
+  width:100%;
+  display:flex;
+  justify-content: right;
+}
+
+.time-input-group-text img{
+  position: relative;
+  top:8px;
+  z-index: 1;
+}
+
+.formTimeLabel {
+  color: #919EAB;
+  font-family: 'Public Sans', sans-serif;
+  font-weight: 400;
+  top: -10px;
+  left: 10px;
+  font-size: 12px;
+  line-height: 18px;
+  width: auto;
+  padding: 0px 2px 0px 3px;
+  position:absolute;
+  background-color: #f6f7f8;
+  z-index: 1;
+}
+
+.react-datepicker__aria-live {
+  position: absolute;
+  clip-path: circle(0);
+  border: 0;
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  width: 1px;
+  white-space: nowrap;
+}
+
+.react-datepicker--time-only {
+z-index: 2;
+}
