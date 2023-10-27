@@ -16,6 +16,12 @@ const [showMenu, setShowMenu] = useState(false);
 const [selectedValue, setSelectedValue] = useState(null);
 const inputRef = useRef();
 
+const dropdownFocusStyle =   {
+  outline: "none !important",
+  border: "2px solid #00968F",
+  boxShadow: "0 0 10px #719ECE"
+}
+
 useEffect(() => {
   const handler = (e) => {
     if (inputRef.current && !inputRef.current.contains(e.target)) {
@@ -57,8 +63,8 @@ const getDisplay = () => {
 
   return (
     <>
-      {label && <label className={`formDropdownLabel ${classInputLabel}`}>{label}</label>}
-      <div className="dropdown-container">
+      {label && <label className={`formDropdownLabel ${classInputLabel}`}>{label}</label>} 
+      <div className="dropdown-container" style={showMenu ? dropdownFocusStyle : null}>
         <div ref={inputRef} onClick={handleInputClick} className="dropdown-input">
           <div className="dropdown-selected-value">{getDisplay()}</div>
           <div className="dropdown-tools">
@@ -79,7 +85,7 @@ const getDisplay = () => {
             </div>
           )}
         </div>
-      </div>
+      </div> 
     </>
   );
 }

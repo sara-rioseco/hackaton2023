@@ -18,12 +18,25 @@ export function usePostLogic() {
     closingDate: "",
     profileName: "",
     account: "",
-    status: "",
+    status: "OPEN",
     trainer: "",
-    trainingSchedule: {},
+    trainingSchedule: {
+      trainingDateStart: "",
+      trainingHourStart: "",
+      trainingHourEnd: "",
+      trainingWeekendDay: "",
+      trainingWeekendDayTimeStart: "",
+      trainingWeekendDayTimeEnd: ""
+    },
     trainingModality: "",
     processModality: "",
-    processSchedule: {},
+    processSchedule: {
+      processWorkingHoursStart: "",
+      processWorkingHoursEnd: "",
+      processWeekendDay: "",
+      processWeekendDayTimeStart: "",
+      processWeekendDayTimeEnd: "",
+    },
     workSchedule: "",
     reason: "",
     applicantsNumber: 0,
@@ -44,16 +57,18 @@ export function usePostLogic() {
       console.log(event.target.value)
     } 
     if (field === 'starting-date') {
-      setFormData({ ...formData, startingDate: event.value });
-      console.log(event.value)
+      const d = new Date(event).toLocaleDateString('es-CL')
+      setFormData({ ...formData, startingDate: d});
+      console.log(d);
     }
     if (field === 'closing-date') {
-      setFormData({ ...formData, closingDate: event.value });
-      console.log(event.value)
+      const d = new Date(event).toLocaleDateString('es-CL')
+      setFormData({ ...formData, closingDate: d});
+      console.log(d)
     } 
     if (field === 'profile-name') {
       setFormData({ ...formData, profileName: event.value });
-      console.log('Seleccionaste tipo de perfil ', event.value)
+      console.log(event.value)
     } 
     if (field === 'account') {
       setFormData({ ...formData, account: event.value });
@@ -67,29 +82,62 @@ export function usePostLogic() {
       setFormData({ ...formData, trainer: event.value });
       console.log(event.value)
     } 
-    if (field === 'training-schedule') {
-      setFormData({ ...formData, trainingSchedule: event.value });
+    if (field === 'training-time-start') {
+      setFormData({ ...formData, trainingSchedule: {trainingHourStart: event.value }});
+      console.log(event.value)
+    } 
+    if (field === 'training-time-end') {
+      setFormData({ ...formData, trainingSchedule: {trainingHourEnd: event.value }});
       console.log(event.value)
     } 
     if (field === 'training-date') {
-      setFormData({ ...formData, trainingSchedule: event.value });
-      console.log(event.value)
+      const d = new Date(event).toLocaleDateString('es-CL')
+      setFormData({ ...formData, trainingSchedule: {trainingDateStart: d}});
+      console.log(d)
     } 
     if (field === 'training-modality') {
       setFormData({ ...formData, trainingModality: event.value });
+      console.log(event.value)
+    } 
+    if (field === 'training-weekend-day') {
+      setFormData({ ...formData, trainingSchedule: {trainingWeekendDay: event.value }});
+      console.log(event.value)
+    } 
+    if (field === 'training-weekend-day-time-start') {
+      setFormData({ ...formData, trainingSchedule: {trainingWeekendDayTimeStart: event.value }});
+      console.log(event.value)
+    } 
+    if (field === 'training-weekend-day-time-end') {
+      setFormData({ ...formData, trainingSchedule: {trainingWeekendDayTimeEnd: event.value }});
       console.log(event.value)
     } 
     if (field === 'process-modality') {
       setFormData({ ...formData, processModality: event.value });
       console.log(event.value)
     } 
-    if (field === 'process-schedule') {
-      setFormData({ ...formData, processSchedule: event.value });
+    if (field === 'process-weekend-day') {
+      setFormData({ ...formData, processSchedule: {processWorkingDays : event.value} });
+      console.log(event.value)
+    } 
+    if (field === 'process-weekend-day-time-start') {
+      setFormData({ ...formData, processSchedule: {processWorkingDays : event.value} });
+      console.log(event.value)
+    } 
+    if (field === 'process-weekend-day-time-end') {
+      setFormData({ ...formData, processSchedule: {processWorkingDays : event.value} });
+      console.log(event.value)
+    } 
+    if (field === 'process-time-start') {
+      setFormData({ ...formData, processSchedule: {processWorkingHoursStart : event.value} });
+      console.log(event.value)
+    } 
+    if (field === 'process-time-end') {
+      setFormData({ ...formData, processSchedule: {processWorkingHoursEnd : event.value} });
       console.log(event.value)
     } 
     if (field === 'work-schedule') {
       setFormData({ ...formData, workSchedule: event.value });
-      console.log('Seleccionaste tipo de trabajo ', event.value)
+      console.log(event.value)
     } 
     if (field === 'reason') {
       setFormData({ ...formData, reason: event.value });

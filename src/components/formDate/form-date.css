@@ -30,6 +30,12 @@
   box-sizing: border-box;
 }
 
+.datePicker:focus {
+  outline: none !important;
+  border: 2px solid #00968F;
+  box-shadow: 0 0 10px #719ECE;
+}
+
 .input-group-prepend {
   position: absolute;
   width:100%;

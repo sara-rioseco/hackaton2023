@@ -5,14 +5,14 @@
   display: flex;
   gap:20px;
   width: 100%;
-  height: 100%;
   justify-content: left;
-  align-content: last bas;
+  align-items: center;
+  font-family:"Public Sans";
 } 
 
 .toggle-text { 
   display: flex;
-  font-family: 'Public Sans' sans-serif;
+  font-family: 'Public Sans';
   font-size: 14px;
   line-height: 22px;
   font-weight: 400;

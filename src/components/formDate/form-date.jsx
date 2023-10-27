@@ -38,12 +38,13 @@ export default function FormDate({label, classInputLabel }) {
       placeholderText=''
       selected={date}
       onChange={date => {
-        setDate(date)
-        setActiveDate(new Date(date).toLocaleDateString('es-CL'))
-        handleFieldChange({classInputLabel}, date)
-        console.log(new Date(date).toLocaleDateString('es-CL'))
+        setDate(date);
+        setActiveDate(new Date(date).toLocaleDateString('es-CL'));
+        handleFieldChange(`${classInputLabel}`, date)
       }}
       value={activeDate}
+      setNewDate={f => f(activeDate)}
+      newDate={activeDate}
       dateFormat="dd/MM/yyyy"
       className='datePicker'
       icon={Icon}
