@@ -11,6 +11,7 @@ export default function DatePickerValue() {
   const [value, setValue] = React.useState(dayjs('2023-09-28'));
 
   return (
+
     <LocalizationProvider dateAdapter={AdapterDayjs}>
       <DemoContainer components={['DatePicker', 'DatePicker']}>
         <DatePicker label="F. Inicio" defaultValue={dayjs('2023-09-28')} />
@@ -21,7 +22,7 @@ export default function DatePickerValue() {
         />
         <Button
             variant="contained"
-            style={{ backgroundColor: "#002855", color: "#ffffff" }} 
+            style={{ padding: 20, width: '100%', height: 30, backgroundColor: "#002855", color: "#ffffff" }} 
             startIcon={<Search />} 
           >
             Buscar

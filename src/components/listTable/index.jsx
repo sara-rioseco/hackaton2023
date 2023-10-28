@@ -14,16 +14,16 @@ import {
 } from "@mui/material";
 import { Search } from "@mui/icons-material";
 import { Select, MenuItem } from "@mui/material";
-          
-          
+
+
 import DateFilter from "../../components/formDate/date-filter";
 
 export default function ListTable() {
   const [data, setData] = useState(null);
   const [search, setSearch] = useState("");
   const [dataapi, setDataapi] = useState(null);
-   // Nuevo estado para la cadena de búsqueda
-   const getAllApplicants = () => {
+  // Nuevo estado para la cadena de búsqueda
+  const getAllApplicants = () => {
 
     fetch(
       "https://iezopofihj.execute-api.us-east-1.amazonaws.com/dev/applicants?startDate=2023-10-05&endDate=2023-10-05"
@@ -35,7 +35,7 @@ export default function ListTable() {
         setDataapi(result.data);
 
         const dataprocess = result.data.map((item) => ({
-        
+
           "Nro. Documento": item.document,
           "Nombres y Apellidos": item.firstName + " " + item.lastName_m,
 
@@ -48,12 +48,12 @@ export default function ListTable() {
           "Estado de Postulacion": item.status,
         }));
 
-        
+
         setData(dataprocess);
       })
       .catch((error) => console.log("error", error));
-     
-   }
+
+  }
 
   useEffect(() => {
     getAllApplicants();
@@ -96,37 +96,37 @@ export default function ListTable() {
   const sendNotificationConfirmadoCapa = (applicant) => {
     var raw = {
 
-        recipientPhoneNumber: "+51910107346",
-        user: applicant.firstName,        
-        trainingDate: applicant.processInfo.trainingSchedule.trainingDateStart,
-        trainingHour: applicant.processInfo.trainingSchedule.trainingHourEnd,
-        trainer: applicant.processInfo.trainer,
-        sede: applicant.processInfo.campus.address + '' + applicant.processInfo.campus.name,
-      };
-    console.log("notification",raw)
+      recipientPhoneNumber: "+51910107346",
+      user: applicant.firstName,
+      trainingDate: applicant.processInfo.trainingSchedule.trainingDateStart,
+      trainingHour: applicant.processInfo.trainingSchedule.trainingHourEnd,
+      trainer: applicant.processInfo.trainer,
+      sede: applicant.processInfo.campus.address + '' + applicant.processInfo.campus.name,
+    };
+    console.log("notification", raw)
 
     var requestOptions = {
       method: 'POST',
       body: JSON.stringify(raw),
-     
+
     };
 
-    
 
 
-    
-fetch(`https://iezopofihj.execute-api.us-east-1.amazonaws.com/dev/notifications/welcomeSin`, requestOptions)
+
+
+    fetch(`https://iezopofihj.execute-api.us-east-1.amazonaws.com/dev/notifications/welcomeSin`, requestOptions)
       .then(response => response.text())
-      .then(result => console.log("confirmacion capa",result))
+      .then(result => console.log("confirmacion capa", result))
       .catch(error => console.log('error', error));
-  
+
   }
 
   // Recontacto
 
   const sendNotificationRecontacto = (applicant) => {
 
-    
+
     var raw = {
       recipientPhoneNumber: "+51910107346",
       user: applicant.firstName,
@@ -134,81 +134,81 @@ fetch(`https://iezopofihj.execute-api.us-east-1.amazonaws.com/dev/notifications/
       path: applicant.processInfo.evaluar.url.split("/").pop(),
     };
 
-    console.log("Recontacto 213143",raw)
+    console.log("Recontacto 213143", raw)
 
     var requestOptions = {
       method: 'POST',
       body: JSON.stringify(raw),
-     
+
     };
 
-    
 
 
-    
-fetch(`https://iezopofihj.execute-api.us-east-1.amazonaws.com/dev/notifications/reminder`, requestOptions)
+
+
+    fetch(`https://iezopofihj.execute-api.us-east-1.amazonaws.com/dev/notifications/reminder`, requestOptions)
       .then(response => response.text())
-      .then(result => console.log("REcontacto",result))
+      .then(result => console.log("REcontacto", result))
       .catch(error => console.log('error', error));
-  
+
   }
 
   const sendNotificationNoApto = (applicant) => {
 
-    
+
     var raw = {
       recipientPhoneNumber: "+51910107346",
       user: applicant.firstName,
-     
+
     };
 
-    console.log("Rechazo 213143",raw)
+    console.log("Rechazo 213143", raw)
 
     var requestOptions = {
       method: 'POST',
       body: JSON.stringify(raw),
-     
+
     };
 
-    
 
 
-    
-fetch(`https://iezopofihj.execute-api.us-east-1.amazonaws.com/dev/notifications/status`, requestOptions)
+
+
+    fetch(`https://iezopofihj.execute-api.us-east-1.amazonaws.com/dev/notifications/status`, requestOptions)
       .then(response => response.text())
-      .then(result => console.log("rechazoo",result))
+      .then(result => console.log("rechazoo", result))
       .catch(error => console.log('error', error));
-  
+
   }
 
   //post estado
   const handlePostState = (applicant) => {
-    var raw = {status: applicant.status};
-    console.log("raw",raw)
+    var raw = { status: applicant.status };
+    console.log("raw", raw)
 
     var requestOptions = {
       method: 'POST',
       body: JSON.stringify(raw),
-     
+
     };
 
 
-    
-fetch(`https://iezopofihj.execute-api.us-east-1.amazonaws.com/dev/applicants/update/${applicant.id}/document/${applicant.dni}`, requestOptions)
+
+    fetch(`https://iezopofihj.execute-api.us-east-1.amazonaws.com/dev/applicants/update/${applicant.id}/document/${applicant.dni}`, requestOptions)
       .then(response => response.text())
-      .then(result => console.log("post stado",result))
+      .then(result => console.log("post stado", result))
       .catch(error => console.log('error', error));
   }
 
 
   return (
     <div>
-      <Grid container spacing={2}>
-        <Grid item xs={7}>
+      <Grid my={3} container spacing={2}>
+        <Grid display= 'flex' alignItems={1} item xs={7}>
           <DateFilter />
         </Grid>
 
-        <Grid item xs={5}>
+        <Grid my={1} item xs={5}>
           <TextField
             label="Buscar por Documento"
             value={search}
@@ -232,7 +232,7 @@ fetch(`https://iezopofihj.execute-api.us-east-1.amazonaws.com/dev/applicants/upd
           <TableHead>
             <TableRow>
               {columnMaping2.map((key) => {
-                
+
                 return (
                   <TableCell
                     key={key}
@@ -244,8 +244,8 @@ fetch(`https://iezopofihj.execute-api.us-east-1.amazonaws.com/dev/applicants/upd
               })}
             </TableRow>
           </TableHead>
-          
-          
+
+
           <TableBody>
             {filteredData.map((item, index) => (
               <TableRow key={index}>
@@ -259,11 +259,11 @@ fetch(`https://iezopofihj.execute-api.us-east-1.amazonaws.com/dev/applicants/upd
                           const updatedItem = { ...item, [key]: e.target.value };
 
                           console.log("updatedItem", updatedItem);
-                         const applicantdata = dataapi.filter((item) => {
-          
+                          const applicantdata = dataapi.filter((item) => {
+
                             return item.document === updatedItem["Nro. Documento"];
-                            
-                            
+
+
                           })
 
                           console.log("applicantdata", applicantdata)
@@ -277,14 +277,14 @@ fetch(`https://iezopofihj.execute-api.us-east-1.amazonaws.com/dev/applicants/upd
                           getAllApplicants();
 
 
-                          if(e.target.value === "confirmado a capa") {
-                           sendNotificationConfirmadoCapa(applicantdata[0]);
+                          if (e.target.value === "confirmado a capa") {
+                            sendNotificationConfirmadoCapa(applicantdata[0]);
                           } else if (e.target.value === "recontacto") {
                             sendNotificationRecontacto(applicantdata[0]);
-                          } else{
+                          } else {
                             sendNotificationNoApto(applicantdata[0]);
                           }
-                          console.log("estado select",e.target.value)
+                          console.log("estado select", e.target.value)
                         }}
                       >
                         <MenuItem value="recontacto">Recontacto</MenuItem>
