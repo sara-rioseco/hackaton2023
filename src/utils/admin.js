@@ -260,7 +260,7 @@ export function useAdminLogic() {
         return item[`Fecha Inicio`] >= startDate && item[`Fecha Fin`] <= endDate
       }
       else {
-        console.log('no se encontraron coincidencias')
+        console.log('no se encontraron')
       }
     })
   }
