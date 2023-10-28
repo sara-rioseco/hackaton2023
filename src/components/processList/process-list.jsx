@@ -14,8 +14,29 @@ import {
   IconButton,
 } from "@mui/material";
 import { Search } from "@mui/icons-material";
-
 import DateFilter from "../../components/formDate/date-filter";
+import LinearProgress, { linearProgressClasses } from '@mui/material/LinearProgress';
+import { styled } from '@mui/material/styles';
+import { Box, Stack } from "@mui/system";
+import { red, green } from '@mui/material/colors'
+
+const BorderLinearProgress = styled(LinearProgress)(({ theme }) => ({
+  height: 10,
+  width:'100%',
+  borderRadius: 5,
+}));
+
+// eslint-disable-next-line react/prop-types
+function CustomizedProgressBars({value}) {
+  return (
+      <BorderLinearProgress sx={{ "& .MuiLinearProgress-colorPrimary": {
+        backgroundColor: "red",
+    },
+    "& .MuiLinearProgress-barColorPrimary": {
+        backgroundColor: value>90 ? green[700] : red[800]
+        }, bgcolor: value>90 ? green[200] : red[200] }} variant="determinate" value={value} />
+  );
+}
 
 export default function ListTable() {
   const [data, setData] = useState(null);
@@ -36,7 +57,24 @@ export default function ListTable() {
           "Feha Fin": item.closingDate,
           "Nro. Postulante": item.applicantsNumber,
           "Nro. Reductor": item.reducerNumber,
-          "Avance de Aptos": item.reason,
+          "Avance de Aptos": () => {
+            return (
+              <Box sx={{ width: 150 }} display='flex' alignItems={"center"} gap={1}>
+              <span>
+              
+              {item.suitables}/
+              {item.applicantsNumber+item.reducerNumber}
+              
+              </span>
+              <CustomizedProgressBars value={(item.suitables/
+              (item.applicantsNumber+item.reducerNumber))*100}>
+              
+              </CustomizedProgressBars>
+              {Math.round((item.suitables/
+              (item.applicantsNumber+item.reducerNumber))*100)}%
+              </Box>
+            )
+          },
           Estado: item.status,
         }));
 
@@ -84,28 +122,28 @@ export default function ListTable() {
 
   return (
     <div>
-      <Grid container spacing={2}>
+      <Grid container my={5} spacing={2}>
         <Grid item xs={6}>
           <DateFilter />
         </Grid>
 
-        <Grid item xs={6}>
-          <TextField
-            label="Buscar por Documento"
-            value={search}
-            onChange={(e) => setSearch(e.target.value)}
-            style={{ width: "100%" }}
-            InputProps={{
-              startAdornment: (
-                <InputAdornment position="start">
-                  <IconButton edge="start" aria-label="search">
-                    <Search />
-                  </IconButton>
-                </InputAdornment>
-              ),
-            }}
-          />
-        </Grid>
+          <Grid my={1} item xs={6}>
+            <TextField 
+              label="Buscar por Documento"
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
+              style={{ width: "100%"}}
+              InputProps={{
+                startAdornment: (
+                  <InputAdornment position="start">
+                    <IconButton edge="start" aria-label="search">
+                      <Search />
+                    </IconButton>
+                  </InputAdornment>
+                ),
+              }}
+            />
+          </Grid>
       </Grid>
 
       <TableContainer component={Paper}>
@@ -129,8 +167,9 @@ export default function ListTable() {
             {filteredData.map((item, index) => (
               <TableRow key={index}>
                 {Object.values(item).map((value, valueIndex) => (
-                  <TableCell key={valueIndex}>
+                  <TableCell width={200} key={valueIndex}>
                     {typeof value === "object" ? value.value : value}
+                    {typeof value === "function" && value()}
                   </TableCell>
                 ))}
               </TableRow>
