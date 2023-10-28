@@ -2,9 +2,9 @@
 // CSS
 import './form-grid.css'
 //React
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useState, } from 'react';
 // Custom hooks
-import { usePostLogic } from '../../utils/post';
+import { useAdminLogic } from '../../utils/admin';
 // Components
 import Button from '../button/button';
 import FormDate from '../formDate/form-date'
@@ -13,36 +13,50 @@ import FormDropdown from '../formDropdown/form-dropdown'
 import FormTime from '../formTime/form-time'
 import FormToggle from '../formToggle/form-toggle'
 
-const selectedStartingDate = ({ newStartingDate, setNewStartingDate}) => {
-    
-}
-
-const selectedClosingDate = ({ newClosingDate, setNewClosingDate}) => {
-    
-}
-
-const selectedTrainingDate = ({ newTrainingDate, setNewTrainingDate}) => {
-    
-}
 export default function FormGrid() {
   const {
     notValidForm, 
     setNotValidForm,
     formData,
+    offerData,
+    iaOfferDataResponse,
     setFormData,
+    setOfferData,
+    setIaOfferDataResponse,
     handleFieldChange,
-    activeDate,
+    activeStartingDate, setActiveStartingDate,
+    activeClosingDate, setActiveClosingDate,
+    activeTrainingDate, setActiveTrainingDate,
     errorLabel,
     setErrorLabel,
     handleSideBarButtonClick,
     handleCreateProcessButtonClick,
-  } = usePostLogic();
+    handleCreateProcessDB,
+    handleCreateProcessEvaluar,
+    handleGenerateOfferIA
+  } = useAdminLogic();
 
-const [newStartingDate, setNewStartingDate] = useState(null)
-const [newClosingDate, setNewClosingDate] = useState(null)
-const [newTrainingDate, setNewTrainingDate] = useState(null)
+useEffect(()=> {}, [activeClosingDate, activeStartingDate, activeTrainingDate])
 
-useEffect(()=> handleFieldChange)
+const handleDateChangeInFormDate = (inputLabel, date) => {
+  // Update the parent component's state with the data received from the child.
+  if (inputLabel === 'starting-date') {
+    setActiveStartingDate(date);
+  } else if (inputLabel === 'closing-date') {
+    setActiveClosingDate(date);
+  } else if (inputLabel === 'training-date') {
+    setActiveTrainingDate(date);
+  }
+};
+
+
+const isValidForm = (data) => { 
+  const result = Object.values(data).includes(null || "")
+  return result
+}
+
+const jsonFormData = () => JSON.stringify(formData, null, 2)
+const jsonOfferData = () => JSON.stringify(offerData, null, 2)
 
   return (
     <>
@@ -54,6 +68,7 @@ useEffect(()=> handleFieldChange)
             placeholder=''
             onChange={(e) => {
               handleFieldChange('igc-name', e);
+              setNotValidForm(isValidForm(formData));
             }}
             label='Nombre IGC'
             classInputLabel='labels'
@@ -67,6 +82,7 @@ useEffect(()=> handleFieldChange)
             options = {[{label: 'Telefonía', value: 'telefonia'}, {label: 'Financiero', value: 'financiero'},{label: 'Retail', value:'retail'}]}
             onChange={(e) => {
               handleFieldChange('account', e);
+              setNotValidForm(isValidForm(formData));
             }}
           />
         </div>
@@ -77,6 +93,7 @@ useEffect(()=> handleFieldChange)
             options = {[{label: 'Fijo/Masivo', value: 'fijo/masivo'}, {label: 'Cobranzas/ATC', value: 'cobranzas/atc'},{label: 'Ventas/Crosseling', value:'ventas/crosseling'}]}
             onChange={(e) => {
               handleFieldChange('service', e);
+              setNotValidForm(isValidForm(formData));
             }}
           />
         </div>
@@ -87,6 +104,7 @@ useEffect(()=> handleFieldChange)
             options = {[{label: 'Crecimiento', value: 'crecimiento'}, {label: 'Rotación', value: 'rotacion'},{label: 'Implementación', value:'implementacion'}]}
             onChange={(e) => {
               handleFieldChange('reason', e);
+              setNotValidForm(isValidForm(formData));
             }}
           />
         </div>
@@ -94,16 +112,14 @@ useEffect(()=> handleFieldChange)
           <FormDate 
             label='Fecha Inicio'
             classInputLabel='starting-date'
-            newDate={activeDate}
-            setNewDate={setNewStartingDate}
+            onDateChange={handleDateChangeInFormDate}
           />
         </div>
         <div className="item7">
           <FormDate 
             label='Fecha Cierre'
             classInputLabel='closing-date'
-            newDate={activeDate}
-            setNewDate={setNewClosingDate}
+            onDateChange={handleDateChangeInFormDate}
           />
         </div>
         <div className="item8">
@@ -112,7 +128,8 @@ useEffect(()=> handleFieldChange)
             label='Tipo de Trabajo'
             options = {[{label: 'Presencial', value: 'presencial'}, {label: 'Remoto', value: 'remoto'}]}
             onChange={(e) => {
-              handleFieldChange('process-modality', e)
+              handleFieldChange('process-modality', e);
+              setNotValidForm(isValidForm(formData));
             }}
           />
         </div>
@@ -123,6 +140,7 @@ useEffect(()=> handleFieldChange)
             placeholder=''
             onChange={(e) => {
               handleFieldChange('applicants-number', e);
+              setNotValidForm(isValidForm(formData));
             }}
             label='Postulantes'
             classInputLabel='labels'
@@ -136,6 +154,7 @@ useEffect(()=> handleFieldChange)
             placeholder=''
             onChange={(e) => {
               handleFieldChange('reducer-number', e);
+              setNotValidForm(isValidForm(formData));
             }}
             label='Reductor'
             classInputLabel='labels'
@@ -143,12 +162,13 @@ useEffect(()=> handleFieldChange)
           />
         </div>
         <div className="item11"> {/* ojo aquí */}
-           <FormDropdown
+          <FormDropdown
             placeholder=''
             label='Modalidad'
             options = {[{label: 'Full time', value: 'full time'}, {label: 'Part time', value: 'part time'}]}
             onChange={(e) => {
               handleFieldChange('process-modality', e);
+              setNotValidForm(isValidForm(formData));
             }}
           />
         </div>
@@ -158,7 +178,8 @@ useEffect(()=> handleFieldChange)
             label='Turno'
             options = {[{label: 'Mañana', value: 'mañana'}, {label: 'Tarde', value: 'tarde'},{label: 'Noche', value:'noche'}]}
             onChange={(e) => {
-              handleFieldChange('turn', e)
+              handleFieldChange('turn', e);
+              setNotValidForm(isValidForm(formData));
             }}
           />
         </div>
@@ -179,7 +200,8 @@ useEffect(()=> handleFieldChange)
             label='Fin de Semana'
             options = {[{label: 'Sábado', value: 'sabado'}, {label: 'Domingo', value: 'domingo'}]}
             onChange={(e) => {
-              handleFieldChange('process-weekend-day', e)
+              handleFieldChange('process-weekend-day', e);
+              setNotValidForm(isValidForm(formData));
             }}
           />
         </div>
@@ -199,7 +221,8 @@ useEffect(()=> handleFieldChange)
             label='Sede'
             options = {[{label: 'Lima', value: 'Lima'}, {label: 'Surquillo', value: 'Surquillo'},{label: 'Piura', value:'Piura'}]}
             onChange={(e) => {
-              handleFieldChange('campus-name', e)
+              handleFieldChange('campus-name', e);
+              setNotValidForm(isValidForm(formData));
             }}
           />
         </div>
@@ -218,8 +241,7 @@ useEffect(()=> handleFieldChange)
           <FormDate 
             label='Inicio Capacitación'
             classInputLabel='training-date'
-            newDate={activeDate}
-            setNewDate={setNewTrainingDate}
+            onDateChange={handleDateChangeInFormDate}
           />
         </div>
         <div className="item23">
@@ -228,7 +250,8 @@ useEffect(()=> handleFieldChange)
             label='Modalidad'
             options = {[{label: 'Presencial', value: 'presencial'}, {label: 'Remoto', value: 'remoto'}]}
             onChange={(e) => {
-              handleFieldChange('training-modality', e)
+              handleFieldChange('training-modality', e);
+              setNotValidForm(isValidForm(formData));
             }}
           />
         </div>
@@ -249,7 +272,8 @@ useEffect(()=> handleFieldChange)
             label='Fin de Semana'
             options = {[{label: 'Sábado', value: 'sabado'}, {label: 'Domingo', value: 'domingo'}]}
             onChange={(e) => {
-              handleFieldChange('training-weekend-day', e)
+              handleFieldChange('training-weekend-day', e);
+              setNotValidForm(isValidForm(formData));
             }}
           />
         </div>
@@ -269,7 +293,8 @@ useEffect(()=> handleFieldChange)
             label='Formador'
             options = {[{label: 'Bonny Fernandez', value: 'Bonny Fernandez'}, {label: 'Ibrahin Cáceres', value: 'Ibrahin Cáceres'},{label: 'Cristina Ruedas', value:'Cristina Ruedas'}]}
             onChange = {(e) => {
-              handleFieldChange('trainer', e)
+              handleFieldChange('trainer', e);
+              setNotValidForm(isValidForm(formData));
             }}
           /> 
         </div>
@@ -280,6 +305,7 @@ useEffect(()=> handleFieldChange)
             options = {[{label: 'Ventas', value: 'VENTAS'}, {label: 'Atención al cliente', value: 'ATENCIÓN AL CLIENTE'},{label: 'Croselling', value:'CROSELLING'},{label: 'Social Media', value:'SOCIAL MEDIA'}]}
             onChange={(e) => {
               handleFieldChange('profile-name', e);
+              setNotValidForm(isValidForm(formData));
             }}
           />
         </div>
@@ -287,7 +313,15 @@ useEffect(()=> handleFieldChange)
           <FormToggle label='Personas con discapacidad'/>
         </div>
         <div className="item33">
-          <Button label="Generar Oferta" classButton='createOfferButton' disabled={notValidForm}/>
+          <Button label="Generar Oferta" classButton='createOfferButton' disabled={notValidForm} onClick={() => {
+            try { 
+              const res = handleGenerateOfferIA(jsonOfferData())
+              setIaOfferDataResponse(res)
+            } catch (e) {
+              console.error(e)
+            } finally {
+              console.log(iaOfferDataResponse)
+            }}}/>
         </div>
       </div>
     </>

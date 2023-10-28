@@ -14,8 +14,6 @@ import {
 } from "@mui/material";
 import { Search } from "@mui/icons-material";
 import { Select, MenuItem } from "@mui/material";
-
-
 import DateFilter from "../../components/formDate/date-filter";
 
 export default function ListTable() {
@@ -119,7 +117,6 @@ export default function ListTable() {
       .then(response => response.text())
       .then(result => console.log("confirmacion capa", result))
       .catch(error => console.log('error', error));
-
   }
 
   // Recontacto

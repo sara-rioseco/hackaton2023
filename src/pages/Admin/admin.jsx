@@ -1,14 +1,8 @@
 /* eslint-disable no-unused-vars */
 // CSS
-import './post.css'
-// Components
-import Input from '../../components/input/input'
-import Button from '../../components/button/button'
-// Assets
-import show from '../../assets/icons/login/show-password.png'
-import hide from '../../assets/icons/login/hide-password.png'
+import './admin.css'
 // Custom hook
-import { usePostLogic } from '../../utils/post'
+import { useAdminLogic } from '../../utils/admin'
 //React router
 import { useLocation } from 'react-router-dom'
 // Components
@@ -17,10 +11,11 @@ import FormGrid from '../../components/formGrid/form-grid'
 import ListApplicants from '../ListApplicants/list-applicants'
 import OfertaGenerate from '/src/components/convocatorias/oferta'
 import ProcessList from '../ProcessList/process-list'
-import { Box } from '@mui/system'
 
-export default function Post() {
-const location = useLocation();
+
+export default function Admin() {
+  const { iaOfferDataResponse, setIaOfferDataResponse } = useAdminLogic();
+  const location = useLocation();
     return (
     <>
       <div className='createPost'>
@@ -29,14 +24,14 @@ const location = useLocation();
         </div>
         <div className='mainBody'>
           <div className='headerBar'></div>
-          {location.pathname === "/post" && (
+          {location.pathname === "/admin" && (
             <div className='mainContent'>
-            <h2 className='title'>Crear Convocatorias</h2>
-            <h3 className='subtitle'>Convocatorias</h3>
-            <Box display='flex'>
-            <FormGrid />
-            <OfertaGenerate />
-            </Box>
+              <h2 className='title'>Crear Convocatorias</h2>
+              <h3 className='subtitle'>Convocatorias</h3>
+              <div className='gridOfferView'>
+                <FormGrid />
+                <OfertaGenerate data={iaOfferDataResponse}/>
+              </div>
           </div>) }
           {location.pathname === "/applicants" && (
             <ListApplicants />
