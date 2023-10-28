@@ -14,9 +14,12 @@ export function useAdminLogic() {
   const [errorLabel, setErrorLabel] = useState('');
   const [notValidForm, setNotValidForm] = useState(true);
   const [iaOfferDataResponse, setIaOfferDataResponse ] = useState(null);
+
+  //fechas por defecto
   const [activeStartingDate, setActiveStartingDate] = useState(new Date())
   const [activeClosingDate, setActiveClosingDate] = useState(new Date(new Date().getTime()+(7*24*60*60*1000)))
   const [activeTrainingDate, setActiveTrainingDate] = useState(new Date(new Date().getTime()+(10*24*60*60*1000)))
+
   const [formData, setFormData] = useState({
     processName: "",
     startingDate: (new Date()).toISOString().split('T')[0],
@@ -231,6 +234,8 @@ export function useAdminLogic() {
     }
   };
 
+//generacion de oferta
+
   const handleGenerateOfferIA = async (data) => {
     const response = await fetch(
       "https://konecta-2.onrender.com/api/v1/prediction/d0c5306d-38d2-44e5-ad71-4e9b1d4e6963",
@@ -244,11 +249,14 @@ export function useAdminLogic() {
     )
     .then(res => res.json())
     .then(resp => {
-      console.log(JSON.parse(resp))
+      console.log(" generacion handle Generate",JSON.parse(resp))
+
       setIaOfferDataResponse(resp)})
     .catch(e => console.error(e));
   }
   
+
+
   const filterDataByDate = (data, start, end) => {
     const startDate = new Date(start)
     const endDate = new Date(end)
@@ -266,6 +274,8 @@ export function useAdminLogic() {
   }
 
 
+
+// create offer
   const handleCreateOffer = async (data) => {
     console.log(data)
     let config = {
@@ -283,6 +293,7 @@ export function useAdminLogic() {
     .catch(error => console.error(error));
   };
  
+  // create process DB
   const handleCreateProcessDB = async (data) => {
     let config = {
       method: 'post',
@@ -299,6 +310,7 @@ export function useAdminLogic() {
     .catch(error => console.error(error));
   };
 
+  // create process Evaluar
     const handleCreateProcessEvaluar = (data) => async (user, pass) => {
       try {
             const res = await axios.post('https://iezopofihj.execute-api.us-east-1.amazonaws.com/dev/login', {
