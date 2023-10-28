@@ -1,6 +1,7 @@
-import { Button, Card, CardActions, CardContent, CardMedia, Typography } from '@mui/material'
+/* eslint-disable react/prop-types */
+/* eslint-disable no-unused-vars */
+import { Button, Card, CardActions, CardContent, Typography } from '@mui/material'
 import { pink, blue } from '@mui/material/colors'
-import React from 'react'
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import AccessibleIcon from '@mui/icons-material/Accessible';

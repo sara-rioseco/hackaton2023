@@ -4,7 +4,7 @@ import './form-grid.css'
 //React
 import { useCallback, useEffect, useState, } from 'react';
 // Custom hooks
-import { usePostLogic } from '../../utils/post';
+import { useAdminLogic } from '../../utils/admin';
 // Components
 import Button from '../button/button';
 import FormDate from '../formDate/form-date'
@@ -19,6 +19,11 @@ export default function FormGrid() {
     setNotValidForm,
     formData,
     offerData,
+    iaOfferDataResponse,
+    offerDataForIA,
+    setFormData,
+    setOfferData,
+    setIaOfferDataResponse,
     handleFieldChange,
     activeStartingDate, setActiveStartingDate,
     activeClosingDate, setActiveClosingDate,
@@ -29,8 +34,9 @@ export default function FormGrid() {
     handleCreateProcessButtonClick,
     handleCreateProcessDB,
     handleCreateProcessEvaluar,
-    handleGenerateOfferIA
-  } = usePostLogic();
+    handleGenerateOfferIA,
+    handleCreateOffer,
+  } = useAdminLogic();
 
 useEffect(()=> {}, [activeClosingDate, activeStartingDate, activeTrainingDate])
 
@@ -50,9 +56,6 @@ const isValidForm = (data) => {
   const result = Object.values(data).includes(null || "")
   return result
 }
-
-const jsonFormData = () => JSON.stringify(formData, null, 2)
-const jsonOfferData = () => JSON.stringify(offerData, null, 2)
 
   return (
     <>
@@ -310,9 +313,8 @@ const jsonOfferData = () => JSON.stringify(offerData, null, 2)
         </div>
         <div className="item33">
           <Button label="Generar Oferta" classButton='createOfferButton' disabled={notValidForm} onClick={() => {
-            handleGenerateOfferIA(jsonOfferData()).then(res => console.log(res))
-/*             handleCreateProcessDB(jsonFormData()) */
-            }}/>
+            handleGenerateOfferIA(offerDataForIA)
+          }}/>
         </div>
       </div>
     </>

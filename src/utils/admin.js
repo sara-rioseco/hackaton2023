@@ -1,16 +1,19 @@
 /* eslint-disable no-unused-vars */
 // Hooks
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 // Libraries
 import axios from 'axios';
-
+import dayjs from 'dayjs';
 // Login
 
-export function usePostLogic() {
+export function useAdminLogic() {
   const navigate = useNavigate();
+  const [startValue, setStartValue] = useState(dayjs(new Date()));
+  const [endValue, setEndValue] = useState(dayjs('2023-12-31'));
   const [errorLabel, setErrorLabel] = useState('');
   const [notValidForm, setNotValidForm] = useState(true);
+  const [iaOfferDataResponse, setIaOfferDataResponse ] = useState(null);
   const [activeStartingDate, setActiveStartingDate] = useState(new Date())
   const [activeClosingDate, setActiveClosingDate] = useState(new Date(new Date().getTime()+(7*24*60*60*1000)))
   const [activeTrainingDate, setActiveTrainingDate] = useState(new Date(new Date().getTime()+(10*24*60*60*1000)))
@@ -63,8 +66,13 @@ export function usePostLogic() {
     typeWork: "",
     category: "",
     turn: ""
-  })
+  });
+ const [offerDataForIA, setOfferDataForIA ] = useState(null);
+  useEffect (()=> {
+    setOfferDataForIA( { question: offerData})
+  }, [offerData])
 
+  
   const token = localStorage.getItem('accessToken');
   const userId = localStorage.getItem('userId');
   const role = localStorage.getItem('role');
@@ -72,7 +80,7 @@ export function usePostLogic() {
   const handleSideBarButtonClick = (type) => {
     if (type) {
       if (type === "Convocatorias") {
-        navigate('/post');
+        navigate('/admin');
       }
       if (type === "Postulantes") {
         navigate('/applicants');
@@ -226,18 +234,54 @@ export function usePostLogic() {
   const handleGenerateOfferIA = async (data) => {
     const response = await fetch(
       "https://konecta-2.onrender.com/api/v1/prediction/d0c5306d-38d2-44e5-ad71-4e9b1d4e6963",
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify(data)
-      }
-    );
-    const result = await response.json();
-    return result;
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify(data)
+        }
+    )
+    .then(res => res.json())
+    .then(resp => {
+      console.log(JSON.parse(resp))
+      setIaOfferDataResponse(resp)})
+    .catch(e => console.error(e));
   }
-    
+  
+  const filterDataByDate = (data, start, end) => {
+    const startDate = new Date(start)
+    const endDate = new Date(end)
+    data.filter((item) => {
+      if ('Postulación' in item) {
+        return item.Postulación >= startDate && item.Postulación <= endDate
+      }
+      if ('Fecha Inicio' in item) {
+        return item[`Fecha Inicio`] >= startDate && item[`Fecha Fin`] <= endDate
+      }
+      else {
+        console.log('no se encontraron coincidencias')
+      }
+    })
+  }
+
+
+  const handleCreateOffer = async (data) => {
+    console.log(data)
+    let config = {
+      method: 'post',
+      maxBodyLength: Infinity,
+      url: 'https://iezopofihj.execute-api.us-east-1.amazonaws.com/dev/offers',
+      headers: { 
+        'Content-Type': 'application/json'
+      },
+      data: data
+    };
+    axios(config).then((response) => {
+      console.log(JSON.stringify(response.data));
+    })
+    .catch(error => console.error(error));
+  };
  
   const handleCreateProcessDB = async (data) => {
     let config = {
@@ -264,25 +308,29 @@ export function usePostLogic() {
             return res.data.data
           } catch (error) {
             console.error(error.response.data)
-            navigate('/post');	
+            navigate('/admin');	
           }
       };
 
     return {
-    notValidForm, 
-    setNotValidForm,
-    activeStartingDate, setActiveStartingDate,
-    activeClosingDate, setActiveClosingDate,
-    activeTrainingDate, setActiveTrainingDate,
-    handleActiveDate,
-    formData,
-    setFormData,
-    handleFieldChange,
-    errorLabel,
-    setErrorLabel,
-    handleSideBarButtonClick,
-    handleCreateProcessDB,
-    handleCreateProcessEvaluar,
-    handleGenerateOfferIA
+      notValidForm, setNotValidForm,
+      activeStartingDate, setActiveStartingDate,
+      activeClosingDate, setActiveClosingDate,
+      activeTrainingDate, setActiveTrainingDate,
+      formData, setFormData,
+      iaOfferDataResponse, setIaOfferDataResponse,
+      offerData, setOfferData,
+      errorLabel, setErrorLabel,
+      handleFieldChange,
+      handleActiveDate,
+      handleSideBarButtonClick,
+      handleGenerateOfferIA,
+      handleCreateOffer,
+      handleCreateProcessDB,
+      handleCreateProcessEvaluar,
+      filterDataByDate,
+      offerDataForIA, setOfferDataForIA,
+      startValue, setStartValue,
+      endValue, setEndValue
   }
 }

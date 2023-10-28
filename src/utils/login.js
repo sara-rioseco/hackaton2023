@@ -68,7 +68,7 @@ export function useLoginLogic() {
         localStorage.setItem('role', data.Userdata.role);
         localStorage.setItem('name', data.Userdata.name);
         localStorage.setItem('lastname', data.Userdata.lastname);
-        data.Userdata.role === 'Admin' && navigate('/post');
+        data.Userdata.role === 'Admin' && navigate('/admin');
       }
     } catch (error) {
       console.error(error)
