@@ -38,7 +38,7 @@ function CustomizedProgressBars({value}) {
   );
 }
 
-export default function ListTable() {
+export default function ProcessListTable() {
   const [data, setData] = useState(null);
   const [search, setSearch] = useState(""); // Nuevo estado para la cadena de búsqueda
 

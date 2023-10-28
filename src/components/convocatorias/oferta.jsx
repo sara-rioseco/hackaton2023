@@ -5,7 +5,6 @@ import CustomCard from "./card-oferta";
 import { styled } from "@mui/system";
 import './oferta.css' 
 
-
 const OfferSection = styled("div")({
   display: "flex",
   flexDirection: "row",
@@ -26,13 +25,14 @@ export default function OfertaGenerate( { data }) {
   return (
       
         <OfferSection >
-          {response? (
-            <CustomCard data={response}></CustomCard>
-          ) : (
+          {!response && 
             <Typography variant="body2" color="textSecondary">
               Loading...
             </Typography>
-          )}
+          } {
+            !!response &&
+            <CustomCard data={response}></CustomCard>
+          }
         </OfferSection>
   );
 }

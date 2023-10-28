@@ -5,13 +5,9 @@
 import './form-date.css'
 // Assets
 import icon from '../../assets/icons/table/calendar.png'
-
 import { useEffect } from "react";
-
 import DatePicker, { registerLocale  } from "react-datepicker";
-
 import { useAdminLogic } from '../../utils/admin';
-
 import es from 'date-fns/locale/es';
 registerLocale('es', es)
 
@@ -21,10 +17,7 @@ const Icon = () => {
   );
 };
 
-
 export default function FormDate({label, classInputLabel, newDate, onDateChange}) {
-/*   const [date, setDate] = useState(null); */
-
   const { 
     activeStartingDate, 
     activeClosingDate, 
@@ -35,7 +28,6 @@ export default function FormDate({label, classInputLabel, newDate, onDateChange}
 
   const handleDateChange = (d) => {
     handleActiveDate(classInputLabel, d);
-    console.log(classInputLabel, d)
     handleFieldChange(classInputLabel, d);
     onDateChange(classInputLabel, d);
   };

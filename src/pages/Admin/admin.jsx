@@ -6,16 +6,26 @@ import { useAdminLogic } from '../../utils/admin'
 //React router
 import { useLocation } from 'react-router-dom'
 // Components
+import Button from '../../components/button/button'
 import SideBar from '../../components/sidebar/sidebar'
 import FormGrid from '../../components/formGrid/form-grid'
 import ListApplicants from '../ListApplicants/list-applicants'
 import OfertaGenerate from '/src/components/convocatorias/oferta'
-import ProcessList from '../ProcessList/process-list'
+import ProcessListTable from '../ProcessList/process-list'
+import { useEffect } from 'react'
 
 
 export default function Admin() {
-  const { iaOfferDataResponse, setIaOfferDataResponse } = useAdminLogic();
+  const { iaOfferDataResponse,
+    setIaOfferDataResponse, 
+    handleCreateOffer,
+    startValue, setStartValue, endValue, setEndValue
+  } = useAdminLogic();
   const location = useLocation();
+
+  useEffect(() => {
+  }, [iaOfferDataResponse])
+
     return (
     <>
       <div className='createPost'>
@@ -26,18 +36,26 @@ export default function Admin() {
           <div className='headerBar'></div>
           {location.pathname === "/admin" && (
             <div className='mainContent'>
-              <h2 className='title'>Crear Convocatorias</h2>
-              <h3 className='subtitle'>Convocatorias</h3>
+              <div className='mainContentUpperBar'>
+                <div className='mainContentTitleBar'>
+                  <h2 className='title'>Crear Convocatorias</h2>
+                  <h3 className='subtitle'>Convocatorias</h3>
+                </div>
+                <div  className='mainContentButton'>
+                <Button label="+ Crear IGC" classButton='createOfferButton' disabled={false} onClick={() => {
+                console.log(iaOfferDataResponse)}}/>
+                </div>
+              </div>
               <div className='gridOfferView'>
                 <FormGrid />
                 <OfertaGenerate data={iaOfferDataResponse}/>
               </div>
           </div>) }
           {location.pathname === "/applicants" && (
-            <ListApplicants />
+            <ListApplicants startValue={startValue} setStartValue={setStartValue} endValue={endValue} setEndValue={setEndValue}/>
           )}
           {location.pathname === "/listprocesses" && (
-            <ProcessList />
+            <ProcessListTable />
           )}
 
         </div>

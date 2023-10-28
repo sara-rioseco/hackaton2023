@@ -20,6 +20,7 @@ export default function FormGrid() {
     formData,
     offerData,
     iaOfferDataResponse,
+    offerDataForIA,
     setFormData,
     setOfferData,
     setIaOfferDataResponse,
@@ -33,7 +34,8 @@ export default function FormGrid() {
     handleCreateProcessButtonClick,
     handleCreateProcessDB,
     handleCreateProcessEvaluar,
-    handleGenerateOfferIA
+    handleGenerateOfferIA,
+    handleCreateOffer,
   } = useAdminLogic();
 
 useEffect(()=> {}, [activeClosingDate, activeStartingDate, activeTrainingDate])
@@ -54,9 +56,6 @@ const isValidForm = (data) => {
   const result = Object.values(data).includes(null || "")
   return result
 }
-
-const jsonFormData = () => JSON.stringify(formData, null, 2)
-const jsonOfferData = () => JSON.stringify(offerData, null, 2)
 
   return (
     <>
@@ -314,14 +313,8 @@ const jsonOfferData = () => JSON.stringify(offerData, null, 2)
         </div>
         <div className="item33">
           <Button label="Generar Oferta" classButton='createOfferButton' disabled={notValidForm} onClick={() => {
-            try { 
-              const res = handleGenerateOfferIA(jsonOfferData())
-              setIaOfferDataResponse(res)
-            } catch (e) {
-              console.error(e)
-            } finally {
-              console.log(iaOfferDataResponse)
-            }}}/>
+            handleGenerateOfferIA(offerDataForIA)
+          }}/>
         </div>
       </div>
     </>
