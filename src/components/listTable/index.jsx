@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import {
   Table,
   TableBody,
@@ -24,8 +24,8 @@ export default function ListTable() {
   const [search, setSearch] = useState("");
   const [dataapi, setDataapi] = useState(null);
    // Nuevo estado para la cadena de búsqueda
+   const getAllApplicants = () => {
 
-  useEffect(() => {
     fetch(
       "https://iezopofihj.execute-api.us-east-1.amazonaws.com/dev/applicants?startDate=2023-10-05&endDate=2023-10-05"
     )
@@ -53,6 +53,11 @@ export default function ListTable() {
         setData(dataprocess);
       })
       .catch((error) => console.log("error", error));
+     
+   }
+
+  useEffect(() => {
+    getAllApplicants();
   }, []);
 
   if (!data) {
@@ -88,6 +93,95 @@ export default function ListTable() {
     });
   });
 
+
+  const sendNotificationConfirmadoCapa = (applicant) => {
+    var raw = {
+
+        recipientPhoneNumber: "+51910107346",
+        user: applicant.firstName,        
+        trainingDate: applicant.processInfo.trainingSchedule.trainingDateStart,
+        trainingHour: applicant.processInfo.trainingSchedule.trainingHourEnd,
+        trainer: applicant.processInfo.trainer,
+        sede: applicant.processInfo.campus.address + '' + applicant.processInfo.campus.name,
+      };
+    console.log("notification",raw)
+
+    var requestOptions = {
+      method: 'POST',
+      body: JSON.stringify(raw),
+     
+    };
+
+    
+
+
+    
+fetch(`https://iezopofihj.execute-api.us-east-1.amazonaws.com/dev/notifications/welcomeSin`, requestOptions)
+      .then(response => response.text())
+      .then(result => console.log("confirmacion capa",result))
+      .catch(error => console.log('error', error));
+  	
+  }
+
+  // Recontacto
+
+  const sendNotificationRecontacto = (applicant) => {
+
+    
+    var raw = {
+      recipientPhoneNumber: "+51910107346",
+      user: applicant.firstName,
+      job: applicant.offerName,
+      path: applicant.processInfo.evaluar.url.split("/").pop(),
+    };
+
+    console.log("Recontacto 213143",raw)
+
+    var requestOptions = {
+      method: 'POST',
+      body: JSON.stringify(raw),
+     
+    };
+
+    
+
+
+    
+fetch(`https://iezopofihj.execute-api.us-east-1.amazonaws.com/dev/notifications/reminder`, requestOptions)
+      .then(response => response.text())
+      .then(result => console.log("REcontacto",result))
+      .catch(error => console.log('error', error));
+  	
+  }
+
+  const sendNotificationNoApto = (applicant) => {
+
+    
+    var raw = {
+      recipientPhoneNumber: "+51910107346",
+      user: applicant.firstName,
+     
+    };
+
+    console.log("Rechazo 213143",raw)
+
+    var requestOptions = {
+      method: 'POST',
+      body: JSON.stringify(raw),
+     
+    };
+
+    
+
+
+    
+fetch(`https://iezopofihj.execute-api.us-east-1.amazonaws.com/dev/notifications/status`, requestOptions)
+      .then(response => response.text())
+      .then(result => console.log("rechazoo",result))
+      .catch(error => console.log('error', error));
+  	
+  }
+
   //post estado
   const handlePostState = (applicant) => {
     var raw = {status: applicant.status};
@@ -98,6 +192,8 @@ export default function ListTable() {
       body: JSON.stringify(raw),
      
     };
+
+
     
 fetch(`https://iezopofihj.execute-api.us-east-1.amazonaws.com/dev/applicants/update/${applicant.id}/document/${applicant.dni}`, requestOptions)
       .then(response => response.text())
@@ -162,6 +258,7 @@ fetch(`https://iezopofihj.execute-api.us-east-1.amazonaws.com/dev/applicants/upd
                         variant="outlined"
                         onChange={(e) => {
                           const updatedItem = { ...item, [key]: e.target.value };
+
                           console.log("updatedItem", updatedItem);
                          const applicantdata = dataapi.filter((item) => {
           
@@ -176,7 +273,19 @@ fetch(`https://iezopofihj.execute-api.us-east-1.amazonaws.com/dev/applicants/upd
                             dni: applicantdata[0].document,
                             status: e.target.value
                           }
+
                           handlePostState(aplicant);
+                          getAllApplicants();
+
+
+                          if(e.target.value === "confirmado a capa") {
+                           sendNotificationConfirmadoCapa(applicantdata[0]);
+                          } else if (e.target.value === "recontacto") {
+                            sendNotificationRecontacto(applicantdata[0]);
+                          } else{
+                            sendNotificationNoApto(applicantdata[0]);
+                          }
+                          console.log("estado select",e.target.value)
                         }}
                       >
                         <MenuItem value="recontacto">Recontacto</MenuItem>

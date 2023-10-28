@@ -6,15 +6,13 @@ import {
 } from "react-router-dom";
 import ErrorPage from './error-page';
 import Home from './pages/Home/home';
-
 import Post from './pages/Post/post';
-import Processes from './pages/Processes/processes';
-
-
-import ListApplicants from './pages/ListApplicants/list-applicants';
-import ProcessList from './pages/ProcessList/process-list';
+/* import ListApplicants from './pages/ListApplicants/list-applicants';
+import ProcessList from './pages/ProcessList/process-list'; */
 
 import OfertaGenerate from './components/convocatorias/oferta'
+
+
 import IconBreadcrumbs from  './components/detalleApplicants/breadcrumbs';
 import StepperHorizontal from  './components/detalleApplicants/detalle';
 import Circular from './components/detalleApplicants/circular-progress';
@@ -30,7 +28,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/applicants",
-    element: <ListApplicants />,
+    element: <Post />,
     errorElement: <ErrorPage />,
   },
   {
@@ -39,13 +37,8 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage />,
   },
   {
-    path: "/processes",
-    element: <Processes />,
-    errorElement: <ErrorPage />,
-  },
-  {
     path: "/listprocesses",
-    element: <ProcessList />,
+    element: <Post />,
     errorElement: <ErrorPage />,
   },
   {
