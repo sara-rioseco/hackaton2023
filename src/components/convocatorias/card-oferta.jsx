@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React from "react";
 import {
     Card,
@@ -9,11 +10,10 @@ import {
     ListItem,
     ListItemText,
 } from "@mui/material";
-import { styled } from "@mui/system";
+import { Container, styled } from "@mui/system";
 import { RowingOutlined } from "@mui/icons-material";
 import './oferta.css'
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
-import AppRegistrationOutlinedIcon from '@mui/icons-material/AppRegistrationOutlined';
 
 const TopSection = styled(Typography)(({ theme }) => ({
     display: "flex",
@@ -173,6 +173,7 @@ const SectionTitle = styled(Typography)(({ theme }) => ({
 
 function CustomCardComponent({ data }) {
     return (
+    
         <CustomCard>
             <CardContent sx={{ maxHeight: "814px" }}>
                 <TopSection >
@@ -189,10 +190,10 @@ function CustomCardComponent({ data }) {
                         <AccessTimeIcon sx={{ marginLeft: "7px" }}></AccessTimeIcon>
                         <StyledChip label="Full Time" color="primary" sx={{ padding: "0 7px 0 0" }} />
                     </TimerAndChip>
-                    <ModalityAndChip>
+                    {/* <ModalityAndChip>
                         <AppRegistrationOutlinedIcon sx={{ marginLeft: "7px" }}></AppRegistrationOutlinedIcon>
                         <StyledChip label="Presencial" color="primary" sx={{ padding: "0 7px 0 0" }} />
-                    </ModalityAndChip>
+                    </ModalityAndChip> */}
                 </Modality>
                 <DescriptionDiv>
                     <Description variant="body1">{data.description}</Description>
@@ -214,6 +215,7 @@ function CustomCardComponent({ data }) {
                 </DescriptionDiv>
             </CardContent>
         </CustomCard>
+      
     );
 }
 
