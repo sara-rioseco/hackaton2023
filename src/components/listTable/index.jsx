@@ -119,6 +119,7 @@ fetch(`https://iezopofihj.execute-api.us-east-1.amazonaws.com/dev/notifications/
       .then(result => console.log("confirmacion capa",result))
       .catch(error => console.log('error', error));
   
+  
   }
 
   // Recontacto
@@ -149,6 +150,7 @@ fetch(`https://iezopofihj.execute-api.us-east-1.amazonaws.com/dev/notifications/
       .then(response => response.text())
       .then(result => console.log("REcontacto",result))
       .catch(error => console.log('error', error));
+  
 
   }
 

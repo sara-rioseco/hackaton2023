@@ -1,0 +1,10 @@
+@import url('https://fonts.cdnfonts.com/css/public-sans');
+
+#doritos{
+    border-color: #C00040;
+}
+#doritos:hover {
+    background-color: #C00040; 
+    color: white; 
+    border-color: #C00040;
+}

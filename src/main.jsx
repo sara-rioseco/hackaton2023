@@ -7,17 +7,17 @@ import {
 import ErrorPage from './error-page';
 import Home from './pages/Home/home';
 import Post from './pages/Post/post';
+import ListApplicants from './pages/ListApplicants/list-applicants';
+import ProcessList from './pages/ProcessList/process-list';
 /* import ListApplicants from './pages/ListApplicants/list-applicants';
 import ProcessList from './pages/ProcessList/process-list'; */
 
 import OfertaGenerate from './components/convocatorias/oferta'
-
-
 import IconBreadcrumbs from  './components/detalleApplicants/breadcrumbs';
 import StepperHorizontal from  './components/detalleApplicants/detalle';
 import Circular from './components/detalleApplicants/circular-progress';
-
 import Dashboarr from './pages/DetalleApplicants/detalle-applicants';
+import Landing from './pages/Landing/landing';
 import './index.css'
 
 const router = createBrowserRouter([
@@ -66,8 +66,11 @@ const router = createBrowserRouter([
     element: <Circular />,
     errorElement: <ErrorPage />,
   },
- 
- 
+  {
+    path: "/landing",
+    element: <Landing />,
+    errorElement: <ErrorPage />,
+  },
 
 ]);
 
