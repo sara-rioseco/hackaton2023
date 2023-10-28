@@ -7,10 +7,11 @@ import axios from 'axios';
 
 // Login
 
-export function usePostLogic() {
+export function useAdminLogic() {
   const navigate = useNavigate();
   const [errorLabel, setErrorLabel] = useState('');
   const [notValidForm, setNotValidForm] = useState(true);
+  const [iaResponse, setIaResponse] = useState(null);
   const [activeStartingDate, setActiveStartingDate] = useState(new Date())
   const [activeClosingDate, setActiveClosingDate] = useState(new Date(new Date().getTime()+(7*24*60*60*1000)))
   const [activeTrainingDate, setActiveTrainingDate] = useState(new Date(new Date().getTime()+(10*24*60*60*1000)))
@@ -52,6 +53,8 @@ export function usePostLogic() {
     turn: ""
   });
 
+  const [iaOfferDataResponse, setIaOfferDataResponse ] = useState(null);
+
   const [ offerData, setOfferData ] = useState({
     title: "",
     campus: "",
@@ -63,7 +66,7 @@ export function usePostLogic() {
     typeWork: "",
     category: "",
     turn: ""
-  })
+  });
 
   const token = localStorage.getItem('accessToken');
   const userId = localStorage.getItem('userId');
@@ -72,7 +75,7 @@ export function usePostLogic() {
   const handleSideBarButtonClick = (type) => {
     if (type) {
       if (type === "Convocatorias") {
-        navigate('/post');
+        navigate('/admin');
       }
       if (type === "Postulantes") {
         navigate('/applicants');
@@ -235,9 +238,10 @@ export function usePostLogic() {
       }
     );
     const result = await response.json();
+    setIaOfferDataResponse(result)
     return result;
   }
-    
+  
  
   const handleCreateProcessDB = async (data) => {
     let config = {
@@ -264,7 +268,7 @@ export function usePostLogic() {
             return res.data.data
           } catch (error) {
             console.error(error.response.data)
-            navigate('/post');	
+            navigate('/admin');	
           }
       };
 
@@ -277,12 +281,18 @@ export function usePostLogic() {
     handleActiveDate,
     formData,
     setFormData,
+    iaOfferDataResponse,
+    setIaOfferDataResponse,
+    offerData, 
+    setOfferData,
     handleFieldChange,
     errorLabel,
     setErrorLabel,
     handleSideBarButtonClick,
     handleCreateProcessDB,
     handleCreateProcessEvaluar,
-    handleGenerateOfferIA
+    handleGenerateOfferIA,
+    iaResponse,
+    setIaResponse,
   }
 }
