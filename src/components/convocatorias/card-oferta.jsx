@@ -10,7 +10,7 @@ import {
     ListItem,
     ListItemText,
 } from "@mui/material";
-import { styled } from "@mui/system";
+import { Container, styled } from "@mui/system";
 import { RowingOutlined } from "@mui/icons-material";
 import './oferta.css'
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
@@ -173,6 +173,7 @@ const SectionTitle = styled(Typography)(({ theme }) => ({
 
 function CustomCardComponent({ data }) {
     return (
+    
         <CustomCard>
             <CardContent sx={{ maxHeight: "814px" }}>
                 <TopSection >
@@ -214,6 +215,7 @@ function CustomCardComponent({ data }) {
                 </DescriptionDiv>
             </CardContent>
         </CustomCard>
+      
     );
 }
 

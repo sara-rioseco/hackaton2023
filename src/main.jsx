@@ -17,7 +17,7 @@ import IconBreadcrumbs from  './components/detalleApplicants/breadcrumbs';
 import StepperHorizontal from  './components/detalleApplicants/detalle';
 import Circular from './components/detalleApplicants/circular-progress';
 import Dashboarr from './pages/DetalleApplicants/detalle-applicants';
-import Landing from './pages/Landing/landing';
+//import Landing from './pages/Landing/landing';
 import './index.css'
 
 const router = createBrowserRouter([
@@ -66,12 +66,12 @@ const router = createBrowserRouter([
     element: <Circular />,
     errorElement: <ErrorPage />,
   },
-  {
+  /*{
     path: "/landing",
     element: <Landing />,
     errorElement: <ErrorPage />,
   },
-
+*/
 ]);
 
 ReactDOM.createRoot(document.getElementById('root')).render(
