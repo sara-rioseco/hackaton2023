@@ -131,7 +131,6 @@ export default function ListTable() {
       .then(response => response.text())
       .then(result => console.log("confirmacion capa", result))
       .catch(error => console.log('error', error));
-
   }
 
   // Recontacto
