@@ -10,8 +10,8 @@ import ListTable from '../../components/listTable';
 export default function ListApplicants() {
   return (
       <div className='mainContent'>
-        <h2 className='title'>Lista de Postulantes</h2>
-        <h3 className='subtitle'>Procesos</h3>
+        <h2 style={{marginTop:'200px'}} className='title'>Lista de Postulantes</h2>
+        <h3 className='subtitle'>Postulantes</h3>
         <div>
     <Box sx={{ flexGrow: 1 }}>
       <ListTable />

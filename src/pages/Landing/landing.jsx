@@ -4,7 +4,7 @@ import 'slick-carousel/slick/slick-theme.css';
 import OfferCard from '../../components/cards/offertcards';
 import header from '/src/assets/img/header.png';
 import { Box, Stack } from '@mui/system';
-import { Chip, Paper, Typography } from '@mui/material';
+import { Chip, Typography } from '@mui/material';
 import { useTheme } from '@emotion/react';
 import { autoPlay } from 'react-swipeable-views-utils';
 import SwipeableViews from 'react-swipeable-views';
