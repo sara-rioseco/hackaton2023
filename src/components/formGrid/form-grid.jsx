@@ -18,6 +18,7 @@ export default function FormGrid() {
     notValidForm, 
     setNotValidForm,
     formData,
+    formDataForEvaluar,
     offerData,
     iaOfferDataResponse,
     offerDataForIA,
@@ -313,6 +314,8 @@ const isValidForm = (data) => {
         </div>
         <div className="item33">
           <Button label="Generar Oferta" classButton='createOfferButton' disabled={notValidForm} onClick={() => {
+            handleCreateProcessDB(formData);
+            handleCreateProcessEvaluar(formDataForEvaluar);
             handleGenerateOfferIA(offerDataForIA)
           }}/>
         </div>

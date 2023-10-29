@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { DemoContainer } from '@mui/x-date-pickers/internals/demo';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
@@ -6,9 +7,9 @@ import { Button } from '@mui/material';
 import { Search } from '@mui/icons-material';
 import { useAdminLogic } from "../../utils/admin";
 
-export default function DateFilter( data, startValue, setStartValue, endValue, setEndValue) {
+export default function DateFilter() {
 
-  const { filterDataByDate } = useAdminLogic();
+  const { startValue, endValue, setStartValue, setEndValue } = useAdminLogic();
 
   return (
 
@@ -35,7 +36,7 @@ export default function DateFilter( data, startValue, setStartValue, endValue, s
             variant="contained"
             style={{ padding: 20, width: '100%', height: 30, backgroundColor: "#002855", color: "#ffffff" }} 
             startIcon={<Search />} 
-            onClick={filterDataByDate(data, startValue, endValue)}
+/*             onClick={filterDataByDate(data, startValue, endValue)} */
           >
             Buscar
           </Button>

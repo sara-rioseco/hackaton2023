@@ -70,6 +70,16 @@ export function useAdminLogic() {
     category: "",
     turn: ""
   });
+
+  const [ formDataForEvaluar, setFormDataForEvaluar ] = useState({
+      processData: {
+          name: "",
+          startDate: new Date().getTime(),
+          endDate: (new Date().getTime())+(2*24*60*60*1000)
+      },
+      profileId: 19398
+  })
+
  const [offerDataForIA, setOfferDataForIA ] = useState(null);
   useEffect (()=> {
     setOfferDataForIA( { question: offerData})
@@ -98,19 +108,20 @@ export function useAdminLogic() {
 
   const handleFieldChange = (field, event) => {
     const newFormData = {...formData, trainingSchedule: {...formData.trainingSchedule}, processSchedule: {...formData.processSchedule}, campus: {...formData.campus}}
+    const newformDataForEvaluar = {...formDataForEvaluar, processData: {...formDataForEvaluar.processData}}
     if (field === 'igc-name') {
       setFormData({ ...newFormData, processName: event.target.value });
       setOfferData({...offerData, title: event.target.value})
+      setFormDataForEvaluar({...newformDataForEvaluar, processData: { name : event.target.value }})
       console.log(event.target.value)
     } 
     if (field === 'starting-date') {
-      const d = event.toISOString().split('T')[0]
-      setFormData({ ...newFormData, startingDate: d });
-      console.log(`handle field change -> ${d}`);
+      setFormData({ ...newFormData, startingDate: event });
+      console.log('handle field change ->', event, event.getTime());
     }
     if (field === 'closing-date') {
       setFormData({ ...newFormData, closingDate: event});
-      console.log('handle field change ->', event.toISOString().split('T')[0]);
+      console.log('handle field change ->', event, event.getTime());
     } 
     if (field === 'profile-name') {
       setFormData({ ...newFormData, profileName: event.value });
@@ -257,7 +268,7 @@ export function useAdminLogic() {
   
 
 
-  const filterDataByDate = (data, start, end) => {
+/*   const filterDataByDate = (data, start, end) => {
     const startDate = new Date(start)
     const endDate = new Date(end)
     data.filter((item) => {
@@ -271,7 +282,7 @@ export function useAdminLogic() {
         console.log('no se encontraron')
       }
     })
-  }
+  } */
 
 
 
@@ -311,18 +322,31 @@ export function useAdminLogic() {
   };
 
   // create process Evaluar
-    const handleCreateProcessEvaluar = (data) => async (user, pass) => {
-      try {
-            const res = await axios.post('https://iezopofihj.execute-api.us-east-1.amazonaws.com/dev/login', {
-              username: user,
-              password: pass,
-            });
-            return res.data.data
-          } catch (error) {
-            console.error(error.response.data)
-            navigate('/admin');	
-          }
+    const handleCreateProcessEvaluar = async (data) => {
+      const raw = JSON.stringify({
+        "processData": {
+          "name": "TEST-00532586",
+          "startDate": new Date().getTime(),
+          "endDate": (new Date().getTime())+(2*24*60*60*1000)
+        },
+        "profileId": 19398
+      });
+
+      var myHeaders = new Headers();
+      myHeaders.append("Content-Type", "application/json");
+      
+      var requestOptions = {
+        method: 'POST',
+        headers: myHeaders,
+        body: raw,
+        redirect: 'follow'
       };
+      
+      fetch("https://iezopofihj.execute-api.us-east-1.amazonaws.com/dev/evaluar/process", requestOptions)
+        .then(response => response.text())
+        .then(result => console.log(result))
+        .catch(error => console.log('error', error));
+    };
 
     return {
       notValidForm, setNotValidForm,
@@ -340,7 +364,7 @@ export function useAdminLogic() {
       handleCreateOffer,
       handleCreateProcessDB,
       handleCreateProcessEvaluar,
-      filterDataByDate,
+/*       filterDataByDate, */
       offerDataForIA, setOfferDataForIA,
       startValue, setStartValue,
       endValue, setEndValue

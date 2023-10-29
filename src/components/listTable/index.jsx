@@ -16,7 +16,7 @@ import { Search } from "@mui/icons-material";
 import { Select, MenuItem } from "@mui/material";
 import DateFilter from "../../components/formDate/date-filter";
 
-export default function ListTable(  startValue, setStartValue, endValue, setEndValue ) {
+export default function ListTable() {
   const [data, setData] = useState(null);
   const [search, setSearch] = useState("");
   const [dataapi, setDataapi] = useState(null);
@@ -203,7 +203,7 @@ export default function ListTable(  startValue, setStartValue, endValue, setEndV
     <div>
       <Grid my={3} container spacing={2}>
         <Grid display= 'flex' alignItems={1} item xs={7}>
-          <DateFilter data={filteredData} startValue={startValue} setStartValue={setStartValue} endValue={endValue} setEndValue={setEndValue}/>
+          <DateFilter />
         </Grid>
 
         <Grid my={1} item xs={5}>
