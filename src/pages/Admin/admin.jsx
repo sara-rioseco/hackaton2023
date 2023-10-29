@@ -12,19 +12,23 @@ import FormGrid from '../../components/formGrid/form-grid'
 import ListApplicants from '../ListApplicants/list-applicants'
 import OfertaGenerate from '/src/components/convocatorias/oferta'
 import ProcessListTable from '../ProcessList/process-list'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 
 
 export default function Admin() {
   const { iaOfferDataResponse,
     setIaOfferDataResponse, 
     handleCreateOffer,
+    handleGenerateOfferIA,
     startValue, setStartValue, endValue, setEndValue
   } = useAdminLogic();
   const location = useLocation();
-
+  
   useEffect(() => {
+    console.log('aqui', iaOfferDataResponse)
   }, [iaOfferDataResponse])
+
+  const [ oferta, setOferta] = useState(null);
 
     return (
     <>
@@ -47,8 +51,8 @@ export default function Admin() {
                 </div>
               </div>
               <div className='gridOfferView'>
-                <FormGrid />
-                <OfertaGenerate data={iaOfferDataResponse}/>
+                <FormGrid setOferta={setOferta} />
+                <OfertaGenerate data={oferta}/>
               </div>
           </div>) }
           {location.pathname === "/applicants" && (

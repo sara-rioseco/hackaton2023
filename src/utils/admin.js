@@ -248,7 +248,7 @@ export function useAdminLogic() {
 //generacion de oferta
 
   const handleGenerateOfferIA = async (data) => {
-    const response = await fetch(
+    let response = await fetch(
       "https://konecta-2.onrender.com/api/v1/prediction/d0c5306d-38d2-44e5-ad71-4e9b1d4e6963",
         {
           method: "POST",
@@ -258,12 +258,9 @@ export function useAdminLogic() {
           body: JSON.stringify(data)
         }
     )
-    .then(res => res.json())
-    .then(resp => {
-      console.log(" generacion handle Generate",JSON.parse(resp))
-
-      setIaOfferDataResponse(resp)})
-    .catch(e => console.error(e));
+    response = await response.json()
+    response = JSON.parse(response)
+    return response
   }
   
 
@@ -325,7 +322,7 @@ export function useAdminLogic() {
     const handleCreateProcessEvaluar = async (data) => {
       const raw = JSON.stringify({
         "processData": {
-          "name": "TEST-00532586",
+          "name": "TEST-0053286523126",
           "startDate": new Date().getTime(),
           "endDate": (new Date().getTime())+(2*24*60*60*1000)
         },

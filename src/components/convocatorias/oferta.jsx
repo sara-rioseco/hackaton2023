@@ -17,21 +17,18 @@ const OfferSection = styled("div")({
 
 export default function OfertaGenerate( { data }) {
   const [response, setResponse] = useState(null);
-
+  console.log('data aquí', data)
   useEffect(() => {
-      data ? setResponse(JSON.parse(data)) : console.log('no hay data')
+      data ? setResponse(data) : console.log('no hay data')
   }, [data]);
 
   return (
       
         <OfferSection >
-          {!response && 
+          {response ? <CustomCard data={response}></CustomCard> : 
             <Typography variant="body2" color="textSecondary">
               Loading...
             </Typography>
-          } {
-            !!response &&
-            <CustomCard data={response}></CustomCard>
           }
         </OfferSection>
   );

@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
 // CSS
 import './form-grid.css'
@@ -13,7 +14,7 @@ import FormDropdown from '../formDropdown/form-dropdown'
 import FormTime from '../formTime/form-time'
 import FormToggle from '../formToggle/form-toggle'
 
-export default function FormGrid() {
+export default function FormGrid( {setOferta}  ) {
   const {
     notValidForm, 
     setNotValidForm,
@@ -313,10 +314,11 @@ const isValidForm = (data) => {
           <FormToggle label='Personas con discapacidad'/>
         </div>
         <div className="item33">
-          <Button label="Generar Oferta" classButton='createOfferButton' disabled={notValidForm} onClick={() => {
+          <Button label="Generar Oferta" classButton='createOfferButton' disabled={notValidForm} onClick={async () => {
             handleCreateProcessDB(formData);
             handleCreateProcessEvaluar(formDataForEvaluar);
-            handleGenerateOfferIA(offerDataForIA)
+            const iaResponse = await handleGenerateOfferIA(offerDataForIA);
+            setOferta(iaResponse);
           }}/>
         </div>
       </div>
