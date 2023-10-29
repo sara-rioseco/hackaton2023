@@ -68,8 +68,8 @@ export default function ListTable() {
               </span>
               <CustomizedProgressBars value={(item.suitables/
               (item.applicantsNumber+item.reducerNumber))*100}>
-              
               </CustomizedProgressBars>
+              
               {Math.round((item.suitables/
               (item.applicantsNumber+item.reducerNumber))*100)}%
               </Box>
