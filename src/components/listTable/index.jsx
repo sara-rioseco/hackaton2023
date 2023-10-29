@@ -11,10 +11,13 @@ import {
   Grid,
   InputAdornment,
   IconButton,
+  Chip,
 } from "@mui/material";
 import { Search } from "@mui/icons-material";
 import { Select, MenuItem } from "@mui/material";
 import DateFilter from "../../components/formDate/date-filter";
+import { Box, width } from "@mui/system";
+import { red, green } from '@mui/material/colors'
 
 export default function ListTable() {
   const [data, setData] = useState(null);
@@ -25,7 +28,7 @@ export default function ListTable() {
   const getAllApplicants = () => {
 
     fetch(
-      "https://iezopofihj.execute-api.us-east-1.amazonaws.com/dev/applicants?startDate=2023-10-05&endDate=2023-10-05"
+      "https://iezopofihj.execute-api.us-east-1.amazonaws.com/dev/applicants?startDate=2023-10-05&endDate=2023-10-30"
     )
       .then((response) => response.json())
       .then((result) => {
@@ -42,11 +45,22 @@ export default function ListTable() {
 
           "IGC de postulación": item.processName,
           "Titulo de la Oferta": item.offerName,
-          "Perfil de Oferta": item.profileName,
-          "Resultado Evaluación": item.suitables,
+          "Perfil de Oferta": item.processInfo.profileName,
+          "Resultado Evaluación": () => {
+            return (
+              <Box>
+                <span>
+
+                  {item.score}%
+
+                </span>
+                <Chipy value={item.score}>
+
+                </Chipy>
+              </Box>)
+          },
           "Estado de Postulacion": item.status,
         }));
-
 
         setData(dataprocess);
       })
@@ -168,10 +182,6 @@ export default function ListTable() {
 
     };
 
-
-
-
-
     fetch(`https://iezopofihj.execute-api.us-east-1.amazonaws.com/dev/notifications/status`, requestOptions)
       .then(response => response.text())
       .then(result => console.log("rechazoo", result))
@@ -202,7 +212,7 @@ export default function ListTable() {
   return (
     <div>
       <Grid my={3} container spacing={2}>
-        <Grid display= 'flex' alignItems={1} item xs={7}>
+        <Grid display='flex' alignItems={1} item xs={7}>
           <DateFilter />
         </Grid>
 
@@ -243,14 +253,13 @@ export default function ListTable() {
             </TableRow>
           </TableHead>
 
-
           <TableBody>
             {filteredData.map((item, index) => (
               <TableRow key={index}>
                 {Object.keys(item).map((key) => (
                   <TableCell key={key}>
                     {key === "Estado de Postulacion" ? (
-                      <Select
+                      <Select sx={{ width: 180 }}
                         value={item[key]}
                         variant="outlined"
                         onChange={(e) => {
@@ -282,16 +291,18 @@ export default function ListTable() {
                           } else {
                             sendNotificationNoApto(applicantdata[0]);
                           }
-                          console.log("estado select", e.target.value)
+                          //console.log("estado select", e.target.value)
                         }}
                       >
                         <MenuItem value="recontacto">Recontacto</MenuItem>
                         <MenuItem value="confirmado a capa">Confirmado a Capa</MenuItem>
+                        <MenuItem value="registrado">Registrado</MenuItem>
                         <MenuItem value="no apto">No apto</MenuItem>
                       </Select>
                     ) : (
                       typeof item[key] === "object" ? item[key].value : item[key]
                     )}
+                    {typeof item[key] === "function" && item[key]()}
                   </TableCell>
                 ))}
               </TableRow>
@@ -300,5 +311,69 @@ export default function ListTable() {
         </Table>
       </TableContainer>
     </div>
+  );
+}
+
+
+function Chipy({ value }) {
+  console.log('value:', value);
+  const [estado, setEstado] = useState('')
+
+  function CalcularStatus() {
+    if (value >= 90) {
+      setEstado('Adecuado')
+    }
+    else if (value >= 70 && value <= 89) {
+      setEstado('Cercano')
+    }
+    else if (value >= 0 && value <= 69) {
+      setEstado('Alejado')
+    }
+    else if (value === 0 ) {
+      setEstado('Pendiente')
+    }
+  }
+  function CalcularColor() {
+    if (value >= 90) {
+      return '#8fe674db'
+    }
+    else if (value >= 70 && value <= 89) {
+      return  '#f8da7e'
+    }
+    else if (value >= 0 && value <= 69) {
+      return '#fa817d'
+    }
+    else if (value === 0 ) {
+      return '#919eab'
+    }
+  }
+  useEffect(() => {
+    CalcularStatus();
+  }, []
+  )
+  function CalcularLetraColor() {
+    if (value >= 90) {
+      return '#289407db'
+    }
+    else if (value >= 70 && value <= 89) {
+      return  '#b38702'
+    }
+    else if (value >= 0 && value <= 69) {
+      return '#d71711'
+    }
+    else if (value === 0 ) {
+      return '#312a2a'
+    }
+  }
+
+  return (
+    <Chip sx={{ width: '70%', color: CalcularLetraColor(),
+      "& .MuiChip-colorPrimary": {
+        backgroundColor: "red",
+      },
+      "& .MuiChip-ColorPrimary": {
+        backgroundColor: CalcularColor(),
+      }, bgcolor: CalcularColor(),
+    }} value={value} label={estado} />
   );
 }
