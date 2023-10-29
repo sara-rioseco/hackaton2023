@@ -12,7 +12,6 @@ export function useAdminLogic() {
   const [startValue, setStartValue] = useState(dayjs(new Date()));
   const [endValue, setEndValue] = useState(dayjs('2023-12-31'));
   const [errorLabel, setErrorLabel] = useState('');
-  const [notValidForm, setNotValidForm] = useState(true);
   const [iaOfferDataResponse, setIaOfferDataResponse ] = useState(null);
 
   //fechas por defecto
@@ -346,7 +345,6 @@ export function useAdminLogic() {
     };
 
     return {
-      notValidForm, setNotValidForm,
       activeStartingDate, setActiveStartingDate,
       activeClosingDate, setActiveClosingDate,
       activeTrainingDate, setActiveTrainingDate,

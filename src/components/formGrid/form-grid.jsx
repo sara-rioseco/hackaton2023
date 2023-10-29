@@ -16,8 +16,6 @@ import FormToggle from '../formToggle/form-toggle'
 
 export default function FormGrid( {setOferta}  ) {
   const {
-    notValidForm, 
-    setNotValidForm,
     formData,
     formDataForEvaluar,
     offerData,
@@ -41,6 +39,8 @@ export default function FormGrid( {setOferta}  ) {
   } = useAdminLogic();
 
 useEffect(()=> {}, [activeClosingDate, activeStartingDate, activeTrainingDate])
+
+const [notValidForm, setNotValidForm] = useState(true);
 
 const handleDateChangeInFormDate = (inputLabel, date) => {
   // Update the parent component's state with the data received from the child.
