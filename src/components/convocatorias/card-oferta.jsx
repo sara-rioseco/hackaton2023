@@ -172,6 +172,8 @@ const SectionTitle = styled(Typography)(({ theme }) => ({
     marginTop: theme.spacing(2),
 }));
 
+
+
 function CustomCardComponent({ data }) {
     return (
         <CustomCard>
@@ -189,23 +191,24 @@ function CustomCardComponent({ data }) {
                     <TimerAndChip >
                         <AccessTimeIcon sx={{ marginLeft: "7px" }}></AccessTimeIcon>
                         <StyledChip label="Full Time" color="primary" sx={{ padding: "0 7px 0 0" }} />
-                    </TimerAndChip>
-                </Modality>
-                <DescriptionDiv>
-                    <Description variant="body1">{data.description}</Description>
-                    {data.we_offer.split("\n").map((item, key) => (
-                        <>{key === 0 ? <SectionTitle variant="h6">{item.trim()}</SectionTitle> : <Text sx={{ fontWeight: 300, lineHeight: "10px" }} key={key}>{item.trim()}</Text>}<br></br></>
-                    ))}
+                    </TimerAndChip><br></br>
+                </Modality><br></br>                <DescriptionDiv>
+                    <Description variant="body1">{data.description}</Description><br></br>
+                    <Title variant="h5">Cursos</Title>
                     {data.courses.split("\n").map((item, key) => (
-                        <>{key === 0 ? <SectionTitle variant="h6">{item.trim()}</SectionTitle> : <Text sx={{ fontWeight: 300, lineHeight: "10px" }} key={key}>{item.trim()}</Text>}<br></br></>
-
+                        <>{key === 0 ? <Description variant="body1">{item.trim()}</Description> : <Text sx={{ fontWeight: 400, lineHeight: "10px", color:"#373737", fontSize: "14px" }} key={key}>{item.trim()}</Text>}<br></br></>
                     ))}
+                    <Title variant="h5">Carreras Afines</Title>
                     {data.similar_careers.split("\n").map((item, key) => (
-                        <>{key === 0 ? <SectionTitle variant="h6">{item.trim()}</SectionTitle> : <Text sx={{ fontWeight: 300, lineHeight: "10px" }} key={key}>{item.trim()}</Text>}<br></br></>
-
+                        <>{key === 0 ? <Description variant="body1">{item.trim()}</Description> : <Text sx={{ fontWeight: 400, lineHeight: "10px", color:"#373737", fontSize: "14px"  }} key={key}>{item.trim()}</Text>}<br></br></>
                     ))}
+                    <Title variant="h5">Te ofrecemos</Title>
+                    {data.we_offer.split("\n").map((item, key) => (
+                        <>{key === 0 ? <Description variant="body1">{item.trim()}</Description> : <Text sx={{ fontWeight: 400, lineHeight: "10px", color:"#373737", fontSize: "14px"  }} key={key}>{item.trim()}</Text>}<br></br></>
+                    ))}
+                    <Title variant="h5">Requisitos</Title>
                     {data.requirements.split("\n").map((item, key) => (
-                        <>{key === 0 ? <SectionTitle variant="h6">{item.trim()}</SectionTitle> : <Text sx={{ fontWeight: 300, lineHeight: "10px" }} key={key}>{item.trim()}</Text>}<br></br></>
+                        <>{key === 0 ? <Description variant="body1">{item.trim()}</Description> : <Text sx={{ fontWeight: 400, lineHeight: "10px", color:"#373737", fontSize: "14px"  }} key={key}>{item.trim()}</Text>}<br></br></>
 
                     ))}
                 </DescriptionDiv>

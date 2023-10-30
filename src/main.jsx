@@ -9,7 +9,6 @@ import Home from './pages/Home/home';
 import Admin from './pages/Admin/admin';
 import Landing from './pages/Landing/landing';
 import Dashboarr from './pages/DetalleApplicants/detalle-applicants';
-;
 import './index.css'
 
 const router = createBrowserRouter([

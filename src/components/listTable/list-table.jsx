@@ -96,7 +96,7 @@ export default function ListTable() {
   const sendNotificationConfirmadoCapa = (applicant) => {
     var raw = {
 
-      recipientPhoneNumber: "+51910107346",
+      recipientPhoneNumber: "+51993757755",
       user: applicant.firstName,
       trainingDate: applicant.processInfo.trainingSchedule.trainingDateStart,
       trainingHour: applicant.processInfo.trainingSchedule.trainingHourEnd,
@@ -127,7 +127,7 @@ export default function ListTable() {
 
 
     var raw = {
-      recipientPhoneNumber: "+51910107346",
+      recipientPhoneNumber: "+51993757755",
       user: applicant.firstName,
       job: applicant.offerName,
       path: applicant.processInfo.evaluar.url.split("/").pop(),
@@ -156,7 +156,7 @@ export default function ListTable() {
 
 
     var raw = {
-      recipientPhoneNumber: "+51910107346",
+      recipientPhoneNumber: "+51993757755",
       user: applicant.firstName,
 
     };
