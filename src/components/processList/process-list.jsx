@@ -134,11 +134,11 @@ export default function ProcessListTable() {
   return (
     <div>
       <Grid container my={5} spacing={2}>
-        <Grid item xs={6}>{}
+        <Grid item xs={7}>{}
           <DateFilter setDataFilteredByDate={setDataFilteredByDate} data={data} processList={true}/>
         </Grid>
 
-          <Grid my={1} item xs={6}>
+          <Grid my={1} item xs={5}>
             <TextField 
               label="Buscar por IGC, Cuenta, Servicio o Estado"
               value={search}

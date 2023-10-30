@@ -27,6 +27,7 @@ export default function DateFilter( { setDataFilteredByDate, setApplicantsFilter
             setStartValue(date)
           }}
           value={startValue}
+          style={{ width: '160px', height: '40px' }}
         />
         <DatePicker
           label="F. Fin"
@@ -34,20 +35,27 @@ export default function DateFilter( { setDataFilteredByDate, setApplicantsFilter
           format="YYYY-MM-DD"
           onChange={(date) => {
             setEndValue(date)
-        }}
-        />
-        <Button
-          variant="contained"
-          style={{ padding: 20, width: '100%', height: 30, backgroundColor: "#002855", color: "#ffffff" }} 
-          startIcon={<Search />} 
-          onClick={() => {
-            const response = filterDataByDate(data, startValue.$d, endValue.$d);
-            console.log(response)
-            processList ? setDataFilteredByDate(response) : setApplicantsFilteredByDate(response)
           }}
-        >
-          Buscar
-        </Button>
+          style={{ width: '160px', height: '40px' }}
+        />
+       <Button
+         variant="contained"
+         style={{
+           padding: 20,
+           width: 140,
+           height: 40,
+           backgroundColor: "#002855",
+           color: "#ffffff"
+         }} 
+         startIcon={<Search />} 
+         onClick={() => {
+           const response = filterDataByDate(data, startValue.$d, endValue.$d);
+           console.log(response)
+           processList ? setDataFilteredByDate(response) : setApplicantsFilteredByDate(response)
+         }}
+       >
+         Buscar
+       </Button>
       </DemoContainer>
     </LocalizationProvider>
   );

@@ -43,29 +43,21 @@ const handleButtonClick = () => {
                     {data.turn}
                 </Typography>
 
-                <Box display='flex'>
-                    <LocationOnIcon
-                        sx={{ color: pink[500] }} data-testid="LocationOnIcon">
-                    </LocationOnIcon>
-                    <Typography variant="body2" color="text.secondary">
-                        {data.campus}
+                <Box display='flex' justifyContent='space-between' style={{marginTop:'10px'}}>
+                    <Typography variant="body2" color="text.secondary" style={{ display: 'flex', alignItems: 'center' }}>
+                        <LocationOnIcon sx={{ color: pink[500], fontSize: 14 }} data-testid="LocationOnIcon" />
+                        <span style={{ marginLeft: '5px' }}>{data.campus}</span>
                     </Typography>
-
-                    <AccessTimeIcon
-                        sx={{ color: pink[500] }} data-testid="AccessTimeIcon">
-                    </AccessTimeIcon>
-                    <Typography variant="body2" color="text.secondary">
-                        Full time
+                    <Typography variant="body2" color="text.secondary" style={{ display: 'flex', alignItems: 'center' }}>
+                        <AccessTimeIcon sx={{ color: pink[500], fontSize: 14 }} data-testid="AccessTimeIcon" />
+                        <span style={{ marginLeft: '5px' }}>Full time</span>
                     </Typography>
-
-                    <AccessibleIcon
-                        sx={{ color: pink[500] }} data-testid="AccessibleIcon">
-                    </AccessibleIcon>
+                    <AccessibleIcon sx={{ color: pink[500], fontSize: '14px' }} data-testid="AccessibleIcon" />
                 </Box>
 
             </CardContent><CardActions sx={{ display: 'flex', justifyContent: 'center' }}>
-                <Button size="small" sx={{ bgcolor: '#191970', color: 'white' }}>Conoce más</Button>
-            </CardActions></Card>
+<Button size="small" sx={{ width: '80%', margin: '0 auto', background: 'linear-gradient(155deg, #00968F 16.03%, #615E9B 86.12%)', color: 'white' }}>Conoce más</Button>
+ </CardActions></Card>
     )
 }
 
