@@ -61,7 +61,7 @@ function SwipeableTextMobileStepper() {
   }, []);
   const styles = {
     container: {
-      backgroundImage: 'url("./src/assets/img/Inicial.png")',
+      backgroundImage: 'url("https://raw.githubusercontent.com/sara-rioseco/hackaton2023/main/src/assets/img/Inicial.png")',
       backgroundSize: 'cover',
       backgroundPosition: 'center',
       height: "600px",
