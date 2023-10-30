@@ -11,6 +11,9 @@ import { autoPlay } from 'react-swipeable-views-utils';
 import SwipeableViews from 'react-swipeable-views';
 import { pink } from '@mui/material/colors'
 
+import initializeChatbot from "../../utils/chat.js";
+
+
 const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
 
 const images = [
@@ -45,6 +48,8 @@ function Header() {
     );
 }
 
+
+
 function SwipeableTextMobileStepper() {
     const theme = useTheme();
     const [activeStep, setActiveStep] = React.useState(0);
@@ -54,9 +59,18 @@ function SwipeableTextMobileStepper() {
         setActiveStep(step)
     };
 
+//lamando al chat
+      useEffect(() => {
+        initializeChatbot();
+      }, []);
+
     return (
+
         <div>
+            
             <Header/>
+
+          
             <AutoPlaySwipeableViews
                 axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
                 index={activeStep}
