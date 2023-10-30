@@ -32,12 +32,12 @@ export default function Dashboard() {
       </Box>
       <Stack spacing={10}>
       <Grid container spacing={2}>
-        <Grid item xs={5}>
+        <Grid item xs={6}>
           <Item>
             <Circular />
           </Item>
         </Grid>
-        <Grid item xs={7}>
+        <Grid item xs={6}>
           <Item>
           <Formularioproceso />
           </Item>
