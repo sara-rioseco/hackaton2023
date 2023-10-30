@@ -1,16 +1,14 @@
+/* eslint-disable no-prototype-builtins */
 /* eslint-disable no-unused-vars */
 // Hooks
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 // Libraries
 import axios from 'axios';
-import dayjs from 'dayjs';
 // Login
 
 export function useAdminLogic() {
   const navigate = useNavigate();
-  const [startValue, setStartValue] = useState(dayjs(new Date()));
-  const [endValue, setEndValue] = useState(dayjs('2023-12-31'));
   const [errorLabel, setErrorLabel] = useState('');
   const [iaOfferDataResponse, setIaOfferDataResponse ] = useState(null);
 
@@ -111,12 +109,12 @@ export function useAdminLogic() {
     if (field === 'igc-name') {
       setFormData({ ...newFormData, processName: event.target.value });
       setOfferData({...offerData, title: event.target.value})
-      setFormDataForEvaluar({...newformDataForEvaluar, processData: { name : event.target.value }})
-      console.log(event.target.value)
+      setFormDataForEvaluar({...newformDataForEvaluar, processData: {...formDataForEvaluar.processData, name : event.target.value }})
+/*       console.log(event.target.value) */
     } 
     if (field === 'starting-date') {
       setFormData({ ...newFormData, startingDate: event });
-      console.log('handle field change ->', event, event.getTime());
+      console.log('handle field change ->', event, event.getTime()); 
     }
     if (field === 'closing-date') {
       setFormData({ ...newFormData, closingDate: event});
@@ -125,27 +123,27 @@ export function useAdminLogic() {
     if (field === 'profile-name') {
       setFormData({ ...newFormData, profileName: event.value });
       setOfferData({...offerData, category: event.value})
-      console.log(event.value)
+/*       console.log(event.value) */
     } 
     if (field === 'account') {
       setFormData({ ...newFormData, account: event.value });
-      console.log(event.value)
+/*       console.log(event.value) */
     } 
     if (field === 'status') {
       setFormData({ ...newFormData, status: event.value });
-      console.log(event.value)
+/*       console.log(event.value) */
     } 
     if (field === 'trainer') {
       setFormData({ ...newFormData, trainer: event.value });
-      console.log(event.value)
+/*       console.log(event.value) */
     } 
     if (field === 'training-time-start') {
       setFormData({ ...newFormData, trainingSchedule: {...newFormData.trainingSchedule, trainingHourStart: event.value }});
-      console.log(event.value)
+      console.log('handle field change ->', event.toISOString())
     } 
     if (field === 'training-time-end') {
       setFormData({ ...newFormData, trainingSchedule: {...newFormData.trainingSchedule, trainingHourEnd: event.value }});
-      console.log(event.value)
+      console.log('handle field change ->', event.toISOString())
     } 
     if (field === 'training-date') {
       setFormData({ ...newFormData, trainingSchedule: {...newFormData.trainingSchedule, trainingDateStart: event.toISOString().split('T')[0]}});
@@ -153,57 +151,57 @@ export function useAdminLogic() {
     } 
     if (field === 'training-modality') {
       setFormData({ ...newFormData, trainingModality: event.value });
-      console.log(event.value)
+/*       console.log(event.value) */
     } 
     if (field === 'training-weekend-day') {
       setFormData({ ...newFormData, trainingSchedule: {...newFormData.trainingSchedule, trainingWeekendDay: event.value }});
-      console.log(event.value)
+/*       console.log(event.value) */
     } 
     if (field === 'training-weekend-day-time-start') {
       setFormData({ ...newFormData, trainingSchedule: {...newFormData.trainingSchedule, trainingWeekendDayTimeStart: event.value }});
-      console.log(event.value)
+      console.log('handle field change ->', event.toISOString())
     } 
     if (field === 'training-weekend-day-time-end') {
       setFormData({ ...newFormData, trainingSchedule: {trainingWeekendDayTimeEnd: event.value }});
-      console.log(event.value)
+      console.log('handle field change ->', event.toISOString())
     } 
     if (field === 'process-modality') {
       setFormData({ ...newFormData, processModality: event.value });
       setOfferData({...offerData, modality: event.value})
       setOfferData({...offerData, typeWork: event.value})
-      console.log(event.value)
+/*       console.log(event.value) */
     } 
     if (field === 'process-weekend-day') {
       setFormData({ ...newFormData, processSchedule: {...newFormData.processSchedule, processWeekendDay : event.value} });
-      console.log(event.value)
+/*       console.log(event.value) */
     } 
     if (field === 'process-weekend-day-time-start') {
       setFormData({ ...newFormData, processSchedule: {...newFormData.processSchedule, processWeekendDayTimeStart : event.value} });
-      console.log(event.value)
+      console.log('handle field change ->', event.toISOString())
     } 
     if (field === 'process-weekend-day-time-end') {
       setFormData({ ...newFormData, processSchedule: {...newFormData.processSchedule, processWeekendDayTimeEnd : event.value} });
-      console.log(event.value)
+      console.log('handle field change ->', event.toISOString())
     } 
     if (field === 'process-time-start') {
       setFormData({ ...newFormData, processSchedule: {...newFormData.processSchedule, processWorkingHoursStart : event.value} });
-      console.log(event.value)
+      console.log('handle field change ->', event.toISOString())
     } 
     if (field === 'process-time-end') {
       setFormData({ ...newFormData, processSchedule: {...newFormData.processSchedule, processWorkingHoursEnd : event.value} });
-      console.log(event.value)
+      console.log('handle field change ->', event.toISOString())
     } 
     if (field === 'reason') {
       setFormData({ ...newFormData, reason: event.value });
-      console.log(event.value)
+/*       console.log(event.value) */
     } 
     if (field === 'applicants-number') {
       setFormData({ ...newFormData, applicantsNumber: Number(event.target.value) });
-      console.log(event.target.value)
+/*       console.log(event.target.value) */
     } 
     if (field === 'reducer-number') {
       setFormData({ ...newFormData, reducerNumber: Number(event.target.value) });
-      console.log(event.target.value)
+/*       console.log(event.target.value) */
     } 
     if (field === 'campus-name') {
       let campusAddress
@@ -218,16 +216,16 @@ export function useAdminLogic() {
       }
       setFormData({ ...newFormData, campus: { ...newFormData.campus,  name: event.value, address: campusAddress } })
       setOfferData({...offerData, campus: event.value})
-      console.log(`Sede: ${event.value}, Dirección: ${campusAddress}`)
+/*       console.log(`Sede: ${event.value}, Dirección: ${campusAddress}`) */
     } 
     if (field === 'service') {
       setFormData({ ...newFormData, service: event.value });
-      console.log(event.value)
+/*       console.log(event.value) */
     } 
     if (field === 'turn') {
       setFormData({ ...newFormData, turn: event.value });
       setOfferData({...offerData, turn: event.value})
-      console.log(event.value)
+/*       console.log(event.value) */
     } 
   };
 
@@ -263,28 +261,34 @@ export function useAdminLogic() {
   }
   
 
-
-/*   const filterDataByDate = (data, start, end) => {
-    const startDate = new Date(start)
-    const endDate = new Date(end)
-    data.filter((item) => {
-      if ('Postulación' in item) {
-        return item.Postulación >= startDate && item.Postulación <= endDate
+// filter data by start and end date
+  function filterDataByDate(data, start, end) {
+    if (!(start instanceof Date) || !(end instanceof Date)) {
+      throw new Error('Both start and end should be valid Date objects.');
+    }
+    const filteredData = data.filter(item => {
+      if (item.hasOwnProperty('Fecha Inicio') && (new Date(item[`Fecha Inicio`])) instanceof Date) {
+/*         console.log('item aquí 2', item) */
+        const fechaBusqueda = new Date(item[`Fecha Inicio`]);
+        return fechaBusqueda >= start && fechaBusqueda <= end;
+      } 
+      if (item.hasOwnProperty('Postulacion') && (new Date(item.Postulacion)) instanceof Date) {
+/*         console.log('item aquí 2', item) */
+        const fechaBusqueda = new Date(item.Postulacion);
+        return fechaBusqueda >= start && fechaBusqueda <= end;
       }
-      if ('Fecha Inicio' in item) {
-        return item[`Fecha Inicio`] >= startDate && item[`Fecha Fin`] <= endDate
-      }
-      else {
-        console.log('no se encontraron')
-      }
-    })
-  } */
+/*       console.log('no pasó', item[`Postulacion`]) */
+      return null;
+    });
+  
+    return filteredData;
+  }
 
 
 
 // create offer
   const handleCreateOffer = async (data) => {
-    console.log(data)
+/*     console.log(data) */
     let config = {
       method: 'post',
       maxBodyLength: Infinity,
@@ -318,10 +322,10 @@ export function useAdminLogic() {
   };
 
   // create process Evaluar
-    const handleCreateProcessEvaluar = async (data) => {
+    const handleCreateProcessEvaluar = async (name) => {
       const raw = JSON.stringify({
         "processData": {
-          "name": "TEST-0053286523126",
+          "name": name,
           "startDate": new Date().getTime(),
           "endDate": (new Date().getTime())+(2*24*60*60*1000)
         },
@@ -359,9 +363,7 @@ export function useAdminLogic() {
       handleCreateOffer,
       handleCreateProcessDB,
       handleCreateProcessEvaluar,
-/*       filterDataByDate, */
+      filterDataByDate,
       offerDataForIA, setOfferDataForIA,
-      startValue, setStartValue,
-      endValue, setEndValue
   }
 }

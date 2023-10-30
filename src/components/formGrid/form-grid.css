@@ -6,7 +6,7 @@
   display: grid;
   grid-template-columns: 240px 112px 112px;
   grid-template-rows: 22px 56px 56px 56px 56px 56px 56px 56px 56px 22px 56px 56px 56px 56px 40px 56px;
-  grid-gap: 16px;
+  grid-gap: 20px;
   text-align: left;
   font-family: 'Public Sans' sans-serif;
   box-sizing: border-box;

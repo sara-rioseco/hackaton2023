@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable react/prop-types */
 import { useState, useEffect } from "react";
 import {
   Table,
@@ -15,14 +17,15 @@ import {
 } from "@mui/material";
 import { Search } from "@mui/icons-material";
 import { Select, MenuItem } from "@mui/material";
-import DateFilter from "../../components/formDate/date-filter";
+import DateFilter from "../formDate/date-filter";
 import { Box, width } from "@mui/system";
 import { red, green } from '@mui/material/colors'
 
 export default function ListTable() {
-  const [data, setData] = useState(null);
-  const [search, setSearch] = useState("");
-  const [dataapi, setDataapi] = useState(null);
+  const [ data, setData ] = useState([]);
+  const [ search, setSearch ] = useState("");
+  const [ dataapi, setDataapi ] = useState([]);
+  const [ applicantsFilteredByDate, setApplicantsFilteredByDate ] = useState([])
 
   // Nuevo estado para la cadena de búsqueda
   const getAllApplicants = () => {
@@ -32,17 +35,11 @@ export default function ListTable() {
     )
       .then((response) => response.json())
       .then((result) => {
-        console.log("result dat[0]", result);
-
-        setDataapi(result.data);
-
         const dataprocess = result.data.map((item) => ({
 
           "Nro. Documento": item.document,
           "Nombres y Apellidos": item.firstName + " " + item.lastName_m,
-
-          Postulación: item.createdDate,
-
+          "Postulacion": item.createdDate,
           "IGC de postulación": item.processName,
           "Titulo de la Oferta": item.offerName,
           "Perfil de Oferta": item.processInfo.profileName,
@@ -63,22 +60,18 @@ export default function ListTable() {
         }));
 
         setData(dataprocess);
+        const res = dataprocess.sort((a, b) => a.document?.localeCompare(b.document));
+        setDataapi(res);
+        setApplicantsFilteredByDate(res);
+        
       })
-      .catch((error) => console.log("error", error));
+      .catch((error) => console.error("error", error));
 
   }
 
   useEffect(() => {
     getAllApplicants();
   }, []);
-
-  if (!data) {
-    return <div>Loading...</div>;
-  }
-
-  if (data) {
-    data.sort((a, b) => a.document?.localeCompare(b.document));
-  }
 
   const columnMaping2 = [
     "Nro. Documento",
@@ -92,18 +85,12 @@ export default function ListTable() {
   ];
 
   //  filtrar los datos
-  const filteredData = data.filter((item) => {
-    return Object.values(item).some((value) => {
-      if (typeof value === "object") {
-        if (typeof value.value === "string") {
-          return value.value.toLowerCase().includes(search.toLowerCase());
-        }
-      } else if (typeof value === "string") {
-        return value.toLowerCase().includes(search.toLowerCase());
-      }
-      return false;
-    });
-  });
+  const filteredData = (searchData) => {
+    if ( searchData === "" ) {
+            return data
+    }
+    return applicantsFilteredByDate.filter((item) => item['Nro. Documento'].toLowerCase().includes(searchData.toLowerCase()));
+  }
 
 
   const sendNotificationConfirmadoCapa = (applicant) => {
@@ -184,7 +171,7 @@ export default function ListTable() {
 
     fetch(`https://iezopofihj.execute-api.us-east-1.amazonaws.com/dev/notifications/status`, requestOptions)
       .then(response => response.text())
-      .then(result => console.log("rechazoo", result))
+      .then(result => console.log("rechazo", result))
       .catch(error => console.log('error', error));
 
   }
@@ -213,14 +200,19 @@ export default function ListTable() {
     <div>
       <Grid my={3} container spacing={2}>
         <Grid display='flex' alignItems={1} item xs={7}>
-          <DateFilter />
+          <DateFilter  setApplicantsFilteredByDate={setApplicantsFilteredByDate} data={data} processList={false}/>
         </Grid>
 
         <Grid my={1} item xs={5}>
           <TextField
             label="Buscar por Documento"
             value={search}
-            onChange={(e) => setSearch(e.target.value)}
+            onChange={(e) => {
+              setSearch(e.target.value);
+              setApplicantsFilteredByDate(data);
+              const res = filteredData(e.target.value);
+              setApplicantsFilteredByDate(res);
+            }}
             style={{ width: "100%" }}
             InputProps={{
               startAdornment: (
@@ -254,7 +246,7 @@ export default function ListTable() {
           </TableHead>
 
           <TableBody>
-            {filteredData.map((item, index) => (
+          {applicantsFilteredByDate.length > 0 && applicantsFilteredByDate.map((item, index) => (
               <TableRow key={index}>
                 {Object.keys(item).map((key) => (
                   <TableCell key={key}>
@@ -265,7 +257,6 @@ export default function ListTable() {
                         onChange={(e) => {
                           const updatedItem = { ...item, [key]: e.target.value };
 
-                          console.log("updatedItem", updatedItem);
                           const applicantdata = dataapi.filter((item) => {
 
                             return item.document === updatedItem["Nro. Documento"];
@@ -273,7 +264,6 @@ export default function ListTable() {
 
                           })
 
-                          console.log("applicantdata", applicantdata)
                           const aplicant = {
                             id: applicantdata[0].id,
                             dni: applicantdata[0].document,
@@ -291,7 +281,6 @@ export default function ListTable() {
                           } else {
                             sendNotificationNoApto(applicantdata[0]);
                           }
-                          //console.log("estado select", e.target.value)
                         }}
                       >
                         <MenuItem value="recontacto">Recontacto</MenuItem>
@@ -316,7 +305,6 @@ export default function ListTable() {
 
 
 function Chipy({ value }) {
-  console.log('value:', value);
   const [estado, setEstado] = useState('')
 
   function CalcularStatus() {
@@ -349,7 +337,7 @@ function Chipy({ value }) {
   }
   useEffect(() => {
     CalcularStatus();
-  }, []
+  },
   )
   function CalcularLetraColor() {
     if (value >= 90) {

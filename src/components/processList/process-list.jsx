@@ -39,22 +39,23 @@ function CustomizedProgressBars({value}) {
 }
 
 export default function ProcessListTable() {
-  const [data, setData] = useState(null);
-  const [search, setSearch] = useState(""); // Nuevo estado para la cadena de búsqueda
+  const [ data, setData ] = useState([]);
+  const [ search, setSearch ] = useState(""); // Nuevo estado para la cadena de búsqueda
+  const [ dataapi, setDataapi ] = useState([]);
+  const [ dataFilteredByDate, setDataFilteredByDate ] = useState([])
 
-  useEffect(() => {
+   const getAllProcesses = () => {
     fetch(
       "https://iezopofihj.execute-api.us-east-1.amazonaws.com/dev/processes?startDate=2023-11-03&endDate=2023-11-03"
     )
       .then((response) => response.json())
       .then((result) => {
-/*         console.log("result dat[0]", Object.keys(result.data[0])); */
         const dataprocess = result.data.map((item) => ({
           IGC: item.processName,
           Cuenta: item.account,
           Servicio: item.service,
-          "Fecha Inicio": item.startingDate,
-          "Feha Fin": item.closingDate,
+          "Fecha Inicio" : item.startingDate.toString(),
+          "Fecha Fin": item.closingDate.toString(),
           "Nro. Postulante": item.applicantsNumber,
           "Nro. Reductor": item.reducerNumber,
           "Avance de Aptos": () => {
@@ -78,23 +79,20 @@ export default function ProcessListTable() {
           Estado: item.status,
         }));
 
-  /*       console.log("dataprocess", dataprocess); */
         setData(dataprocess);
+        const res = dataprocess.sort((a, b) => a.document?.localeCompare(b.document));
+        setDataapi(res);
+        setDataFilteredByDate(res)
+        
       })
       .catch((error) => console.error("error", error));
+  }
+
+  useEffect(() => {
+    getAllProcesses();
   }, []);
 
-  if (!data) {
-    return <div>Loading...</div>;
-  }
-
-  if (data) {
-    data.sort((a, b) => a.document?.localeCompare(b.document));
-  }
-
-  
-
-  const columnMaping2 = [
+    const columnMaping2 = [
     "IGC",
     "Cuenta",
     "Servicio",
@@ -107,31 +105,49 @@ export default function ProcessListTable() {
   ];
 
   //  filtrar los datos
-  const filteredData = data.filter((item) => {
-    return Object.values(item).some((value) => {
-      if (typeof value === "object") {
-        if (typeof value.value === "string") {
-          return value.value.toLowerCase().includes(search.toLowerCase());
-        }
-      } else if (typeof value === "string") {
-        return value.toLowerCase().includes(search.toLowerCase());
+  const filteredData = (searchData) => {
+    console.log(searchData)
+    console.log(dataFilteredByDate)
+    if ( searchData === "" ) {
+      console.log('hola')
+            return data
+    }
+       
+    return dataFilteredByDate.filter((item) => {
+      if (item['IGC'].toLowerCase().includes(searchData.toLowerCase())) {
+        return item['IGC'].toLowerCase().includes(searchData.toLowerCase())
       }
-      return false;
+      if (item['Cuenta'].toLowerCase().includes(searchData.toLowerCase())) {
+        return item['Cuenta'].toLowerCase().includes(searchData.toLowerCase())
+      }
+      if (item['Servicio'].toLowerCase().includes(searchData.toLowerCase())) {
+        return item['Servicio'].toLowerCase().includes(searchData.toLowerCase())
+      }
+      if (item['Estado'].toLowerCase().includes(searchData.toLowerCase())) {
+        return item['Estado'].toLowerCase().includes(searchData.toLowerCase())
+      }     
     });
-  });
+  
+  }
+
 
   return (
     <div>
       <Grid container my={5} spacing={2}>
-        <Grid item xs={6}>
-          <DateFilter />
+        <Grid item xs={6}>{}
+          <DateFilter setDataFilteredByDate={setDataFilteredByDate} data={data} processList={true}/>
         </Grid>
 
           <Grid my={1} item xs={6}>
             <TextField 
-              label="Buscar por Documento"
+              label="Buscar por IGC, Cuenta, Servicio o Estado"
               value={search}
-              onChange={(e) => setSearch(e.target.value)}
+              onChange={(e) => {
+                setSearch(e.target.value);
+                setDataFilteredByDate(data);
+                const res = filteredData(e.target.value);
+                setDataFilteredByDate(res);
+              }}
               style={{ width: "100%"}}
               InputProps={{
                 startAdornment: (
@@ -151,7 +167,6 @@ export default function ProcessListTable() {
           <TableHead>
             <TableRow>
               {columnMaping2.map((key) => {
-/*                 console.log("columnMapping", data); */
                 return (
                   <TableCell
                     key={key}
@@ -164,16 +179,16 @@ export default function ProcessListTable() {
             </TableRow>
           </TableHead>
           <TableBody>
-            {filteredData.map((item, index) => (
-              <TableRow key={index}>
-                {Object.values(item).map((value, valueIndex) => (
-                  <TableCell width={200} key={valueIndex}>
-                    {typeof value === "object" ? value.value : value}
-                    {typeof value === "function" && value()}
-                  </TableCell>
-                ))}
-              </TableRow>
-            ))}
+          {dataFilteredByDate.length > 0 && dataFilteredByDate.map((item, index) => (
+            <TableRow key={index}>
+              {Object.values(item).map((value, valueIndex) => (
+                <TableCell width={200} key={valueIndex}>
+                  {typeof value === "object" ? value.value : value}
+                  {typeof value === "function" && value()}
+                </TableCell>
+              ))}
+            </TableRow>
+          ))}
           </TableBody>
         </Table>
       </TableContainer>

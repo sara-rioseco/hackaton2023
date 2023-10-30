@@ -17,7 +17,7 @@ const Icon = () => {
   );
 };
 
-export default function FormDate({label, classInputLabel, newDate, onDateChange}) {
+export default function FormDate({label, classInputLabel, onDateChange}) {
   const { 
     activeStartingDate, 
     activeClosingDate, 

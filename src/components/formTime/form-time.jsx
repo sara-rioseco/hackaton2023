@@ -4,9 +4,6 @@
 import './form-time.css'
 // Assets
 import clock from '../../assets/icons/table/clock.png'
-
-import setHours from 'date-fns/setHours'
-import setMinutes from 'date-fns/setMinutes'
 import { useState } from "react";
 import DatePicker, { registerLocale } from "react-datepicker";
 /* import "react-datepicker/dist/react-datepicker.css"; */
@@ -20,7 +17,7 @@ const ClockIcon = () => {
 };
 
 
-export default function FormTime({ label, classInputLabel}) {
+export default function FormTime({ label, classInputLabel }) {
   const [date, setDate] = useState(null);
 
    return (
@@ -45,8 +42,6 @@ export default function FormTime({ label, classInputLabel}) {
       timeIntervals={60}
       timeCaption="Hora"
       timeFormat="p"
-      minTime={setHours(setMinutes(new Date(), 0), 8)}
-      maxTime={setHours(setMinutes(new Date(), 30), 20)}
       />
     </>
   )
