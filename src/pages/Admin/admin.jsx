@@ -20,16 +20,16 @@ export default function Admin() {
     setIaOfferDataResponse, 
     handleCreateOffer,
     handleGenerateOfferIA,
+    formDataForEvaluar,
     startValue, setStartValue, endValue, setEndValue
   } = useAdminLogic();
   const location = useLocation();
   
-  useEffect(() => {
-/*     console.log('aqui', iaOfferDataResponse) */
-  }, [iaOfferDataResponse])
-
   const [ oferta, setOferta] = useState(null);
   const [ clickOffer, setClickOffer ] = useState(false)
+
+  useEffect(() => {
+ }, [iaOfferDataResponse, oferta])
 
     return (
     <>
@@ -48,11 +48,11 @@ export default function Admin() {
                 </div>
                 <div  className='mainContentButton'>
                 <Button label="+ Crear IGC" classButton='createOfferButton' disabled={false} onClick={() => {
-                console.log(iaOfferDataResponse)}}/>
+                console.log(oferta)}}/>
                 </div>
               </div>
               <div className='gridOfferView'>
-                <FormGrid setOferta={setOferta} setClickOffer={setClickOffer}/>
+                <FormGrid setOferta={setOferta} setClickOffer={setClickOffer} formDataForEvaluar={formDataForEvaluar}/>
                 <OfertaGenerate data={oferta} setClickOffer={setClickOffer} clickOffer={clickOffer}/>
               </div>
           </div>) }

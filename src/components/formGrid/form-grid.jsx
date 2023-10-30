@@ -14,10 +14,9 @@ import FormDropdown from '../formDropdown/form-dropdown'
 import FormTime from '../formTime/form-time'
 import FormToggle from '../formToggle/form-toggle'
 
-export default function FormGrid({ setOferta , setClickOffer}) {
+export default function FormGrid({ setOferta , setClickOffer, formDataForEvaluar}) {
   const {
     formData,
-    formDataForEvaluar,
     offerData,
     iaOfferDataResponse,
     offerDataForIA,
@@ -318,6 +317,7 @@ const isValidForm = (data) => {
             setClickOffer(true);
             handleCreateProcessDB(formData);
             handleCreateProcessEvaluar(formDataForEvaluar);
+            console.log(formDataForEvaluar)
             const iaResponse = await handleGenerateOfferIA(offerDataForIA);
             setOferta(iaResponse);
           }}/>

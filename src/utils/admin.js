@@ -139,11 +139,11 @@ export function useAdminLogic() {
     } 
     if (field === 'training-time-start') {
       setFormData({ ...newFormData, trainingSchedule: {...newFormData.trainingSchedule, trainingHourStart: event.value }});
-      console.log(event.value)
+      console.log('handle field change ->', event.toISOString())
     } 
     if (field === 'training-time-end') {
       setFormData({ ...newFormData, trainingSchedule: {...newFormData.trainingSchedule, trainingHourEnd: event.value }});
-      console.log(event.value)
+      console.log('handle field change ->', event.toISOString())
     } 
     if (field === 'training-date') {
       setFormData({ ...newFormData, trainingSchedule: {...newFormData.trainingSchedule, trainingDateStart: event.toISOString().split('T')[0]}});
@@ -159,11 +159,11 @@ export function useAdminLogic() {
     } 
     if (field === 'training-weekend-day-time-start') {
       setFormData({ ...newFormData, trainingSchedule: {...newFormData.trainingSchedule, trainingWeekendDayTimeStart: event.value }});
-      console.log(event.value)
+      console.log('handle field change ->', event.toISOString())
     } 
     if (field === 'training-weekend-day-time-end') {
       setFormData({ ...newFormData, trainingSchedule: {trainingWeekendDayTimeEnd: event.value }});
-      console.log(event.value)
+      console.log('handle field change ->', event.toISOString())
     } 
     if (field === 'process-modality') {
       setFormData({ ...newFormData, processModality: event.value });
@@ -177,19 +177,19 @@ export function useAdminLogic() {
     } 
     if (field === 'process-weekend-day-time-start') {
       setFormData({ ...newFormData, processSchedule: {...newFormData.processSchedule, processWeekendDayTimeStart : event.value} });
-      console.log(event.value)
+      console.log('handle field change ->', event.toISOString())
     } 
     if (field === 'process-weekend-day-time-end') {
       setFormData({ ...newFormData, processSchedule: {...newFormData.processSchedule, processWeekendDayTimeEnd : event.value} });
-      console.log(event.value)
+      console.log('handle field change ->', event.toISOString())
     } 
     if (field === 'process-time-start') {
       setFormData({ ...newFormData, processSchedule: {...newFormData.processSchedule, processWorkingHoursStart : event.value} });
-      console.log(event.value)
+      console.log('handle field change ->', event.toISOString())
     } 
     if (field === 'process-time-end') {
       setFormData({ ...newFormData, processSchedule: {...newFormData.processSchedule, processWorkingHoursEnd : event.value} });
-      console.log(event.value)
+      console.log('handle field change ->', event.toISOString())
     } 
     if (field === 'reason') {
       setFormData({ ...newFormData, reason: event.value });
@@ -322,10 +322,10 @@ export function useAdminLogic() {
   };
 
   // create process Evaluar
-    const handleCreateProcessEvaluar = async (data) => {
+    const handleCreateProcessEvaluar = async (name) => {
       const raw = JSON.stringify({
         "processData": {
-          "name": "",
+          "name": name,
           "startDate": new Date().getTime(),
           "endDate": (new Date().getTime())+(2*24*60*60*1000)
         },
