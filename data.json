@@ -1,0 +1,78 @@
+{
+    "perfiles": [
+      {
+        "tipo": "atención al cliente",
+        "descripción": "El postulante debe contar con habilidades de comunicación, escucha activa y empatía. Capaz de resolver problemas de manera eficiente, adaptarse a situaciones dinámicas y mantener una actitud positiva. Orientado al cliente, organizado y con una atención eficaz que garantice una experiencia positiva con los clientes. Debe contar con experiencia mínima de tres meses en posiciones de atención al cliente.",
+        "datos_estáticos": {
+          "te_ofrecemos": [
+            "Sueldo fijo acorde a ley (S/. 1,025)",
+            "Bono de capacitación",
+            "Ingreso a planilla con todos los beneficios de ley",
+            "Oportunidad de crecimiento profesional",
+            "Programa de Beneficios (préstamos personales, licencias, línea de carrera y mucho más)"
+          ],
+          "requisitos": [
+            "Mayores de 18 años",
+            "Mínimo secundaria completa",
+            "Experiencia mínima de 3 meses en atención al cliente"
+          ]
+        }
+      },
+      {
+        "tipo": "ventas",
+        "descripción": "El postulante debe destacar en comunicación persuasiva y cierre de ventas. Orientado a resultados, con una actitud proactiva, capacidad para trabajar bajo presión y cumplir metas de ventas. Si tiene experiencia, debe poder identificar las necesidades del cliente y contar con la habilidad de negociación y adaptación de estrategias de ventas. De no contar con experiencia debe estar dispuesto a aprender y recibir entrenamiento en ventas telefónicas. La empatía y la capacidad de adaptación son claves para su desarrollo y éxito en este puesto.",
+        "datos_estáticos": {
+          "te_ofrecemos": [
+            "Sueldo fijo + comisiones",
+            "Bono de capacitación",
+            "Ingreso a planilla con todos los beneficios de ley",
+            "Oportunidad de crecimiento profesional",
+            "Programa de Beneficios (préstamos personales, licencias, línea de carrera y mucho más)"
+          ],
+          "requisitos": [
+            "Mayores de 18 años",
+            "Mínimo secundaria completa",
+            "Con/sin experiencia mínima"
+          ]
+        }
+      },
+      {
+        "tipo": "crosselling",
+        "descripción": "El postulante de tener habilidades excepcionales en ventas y persuasión. Experiencia demostrada en identificar oportunidades de venta adicional durante las interacciones con los clientes. Orientado a metas, con conocimientos profundos de los productos y capacidad de negociación para impulsar el crecimiento de las ventas de manera efectiva. Debe contar con experiencia mínima de tres meses en posiciones de ventas cruzadas.",
+        "datos_estáticos": {
+          "te_ofrecemos": [
+            "Sueldo fijo + bono de alimentos + comisiones",
+            "Capacitación remunerada",
+            "Ingreso a planilla con todos los beneficios de ley",
+            "Oportunidad de crecimiento profesional",
+            "Programa de Beneficios (préstamos personales, licencias, línea de carrera y mucho más)"
+          ],
+          "requisitos": [
+            "Mayores de 18 años",
+            "Mínimo secundaria completa",
+            "Experiencia mínima de 3 meses en ventas cruzadas"
+          ]
+        }
+      },
+      {
+        "tipo": "social media",
+        "descripción": "El postulante debe tener habilidades avanzadas en gestión de redes sociales y comunicación digital. Experiencia demostrada en atender consultas y brindar soporte a clientes a través de plataformas digitales. Capacidad para responder rápidamente a comentarios y mensajes, así como convertir las interacciones en una experiencia positiva con los clientes. Orientado a la satisfacción del cliente y al logro de objetivos comerciales. Debe contar con experiencia mínima de seis meses en atención de clientes por las diferentes redes sociales.",
+        "datos_estáticos": {
+          "te_ofrecemos": [
+            "Sueldo fijo + bono de alimentos + comisiones",
+            "Capacitación remunerada",
+            "Ingreso a planilla con todos los beneficios de ley",
+            "Oportunidad de crecimiento profesional",
+            "Programa de Beneficios (préstamos personales, licencias, línea de carrera y mucho más)"
+          ],
+          "requisitos": [
+            "Mayores de 18 años",
+            "Estudios universitarios o técnicos de administración o afines (activos o truncos)",
+            "Conocimiento en computación nivel intermedio, manejo de programas básicos y herramientas de comunicación (office, meet, discord, etc)",
+            "Buena redacción y ortografía",
+            "Experiencia en redes sociales mínimo 6 meses"
+          ]
+        }
+      }
+    ]
+  }
