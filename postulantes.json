@@ -1,0 +1,49 @@
+{
+    "postulantes": [
+        {
+            "id": "75",
+            "document": "73942548",
+            "createdDate": "2023-10-05",
+            "firstName": "Anakarina",
+            "lastName_m": "Sanz",
+            "lastName_p": "Cajacuri",
+            "offerName": "DINORS-VENTAS-OCTUBRE",
+            "phoneNumber": 51925474137,
+            "processId": "7a40ba10-e0ab-4fcf-a708-0399b4cd6bb7",
+            "processName": "IGC-1238",
+            "score": 90,
+            "estado_de_postulacion": "confirmado a capa",
+            "comentario": "El postulante obtuvo buena nota para la posición, hace match con el perfil"
+        },
+        {
+            "id": "71",
+            "document": "23942548",
+            "createdDate": "2023-10-20",
+            "firstName": "Andrés",
+            "lastName_m": "Aguilar",
+            "lastName_p": "Roman",
+            "offerName": "DINORS-VENTAS-OCTUBRE",
+            "phoneNumber": "+51925474137",
+            "processId": "7a40ba10-e0ab-4fcf-a708-0399b4cd6bb7",
+            "processName": "IGC-1238",
+            "score": 82,
+            "estado_de_postulacion": "apto",
+            "comentario": "El postulante obtuvo buena nota para la posición, hace match con el perfil"
+        },
+        {
+            "id": "76",
+            "document": "99942548",
+            "createdDate": "2023-10-23",
+            "firstName": "Javi",
+            "lastName_m": "Peña",
+            "lastName_p": "Flores",
+            "offerName": "SENCA-VENTAS-OCTUBRE",
+            "phoneNumber": "+51925474137",
+            "processId": "7a40ba10-e0ab-4fcf-a708-0399b4cd6bb7",
+            "processName": "IGC-1238",
+            "score": 46,
+            "estado_de_postulacion": "no apto",
+            "comentario": "El postulante no calza con la oferta"
+        }
+    ]
+}
