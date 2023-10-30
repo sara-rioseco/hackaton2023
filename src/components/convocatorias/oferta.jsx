@@ -1,10 +1,11 @@
+/* eslint-disable react/prop-types */
 import { useState, useEffect } from "react";
 import PropTypes from 'prop-types'; 
-import Typography from "@mui/material/Typography";
+import CircularProgress from '@mui/material/CircularProgress';
+import Box from '@mui/material/Box';
 import CustomCard from "./card-oferta";
 import { styled } from "@mui/system";
 import './oferta.css' 
-
 
 const OfferSection = styled("div")({
   display: "flex",
@@ -16,28 +17,26 @@ const OfferSection = styled("div")({
 
 });
 
-export default function OfertaGenerate( { data }) {
+export default function OfertaGenerate( { data, clickOffer }) {
   const [response, setResponse] = useState(null);
-
   useEffect(() => {
-      data ? setResponse(JSON.parse(data)) : console.log('no hay data')
+      data ? setResponse(data) : console.log('no hay data')
   }, [data]);
 
-  return (
-      
+  return ( 
         <OfferSection >
-          {response? (
-            <CustomCard data={response}></CustomCard>
-          ) : (
-            <Typography variant="body2" color="textSecondary">
-              Loading...
-            </Typography>
-          )}
+          {(clickOffer && !response) && 
+            <Box sx={{ display: 'flex' }}>
+              <CircularProgress />
+            </Box>} 
+          {(clickOffer && response) && <CustomCard data={response}></CustomCard>}
         </OfferSection>
   );
 }
 
 
 OfertaGenerate.propTypes = {
-  data: PropTypes.object
+  data: PropTypes.object,
+  clickOffer: PropTypes.bool,
+  setClickOffer: PropTypes.func
 }

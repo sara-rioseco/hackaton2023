@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
 // CSS
 import './form-grid.css'
@@ -13,13 +14,12 @@ import FormDropdown from '../formDropdown/form-dropdown'
 import FormTime from '../formTime/form-time'
 import FormToggle from '../formToggle/form-toggle'
 
-export default function FormGrid() {
+export default function FormGrid({ setOferta , setClickOffer, formDataForEvaluar}) {
   const {
-    notValidForm, 
-    setNotValidForm,
     formData,
     offerData,
     iaOfferDataResponse,
+    offerDataForIA,
     setFormData,
     setOfferData,
     setIaOfferDataResponse,
@@ -33,10 +33,13 @@ export default function FormGrid() {
     handleCreateProcessButtonClick,
     handleCreateProcessDB,
     handleCreateProcessEvaluar,
-    handleGenerateOfferIA
+    handleGenerateOfferIA,
+    handleCreateOffer,
   } = useAdminLogic();
 
 useEffect(()=> {}, [activeClosingDate, activeStartingDate, activeTrainingDate])
+
+const [notValidForm, setNotValidForm] = useState(true);
 
 const handleDateChangeInFormDate = (inputLabel, date) => {
   // Update the parent component's state with the data received from the child.
@@ -54,9 +57,6 @@ const isValidForm = (data) => {
   const result = Object.values(data).includes(null || "")
   return result
 }
-
-const jsonFormData = () => JSON.stringify(formData, null, 2)
-const jsonOfferData = () => JSON.stringify(offerData, null, 2)
 
   return (
     <>
@@ -212,7 +212,7 @@ const jsonOfferData = () => JSON.stringify(offerData, null, 2)
         </div>
         <div className="item18">
           <FormTime 
-            label='Inicio'
+            label='Fin'
           />
         </div>
         <div className="item19">
@@ -313,15 +313,14 @@ const jsonOfferData = () => JSON.stringify(offerData, null, 2)
           <FormToggle label='Personas con discapacidad'/>
         </div>
         <div className="item33">
-          <Button label="Generar Oferta" classButton='createOfferButton' disabled={notValidForm} onClick={() => {
-            try { 
-              const res = handleGenerateOfferIA(jsonOfferData())
-              setIaOfferDataResponse(res)
-            } catch (e) {
-              console.error(e)
-            } finally {
-              console.log(iaOfferDataResponse)
-            }}}/>
+          <Button label="Generar Oferta" classButton='createOfferButton' disabled={notValidForm} onClick={async () => {
+            setClickOffer(true);
+            handleCreateProcessDB(formData);
+            handleCreateProcessEvaluar(formDataForEvaluar);
+            console.log(formDataForEvaluar)
+            const iaResponse = await handleGenerateOfferIA(offerDataForIA);
+            setOferta(iaResponse);
+          }}/>
         </div>
       </div>
     </>

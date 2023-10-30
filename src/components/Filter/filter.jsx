@@ -1,6 +1,6 @@
-// filtrar tabla
+/* // filtrar tabla
 
-import React, { useState } from "react";
+import { useState } from "react";
 
 function SearchTable({ data }) {
   const [searchQuery, setSearchQuery] = useState("");
@@ -37,3 +37,4 @@ function SearchTable({ data }) {
 }
 
 export default SearchTable;
+ */
