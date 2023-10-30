@@ -25,10 +25,11 @@ export default function Admin() {
   const location = useLocation();
   
   useEffect(() => {
-    console.log('aqui', iaOfferDataResponse)
+/*     console.log('aqui', iaOfferDataResponse) */
   }, [iaOfferDataResponse])
 
   const [ oferta, setOferta] = useState(null);
+  const [ clickOffer, setClickOffer ] = useState(false)
 
     return (
     <>
@@ -51,8 +52,8 @@ export default function Admin() {
                 </div>
               </div>
               <div className='gridOfferView'>
-                <FormGrid setOferta={setOferta} />
-                <OfertaGenerate data={oferta}/>
+                <FormGrid setOferta={setOferta} setClickOffer={setClickOffer}/>
+                <OfertaGenerate data={oferta} setClickOffer={setClickOffer} clickOffer={clickOffer}/>
               </div>
           </div>) }
           {location.pathname === "/applicants" && (

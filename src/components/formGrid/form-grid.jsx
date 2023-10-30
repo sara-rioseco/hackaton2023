@@ -14,7 +14,7 @@ import FormDropdown from '../formDropdown/form-dropdown'
 import FormTime from '../formTime/form-time'
 import FormToggle from '../formToggle/form-toggle'
 
-export default function FormGrid( {setOferta}  ) {
+export default function FormGrid({ setOferta , setClickOffer}) {
   const {
     formData,
     formDataForEvaluar,
@@ -213,7 +213,7 @@ const isValidForm = (data) => {
         </div>
         <div className="item18">
           <FormTime 
-            label='Inicio'
+            label='Fin'
           />
         </div>
         <div className="item19">
@@ -315,6 +315,7 @@ const isValidForm = (data) => {
         </div>
         <div className="item33">
           <Button label="Generar Oferta" classButton='createOfferButton' disabled={notValidForm} onClick={async () => {
+            setClickOffer(true);
             handleCreateProcessDB(formData);
             handleCreateProcessEvaluar(formDataForEvaluar);
             const iaResponse = await handleGenerateOfferIA(offerDataForIA);

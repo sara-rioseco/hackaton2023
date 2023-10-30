@@ -190,10 +190,6 @@ function CustomCardComponent({ data }) {
                         <AccessTimeIcon sx={{ marginLeft: "7px" }}></AccessTimeIcon>
                         <StyledChip label="Full Time" color="primary" sx={{ padding: "0 7px 0 0" }} />
                     </TimerAndChip>
-                    {/* <ModalityAndChip>
-                        <AppRegistrationOutlinedIcon sx={{ marginLeft: "7px" }}></AppRegistrationOutlinedIcon>
-                        <StyledChip label="Presencial" color="primary" sx={{ padding: "0 7px 0 0" }} />
-                    </ModalityAndChip> */}
                 </Modality>
                 <DescriptionDiv>
                     <Description variant="body1">{data.description}</Description>
