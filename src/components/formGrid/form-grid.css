@@ -5,12 +5,12 @@
   height: 100%;
   display: grid;
   grid-template-columns: 240px 112px 112px;
-  grid-template-rows: 22px 56px 56px 56px 56px 56px 56px 56px 56px 22px 56px 56px 56px 56px 40px 56px;
-  grid-gap: 16px;
+  grid-template-rows: 22px 40px 40px 40px 40px 40px 40px 40px 40px 22px 40px 40px 40px 40px 40px 40px;
+  grid-gap: 20px;
   text-align: left;
   font-family: 'Public Sans' sans-serif;
   box-sizing: border-box;
-  overflow: auto;
+  min-width: 600px;
 }
 
 .item1 {
@@ -69,7 +69,7 @@
 }
 
 .item6 {
-  height: 56px;
+  height: 40px;
 }
 
 .item7 {
@@ -112,13 +112,13 @@
 } 
 
 .item14 {
-  height: 56px;
+  height: 40px;
   width: 100%;
   box-sizing: border-box;
 }
 
 .item15 {
-  height: 56px;;
+  height: 40px;;
   width: 100%;
   box-sizing: border-box;
 }
@@ -128,13 +128,13 @@
 } */
 
 .item17 {
-  height: 56px;;
+  height: 40px;;
   width: 100%;
   box-sizing: border-box;
 }
 
 .item18 {
-  height: 56px;;
+  height: 40px;;
   width: 100%;
   box-sizing: border-box;
 }
@@ -181,13 +181,13 @@
 }
 
 .item25 {
-  height: 56px;;
+  height: 40px;;
   width: 100%;
   box-sizing: border-box;
 }
 
 .item26 {
-  height: 56px;;
+  height: 40px;;
   width: 100%;
   box-sizing: border-box;
 }
@@ -197,13 +197,13 @@
 } */
 
 .item28 {
-  height: 56px;;
+  height: 40px;;
   width: 100%;
   box-sizing: border-box;
 }
 
 .item29 {
-  height: 56px;;
+  height: 40px;;
   width: 100%;
   box-sizing: border-box;
 }

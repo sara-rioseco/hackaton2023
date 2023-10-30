@@ -1,16 +1,13 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
 /* eslint-disable react/display-name */
 // CSS
 import './form-date.css'
 // Assets
 import icon from '../../assets/icons/table/calendar.png'
-
-import { useState } from "react";
-
+import { useEffect } from "react";
 import DatePicker, { registerLocale  } from "react-datepicker";
-
-import { usePostLogic } from '../../utils/post';
-
+import { useAdminLogic } from '../../utils/admin';
 import es from 'date-fns/locale/es';
 registerLocale('es', es)
 
@@ -20,9 +17,27 @@ const Icon = () => {
   );
 };
 
-export default function FormDate({label, classInputLabel }) {
-  const [date, setDate] = useState(null);
-  const { activeDate, setActiveDate, handleFieldChange } = usePostLogic();
+export default function FormDate({label, classInputLabel, onDateChange}) {
+  const { 
+    activeStartingDate, 
+    activeClosingDate, 
+    activeTrainingDate, 
+    handleFieldChange,
+    handleActiveDate 
+  } = useAdminLogic();
+
+  const handleDateChange = (d) => {
+    handleActiveDate(classInputLabel, d);
+    handleFieldChange(classInputLabel, d);
+    onDateChange(classInputLabel, d);
+  };
+
+  useEffect(() =>{
+    
+  },[    
+    activeStartingDate, 
+    activeClosingDate, 
+    activeTrainingDate])
 
    return (
     <>
@@ -33,22 +48,15 @@ export default function FormDate({label, classInputLabel }) {
         </span>
       </div>
       <DatePicker 
-      minDate={new Date()}
-      locale="es"
-      placeholderText=''
-      selected={date}
-      onChange={date => {
-        setDate(date);
-        setActiveDate(new Date(date).toLocaleDateString('es-CL'));
-        handleFieldChange(`${classInputLabel}`, date)
-      }}
-      value={activeDate}
-      setNewDate={f => f(activeDate)}
-      newDate={activeDate}
-      dateFormat="dd/MM/yyyy"
-      className='datePicker'
-      icon={Icon}
-      id={classInputLabel}
+        minDate={new Date()}
+        locale="es"
+        placeholderText=""
+        selected={classInputLabel === 'starting-date' ? activeStartingDate : classInputLabel === 'closing-date' ? activeClosingDate : activeTrainingDate}
+        onChange={d => handleDateChange(d)}
+        dateFormat="dd/MM/yyyy"
+        className='datePicker'
+        icon={Icon}
+        id={classInputLabel}
       />
     </>
   )

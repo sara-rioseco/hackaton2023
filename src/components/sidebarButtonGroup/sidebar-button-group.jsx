@@ -7,7 +7,7 @@ import invoice from "../../assets/icons/dashboard/ic_invoice.png"
 import invoiceUnselected from "../../assets/icons/dashboard/unselected_ic_invoice.png"
 import user from "../../assets/icons/dashboard/ic_user.png"
 import userUnselected from "../../assets/icons/dashboard/unselected_ic_user.png"
-import { usePostLogic } from "../../utils/post";
+import { useAdminLogic } from "../../utils/admin";
 
 
 const types = [
@@ -20,7 +20,7 @@ export default function SidebarButtonGroup() {
   const [selected, setSelected] = useState(0);
   const [activeType, setActiveType] = useState("Convocatorias");
 
-  const { handleSideBarButtonClick } = usePostLogic(); 
+  const { handleSideBarButtonClick } = useAdminLogic(); 
 
   const handleColor = (row) => {
     setActiveType(row.title);

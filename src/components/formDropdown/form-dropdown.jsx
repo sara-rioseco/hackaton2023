@@ -64,7 +64,7 @@ const getDisplay = () => {
   return (
     <>
       {label && <label className={`formDropdownLabel ${classInputLabel}`}>{label}</label>} 
-      <div className="dropdown-container" style={showMenu ? dropdownFocusStyle : null}>
+      <div tabIndex={0} className="dropdown-container" style={showMenu ? dropdownFocusStyle : null}>
         <div ref={inputRef} onClick={handleInputClick} className="dropdown-input">
           <div className="dropdown-selected-value">{getDisplay()}</div>
           <div className="dropdown-tools">

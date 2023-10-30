@@ -1,0 +1,38 @@
+{
+    "data": [
+      {
+        "idProceso": "2bfc052a-0094-41c1-a7b5-10f9f01dc8bc",
+        "fechaCreacion": "2023-10-05",
+        "estado": "REGISTRADO",
+        "nombreProceso": "IGC-1238",
+        "nombreOferta": "MOVISTAR-VENTAS-OCTUBRE",
+        "apellidoMaterno": "Ríos",
+        "id": "65",
+        "documento": "73945548",
+        "nombre": "Omaira",
+        "apellidoPaterno": "Vásquez",
+        "informacionProceso": {
+          "nombre": "LIMA",
+          "direccion": "Calle Augusto B. Leguía 123"
+        }
+      },
+      {
+        "idProceso": "2bfc052a-0094-41c1-a7b5-10f9f01dc8bc",
+        "fechaCreacion": "2023-10-05",
+        "estado": "REGISTRADO",
+        "nombreProceso": "IGC-123",
+        "nombreOferta": "MOVISTAR-VENTAS-OCTUBRE",
+        "apellidoMaterno": "Ríos",
+        "id": "85",
+        "documento": "73945546",
+        "nombre": "Omaira",
+        "apellidoPaterno": "Vásquez",
+        "informacionProceso": {
+          "nombre": "LIMA",
+          "direccion": "Calle Augusto B. Leguía 123"
+        }
+      }
+    ],
+    "cantidad": 2
+  }
+  
