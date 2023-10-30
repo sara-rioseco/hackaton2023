@@ -362,6 +362,6 @@ function Chipy({ value }) {
       "& .MuiChip-ColorPrimary": {
         backgroundColor: CalcularColor(),
       }, bgcolor: CalcularColor(),
-    }} value={value} label={estado} />
+    }} value={value } label={estado} />
   );
 }

@@ -6,7 +6,7 @@
 
 .react-datepicker__input-container {
   width: 100%;
-  height: 56px;
+  height: 40px;
   display:flex;
 }
 
@@ -17,7 +17,7 @@
 }
 .timePicker {
   width: 100%;
-  height: 56px;
+  height: 40px;
   text-align: left;
   padding:10px;
   border: 1px solid #919EAB;
@@ -44,7 +44,6 @@
 
 .time-input-group-text img{
   position: relative;
-  top:8px;
   z-index: 1;
 }
 
