@@ -34,7 +34,7 @@ const handleButtonClick = () => {
                     {data.title}
                 </Typography>
                 <Typography variant="body2" color="text.secondary">
-                    {data.content},
+                    {data.content.slice(0, 140)},
                 </Typography>
                 <Typography variant="body2" color="text.secondary">
                     {data.modality},

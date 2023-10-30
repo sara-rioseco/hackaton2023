@@ -7,8 +7,9 @@ import {
 import ErrorPage from './error-page';
 import Home from './pages/Home/home';
 import Admin from './pages/Admin/admin';
-import Dashboarr from './pages/DetalleApplicants/detalle-applicants';
 import Landing from './pages/Landing/landing';
+import Dashboarr from './pages/DetalleApplicants/detalle-applicants';
+;
 import './index.css'
 
 const router = createBrowserRouter([
@@ -33,15 +34,16 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage />,
   },
   {
+    path: "/home",
+    element: <Landing/>,
+    errorElement: <ErrorPage />,
+  },
+  {
     path: "/oferta",
     element: <Dashboarr/>,
     errorElement: <ErrorPage />,
   },
-    {
-    path: "/home",
-    element: <Landing />,
-    errorElement: <ErrorPage />,
-  }, 
+     
 
 ]);
 
