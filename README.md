@@ -36,9 +36,7 @@ perfiles de candidatos con las ofertas, agilizando el proceso de selección.
 con los candidatos, proporcionando actualizaciones regulares sobre su postulación a
 través de whatsapp.
 
-## Authors
-
-Contributors names and contact info
+## Participantes
 
 * Melany Olivares - UX Designer
 * Anakarina Mora Faneite - Web Developer
