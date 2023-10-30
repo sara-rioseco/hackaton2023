@@ -21,6 +21,7 @@ export default function Admin() {
     handleCreateOffer,
     handleGenerateOfferIA,
     formDataForEvaluar,
+    formData,
     startValue, setStartValue, endValue, setEndValue
   } = useAdminLogic();
   const location = useLocation();
@@ -48,7 +49,21 @@ export default function Admin() {
                 </div>
                 <div  className='mainContentButton'>
                 <Button label="+ Crear IGC" classButton='createOfferButton' disabled={false} onClick={() => {
-                console.log(oferta)}}/>
+                  console.log('aquí formdata ->', formData)
+
+                  const data = {
+                    title: "MOVISTAR-MARZO-VENTAS2",
+                    campus: "TRUJILLO",
+                    content: "Contenido de la oferta",
+                    createdDate: "2023-10-03",
+                    status: "published",
+                    id: "34133a1a-d90d-492d-9d3b-43f6deef1ec5",
+                    modality: "PRESENCIAL",
+                    typeWork: "PRESENCIAL",
+                    category: "VENTAS",
+                    turn: "MAÑANA"
+                }
+                handleCreateOffer(data)}}/>
                 </div>
               </div>
               <div className='gridOfferView'>
