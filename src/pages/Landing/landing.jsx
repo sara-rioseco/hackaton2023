@@ -1,19 +1,16 @@
 /* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from "react";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
 import OfferCard from "../../components/cards/offertcards";
 import header from "/src/assets/img/header.png";
 import { Box, Stack } from "@mui/system";
 import { Chip, Typography } from "@mui/material";
 import { useTheme } from "@emotion/react";
 import { autoPlay } from "react-swipeable-views-utils";
-import SwipeableViews from "react-swipeable-views";
 import { pink } from "@mui/material/colors";
-
+import CssBaseline from '@mui/material/CssBaseline';
+import Container from '@mui/material/Container';
 import initializeChatbot from "../../utils/chat.js";
 
-const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
 
 const images = [
   {
@@ -62,38 +59,26 @@ function SwipeableTextMobileStepper() {
   useEffect(() => {
     initializeChatbot();
   }, []);
-
+  const styles = {
+    container: {
+      backgroundImage: 'url("./src/assets/img/Inicial.png")',
+      backgroundSize: 'cover',
+      backgroundPosition: 'center',
+      height: "600px",
+      width: '100vw',
+      margin:"0"
+    },
+  };
   return (
     <div>
       <Header />
-
-      <AutoPlaySwipeableViews
-        axis={theme.direction === "rtl" ? "x-reverse" : "x"}
-        index={activeStep}
-        onChangeIndex={handleStepChange}
-        enableMouseEvents
-      >
-        {images.map((step, index) => (
-          <div key={step.label}>
-            {Math.abs(activeStep - index) <= 2 ? (
-              <Box
-                component="img"
-                sx={{
-                  height: "100%",
-                  display: "block",
-                  overflow: "hidden",
-                  width: "100%",
-                  bgcolor: "#002855",
-                }}
-                src={step.imgPath}
-                alt={step.description}
-              />
-            ) : null}
-          </div>
-        ))}
-      </AutoPlaySwipeableViews>
-
-      <Box display="flex" justifyContent={"center"} my={4}>
+      <React.Fragment>
+      <CssBaseline />
+      <Container maxWidth="false" disableGutters>
+        <div style={styles.container}></div>
+      </Container>
+    </React.Fragment>
+        <Box display="flex" justifyContent={"center"} my={4}>
         <Typography
           gutterBottom
           sx={{

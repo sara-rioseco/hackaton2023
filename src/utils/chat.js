@@ -37,7 +37,7 @@ const initializeChatbot = () => {
             size: "medium",
             iconColor: "white",
             customIconSrc:
-              "/src/assets/img/avatar-chat.png",
+              "https://raw.githubusercontent.com/sara-rioseco/hackaton2023/main/src/assets/img/avatar-chat.png",
           },
           chatWindow: {
             welcomeMessage: "Hola!, Bienvenido a Konecta Empleos",
@@ -51,14 +51,14 @@ const initializeChatbot = () => {
               textColor: "#303235",
               showAvatar: true,
               avatarSrc:
-                "/src/assets/img/avatar-chat.png",
+                "https://raw.githubusercontent.com/sara-rioseco/hackaton2023/main/src/assets/img/avatar-chat.png",
             },
             userMessage: {
               backgroundColor: "#3B81F6",
               textColor: "#ffffff",
               showAvatar: true,
               avatarSrc:
-                "https://raw.githubusercontent.com/zahidkhawaja/langchain-chat-nextjs/main/public/usericon.png",
+                "https://www.svgrepo.com/show/165196/user.svg",
             },
             textInput: {
               placeholder: "Querid@ Postulate, consulte por el estado de tu proceso",
